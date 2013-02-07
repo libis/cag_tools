@@ -12248,8 +12248,8 @@
 							<settings>
 								<setting name="label" locale="nl_NL">Documentatie publicatie</setting>
 								<setting name="add_label" locale="nl_NL">Voeg documentatie publicatie toe</setting>
-								<setting name="restrict_to_relationship_types">references</setting>
-								<setting name="">documentatieRelatie</setting>
+								<setting name="restrict_to_types">references</setting>
+								<setting name="restrict_to_relationship_types">documentatieRelatie</setting>
 							</settings>
 						</placement>
 						<placement code="ca_mondeling">
