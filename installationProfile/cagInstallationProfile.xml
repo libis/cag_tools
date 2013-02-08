@@ -8615,7 +8615,61 @@
 			<typeRestrictions>
 				<restriction code="r1">
 					<table>ca_objects</table>
-					<type>cagObject_type</type>
+					<type></type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">100</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+				<restriction code="r2">
+					<table>ca_entities</table>
+					<type></type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">100</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+				<restriction code="r3">
+					<table>ca_lists</table>
+					<type></type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">100</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+				<restriction code="r4">
+					<table>ca_list_items</table>
+					<type></type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">100</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+				<restriction code="r5">
+					<table>ca_occurrences</table>
+					<type></type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">100</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+				<restriction code="r6">
+					<table>ca_places</table>
+					<type></type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">100</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+				<restriction code="r7">
+					<table>ca_collections</table>
+					<type></type>
 					<settings>
 						<setting name="minAttributesPerRow">0</setting>
 						<setting name="maxAttributesPerRow">100</setting>
@@ -12226,6 +12280,9 @@
 						<placement code="ca_attribute_moveObjectnaam">
 							<bundle>ca_attribute_moveObjectnaam</bundle>
 						</placement>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
+						</placement>
 						<placement code="ca_attribute_cagObjectnaamInfo">
 							<bundle>ca_attribute_cagObjectnaamInfo</bundle>
 						</placement>
@@ -12287,6 +12344,9 @@
 								<setting name="label" locale="nl_NL">Naam</setting>
 								<setting name="height">1</setting>
 							</settings>
+						</placement>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
 						</placement>
 						<placement code="nonpreferred_labels">
 							<bundle>nonpreferred_labels</bundle>
@@ -12494,9 +12554,6 @@
 						</placement>
 						<placement code="ca_attribute_europeana_publiceren">
 							<bundle>ca_attribute_europeana_publiceren</bundle>
-						</placement>
-						<placement code="ca_attribute_adlibObjectNummer">
-							<bundle>ca_attribute_adlibObjectNummer</bundle>
 						</placement>
 						<placement code="status">
 							<bundle>status</bundle>
@@ -12713,6 +12770,9 @@
 						</label>
 					</labels>
 					<bundlePlacements>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
+						</placement>
 						<placement code="ca_objects">
 							<bundle>ca_objects</bundle>
 						</placement>
@@ -12764,6 +12824,9 @@
 								<setting name="label" locale="nl_NL">Naam van de collectie</setting>
 								<setting name="height">1</setting>
 							</settings>
+						</placement>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
 						</placement>
 						<placement code="ca_entities">
 							<bundle>ca_entities</bundle>
@@ -12999,6 +13062,9 @@
 								<setting name="label" locale="nl_NL">Naam</setting>
 							</settings>
 						</placement>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
+						</placement>
 						<placement code="ca_attribute_persoonFunctie">
 							<bundle>ca_attribute_persoonFunctie</bundle>
 						</placement>
@@ -13049,6 +13115,9 @@
 								<setting name="label" locale="nl_NL">Naam</setting>
 								<setting name="height">1</setting>
 							</settings>
+						</placement>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
 						</placement>
 						<placement code="nonpreferred_labels">
 							<bundle>nonpreferred_labels</bundle>
@@ -13317,6 +13386,9 @@
 					<bundlePlacements>
 						<placement code="hierarchy_location">
 							<bundle>hierarchy_location</bundle>
+						</placement>
+						<placement code="ca_attribute_adlibObjectNummer">
+							<bundle>ca_attribute_adlibObjectNummer</bundle>
 						</placement>
 						<placement code="preferred_labels">
 							<bundle>preferred_labels</bundle>
