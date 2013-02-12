@@ -2505,11 +2505,10 @@
 				</item>
 			</items>
 		</list>
-<!-- Moet ingeladen worden op basis van tabblad 2. distributie en verkoop kolom A -->
-		<list code="distributieAmbachtenAct_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
+		<list code="distributieAmbachtenActLand_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
 			<labels>
 				<label locale="nl_NL">
-					<name>Distributie ambachten activiteiten lijst</name>
+					<name>Distributie ambachten activiteiten (landbouw) lijst</name>
 				</label>
 			</labels>
 			<items>
@@ -2598,6 +2597,87 @@
 						<label locale="nl_NL" preferred="1">
 							<name_singular>Transport - Zak</name_singular>
 							<name_plural>Transport - Zak</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="verkoopAmbacht" enabled="1" default="0" rank="4">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Verkoop</name_singular>
+							<name_plural>Verkoop</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="verkoopMobielAmbacht" enabled="1" default="0" rank="4">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Verkoop - Mobiel</name_singular>
+							<name_plural>Verkoop - Mobiel</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="verkoopInrichtingAmbacht" enabled="1" default="0" rank="4">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Verkoop - Inrichting</name_singular>
+							<name_plural>Verkoop - Inrichting</name_plural>
+						</label>
+					</labels>
+				</item>
+			</items>
+		</list>
+		<list code="distributieAmbachtenAct_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
+			<labels>
+				<label locale="nl_NL">
+					<name>Distributie ambachten activiteiten lijst</name>
+				</label>
+			</labels>
+			<items>
+				<item idno="kledijAmbacht" enabled="1" default="0" rank="1">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Kledij</name_singular>
+							<name_plural>Kledij</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="transportAmbacht" enabled="1" default="0" rank="2">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Transport</name_singular>
+							<name_plural>Transport</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="transpRecipientAmbacht" enabled="1" default="0" rank="3">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Transport - Recipiënt</name_singular>
+							<name_plural>Transport - Recipiënt</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="transpStootkarAmbacht" enabled="1" default="0" rank="4">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Transport - Stootkar / fietskar</name_singular>
+							<name_plural>Transport - Stootkar / fietskar</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="transportBespannenAmbacht" enabled="1" default="0" rank="4">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Transport - Bespannen voertuig</name_singular>
+							<name_plural>Transport - Bespannen voertuig</name_plural>
+						</label>
+					</labels>
+				</item>
+				<item idno="transpZelfrijdAmbacht" enabled="1" default="0" rank="4">
+					<labels>
+						<label locale="nl_NL" preferred="1">
+							<name_singular>Transport - Zelfrijdend voertuig</name_singular>
+							<name_plural>Transport - Zelfrijdend voertuig</name_plural>
 						</label>
 					</labels>
 				</item>
@@ -5480,7 +5560,6 @@
 						</label>
 					</labels>
 				</item>
-        <!-- TODO opgelet er is ook een geassocieerde persoon lijst en geassocieerde organisatie lijst. -->
 				<item idno="individual" enabled="1" default="0">
 					<labels>
 						<label locale="nl_NL" preferred="1">
@@ -7171,6 +7250,107 @@
 				</restriction>
 			</typeRestrictions>
 		</metadataElement>
+		<metadataElement code="distributieLandInfo" datatype="Container">
+			<labels>
+				<label locale="nl_NL">
+					<name>Distributie en verkoop</name>
+				</label>
+			</labels>
+			<settings>
+				<setting name="doesNotTakeLocale">1</setting>
+			</settings>
+			<elements>
+				<metadataElement code="distributie_line1" datatype="Container">
+					<labels>
+						<label locale="nl_NL">
+							<name>Distributie en verkoop</name>
+						</label>
+					</labels>
+					<settings/>
+					<elements>
+						<metadataElement code="distributieAmbachten" datatype="List" list="distributieAmbachtenAmb_lijst">
+							<labels>
+								<label locale="nl_NL">
+									<name>Beroepen</name>
+								</label>
+							</labels>
+							<settings>
+								<setting name="fieldWidth">40</setting>
+								<setting name="fieldHeight">1</setting>
+								<setting name="requireValue">0</setting>
+							</settings>
+						</metadataElement>
+						<metadataElement code="distributieAmbachten_act" datatype="List" list="distributieAmbachtenActLand_lijst">
+							<labels>
+								<label locale="nl_NL">
+									<name>Distributie activiteit</name>
+								</label>
+							</labels>
+							<settings>
+								<setting name="fieldWidth">40</setting>
+								<setting name="fieldHeight">1</setting>
+								<setting name="requireValue">0</setting>
+							</settings>
+						</metadataElement>
+						<metadataElement code="distributieAmbachten_periode" datatype="List" list="ambachtenPeriode_lijst">
+							<labels>
+								<label locale="nl_NL">
+									<name>Periode</name>
+								</label>
+							</labels>
+							<settings>
+								<setting name="fieldWidth">20</setting>
+								<setting name="fieldHeight">1</setting>
+								<setting name="requireValue">0</setting>
+							</settings>
+						</metadataElement>
+						<metadataElement code="distributieAmbachten_waarde" datatype="Text">
+							<labels>
+								<label locale="nl_NL">
+									<name>Waarde</name>
+								</label>
+							</labels>
+							<settings>
+								<setting name="fieldWidth">20</setting>
+								<setting name="fieldHeight">1</setting>
+							</settings>
+						</metadataElement>
+						<metadataElement code="distributie_line2" datatype="Container">
+							<labels>
+								<label locale="nl_NL">
+									<name>Distributie en verkoop</name>
+								</label>
+							</labels>
+							<settings/>
+							<elements>
+								<metadataElement code="distributieAmbachten_opm" datatype="Text">
+									<labels>
+										<label locale="nl_NL">
+											<name>Opmerking</name>
+										</label>
+									</labels>
+									<settings>
+										<setting name="fieldWidth">80</setting>
+										<setting name="fieldHeight">2</setting>
+									</settings>
+								</metadataElement>
+							</elements>
+						</metadataElement>
+					</elements>
+				</metadataElement>
+			</elements>
+			<typeRestrictions>
+				<restriction code="r1">
+					<table>ca_collections</table>
+					<type>trajectLandbouw</type>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">50</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+			</typeRestrictions>
+		</metadataElement>
 		<metadataElement code="distributieInfo" datatype="Container">
 			<labels>
 				<label locale="nl_NL">
@@ -7263,6 +7443,7 @@
 			<typeRestrictions>
 				<restriction code="r1">
 					<table>ca_collections</table>
+					<type>trajectVoeding</type>
 					<settings>
 						<setting name="minAttributesPerRow">0</setting>
 						<setting name="maxAttributesPerRow">50</setting>
@@ -12938,6 +13119,9 @@
 						<placement code="ca_attribute_interesObjLandbouwInfo">
 							<bundle>ca_attribute_interesObjLandbouwInfo</bundle>
 						</placement>
+						<placement code="ca_attribute_distributieLandInfo">
+							<bundle>ca_attribute_distributieLandInfo</bundle>
+						</placement>
 						<placement code="ca_attribute_tellingObjAgrInfo">
 							<bundle>ca_attribute_tellingObjAgrInfo</bundle>
 						</placement>
@@ -13167,7 +13351,7 @@
 								<setting name="label" locale="nl_NL">Contactpersoon</setting>
 								<setting name="add_label" locale="nl_NL">Voeg contactpersoon toe</setting>
 								<setting name="restrict_to_types">individual</setting>
-								<setting name="restrict_to_types">organization</setting>
+								<setting name="restrict_to_types">historischePersoon</setting>
 								<setting name="restrict_to_relationship_types">contact</setting>
 								<setting name="restrict_to_relationship_types">contact_hist</setting>
 							</settings>
