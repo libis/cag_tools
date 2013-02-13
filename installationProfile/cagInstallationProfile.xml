@@ -7452,20 +7452,20 @@
 				</restriction>
 			</typeRestrictions>
 		</metadataElement>
-		<metadataElement code="verwerkingInfo" datatype="Container">
+		<metadataElement code="verwerkingAlgInfo" datatype="Container">
 			<labels>
 				<label locale="nl_NL">
-					<name>Verwerking</name>
+					<name>Algemene verwerking</name>
 				</label>
 			</labels>
 			<settings>
 				<setting name="doesNotTakeLocale">1</setting>
 			</settings>
 			<elements>
-				<metadataElement code="verwerking_line1" datatype="Container">
+				<metadataElement code="verwerkingAlg_line1" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
-							<name>Verwerking</name>
+							<name>Algemene Verwerking</name>
 						</label>
 					</labels>
 					<settings/>
@@ -7531,7 +7531,50 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="verwerking_line2" datatype="Container">
+				<metadataElement code="verwerkingAlg_line2" datatype="Container">
+					<labels>
+						<label locale="nl_NL">
+							<name>Verwerking</name>
+						</label>
+					</labels>
+					<settings/>
+					<elements>
+						<metadataElement code="verwerkingAlg_opm" datatype="Text">
+							<labels>
+								<label locale="nl_NL">
+									<name>Opmerking</name>
+								</label>
+							</labels>
+							<settings>
+								<setting name="fieldWidth">80</setting>
+								<setting name="fieldHeight">2</setting>
+							</settings>
+						</metadataElement>
+					</elements>
+				</metadataElement>
+			</elements>
+			<typeRestrictions>
+				<restriction code="r1">
+					<table>ca_collections</table>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">50</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+			</typeRestrictions>
+		</metadataElement>
+		<metadataElement code="verwerkingSpecInfo" datatype="Container">
+			<labels>
+				<label locale="nl_NL">
+					<name>Specifieke verwerking</name>
+				</label>
+			</labels>
+			<settings>
+				<setting name="doesNotTakeLocale">1</setting>
+			</settings>
+			<elements>
+				<metadataElement code="verwerkingSpec_line1" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Specifieke verwerking</name>
@@ -7600,7 +7643,7 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="verwerking_line3" datatype="Container">
+				<metadataElement code="verwerkingSpec_line2" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Verwerking</name>
@@ -7608,7 +7651,7 @@
 					</labels>
 					<settings/>
 					<elements>
-						<metadataElement code="verwerking_opm" datatype="Text">
+						<metadataElement code="verwerkingSpec_opm" datatype="Text">
 							<labels>
 								<label locale="nl_NL">
 									<name>Opmerking</name>
@@ -8009,20 +8052,20 @@
 				</restriction>
 			</typeRestrictions>
 		</metadataElement>
-		<metadataElement code="bereidingInfo" datatype="Container">
+		<metadataElement code="bereidingAlgInfo" datatype="Container">
 			<labels>
 				<label locale="nl_NL">
-					<name>Bereiding</name>
+					<name>Algemene bereiding</name>
 				</label>
 			</labels>
 			<settings>
 				<setting name="doesNotTakeLocale">1</setting>
 			</settings>
 			<elements>
-				<metadataElement code="bereiding_line1" datatype="Container">
+				<metadataElement code="bereidingAlg_line1" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
-							<name>Bereiding</name>
+							<name>Algemene bereiding</name>
 						</label>
 					</labels>
 					<settings/>
@@ -8064,10 +8107,53 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="bereiding_line2" datatype="Container">
+				<metadataElement code="bereidingAlg_line2" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Bereiding</name>
+						</label>
+					</labels>
+					<settings/>
+					<elements>
+						<metadataElement code="bereidingAlg_opm" datatype="Text">
+							<labels>
+								<label locale="nl_NL">
+									<name>Opmerking</name>
+								</label>
+							</labels>
+							<settings>
+								<setting name="fieldWidth">80</setting>
+								<setting name="fieldHeight">2</setting>
+							</settings>
+						</metadataElement>
+					</elements>
+				</metadataElement>
+			</elements>
+			<typeRestrictions>
+				<restriction code="r1">
+					<table>ca_collections</table>
+					<settings>
+						<setting name="minAttributesPerRow">0</setting>
+						<setting name="maxAttributesPerRow">50</setting>
+						<setting name="minimumAttributeBundlesToDisplay">0</setting>
+					</settings>
+				</restriction>
+			</typeRestrictions>
+		</metadataElement>
+		<metadataElement code="bereidingSpecInfo" datatype="Container">
+			<labels>
+				<label locale="nl_NL">
+					<name>Specifieke bereiding</name>
+				</label>
+			</labels>
+			<settings>
+				<setting name="doesNotTakeLocale">1</setting>
+			</settings>
+			<elements>
+				<metadataElement code="bereidingSpec_line1" datatype="Container">
+					<labels>
+						<label locale="nl_NL">
+							<name>Specifieke bereiding</name>
 						</label>
 					</labels>
 					<settings/>
@@ -8121,7 +8207,7 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="bereiding_line3" datatype="Container">
+				<metadataElement code="bereidingSpec_line2" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Bereiding</name>
@@ -8129,7 +8215,7 @@
 					</labels>
 					<settings/>
 					<elements>
-						<metadataElement code="bereiding_opm" datatype="Text">
+						<metadataElement code="bereidingSpec_opm" datatype="Text">
 							<labels>
 								<label locale="nl_NL">
 									<name>Opmerking</name>
@@ -13158,14 +13244,20 @@
 						<placement code="ca_attribute_distributieInfo">
 							<bundle>ca_attribute_distributieInfo</bundle>
 						</placement>
-						<placement code="ca_attribute_verwerkingInfo">
-							<bundle>ca_attribute_verwerkingInfo</bundle>
+						<placement code="ca_attribute_verwerkingAlgInfo">
+							<bundle>ca_attribute_verwerkingAlgInfo</bundle>
+						</placement>
+						<placement code="ca_attribute_verwerkingSpecInfo">
+							<bundle>ca_attribute_verwerkingSpecInfo</bundle>
 						</placement>
 						<placement code="ca_attribute_nabewerkingInfo">
 							<bundle>ca_attribute_nabewerkingInfo</bundle>
 						</placement>
-						<placement code="ca_attribute_bereidingInfo">
-							<bundle>ca_attribute_bereidingInfo</bundle>
+						<placement code="ca_attribute_bereidingAlgInfo">
+							<bundle>ca_attribute_bereidingAlgInfo</bundle>
+						</placement>
+						<placement code="ca_attribute_bereidingSpecInfo">
+							<bundle>ca_attribute_bereidingSpecInfo</bundle>
 						</placement>
 						<placement code="ca_attribute_consumptieInfo">
 							<bundle>ca_attribute_consumptieInfo</bundle>
