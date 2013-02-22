@@ -7206,7 +7206,7 @@
 				<setting name="doesNotTakeLocale">1</setting>
 			</settings>
 			<elements>
-				<metadataElement code="distributie_line1" datatype="Container">
+				<metadataElement code="distributieLand_line1" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Distributie en verkoop</name>
@@ -7261,7 +7261,7 @@
 								<setting name="fieldHeight">1</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="distributie_line2" datatype="Container">
+						<metadataElement code="distributieLand_line2" datatype="Container">
 							<labels>
 								<label locale="nl_NL">
 									<name>Distributie en verkoop</name>
