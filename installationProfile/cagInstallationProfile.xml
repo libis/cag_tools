@@ -4116,60 +4116,6 @@
 				</item>
 			</items>
 		</list>
-    <!-- lijst moet aangevuld worden -->
-		<list code="adres_stad_lijst" hierarchical="0" system="1" vocabulary="0">
-			<labels>
-				<label locale="nl_NL">
-					<name>Stadslijst</name>
-				</label>
-			</labels>
-			<items>
-				<item idno="leuven_adres" enabled="1" default="0">
-					<labels>
-						<label locale="nl_NL" preferred="1">
-							<name_singular>Leuven</name_singular>
-							<name_plural>Leuven</name_plural>
-						</label>
-					</labels>
-				</item>
-			</items>
-		</list>
-    <!-- lijst moet aangevuld worden -->
-		<list code="adres_provincie_lijst" hierarchical="0" system="1" vocabulary="0">
-			<labels>
-				<label locale="nl_NL">
-					<name>provincielijst</name>
-				</label>
-			</labels>
-			<items>
-				<item idno="vb_prov_adres" enabled="1" default="0">
-					<labels>
-						<label locale="nl_NL" preferred="1">
-							<name_singular>Vlaams-Brabant</name_singular>
-							<name_plural>Vlaams-Brabant</name_plural>
-						</label>
-					</labels>
-				</item>
-			</items>
-		</list>
-    <!-- lijst moet aangevuld worden -->
-		<list code="adres_land_lijst" hierarchical="0" system="1" vocabulary="0">
-			<labels>
-				<label locale="nl_NL">
-					<name>landlijst</name>
-				</label>
-			</labels>
-			<items>
-				<item idno="belgie_land" enabled="1" default="0">
-					<labels>
-						<label locale="nl_NL" preferred="1">
-							<name_singular>Belgie</name_singular>
-							<name_plural>Belgie</name_plural>
-						</label>
-					</labels>
-				</item>
-			</items>
-		</list>
 		<list code="place_hierarchies" hierarchical="1" system="1" vocabulary="0">
 			<labels>
 				<label locale="nl_NL">
@@ -10347,7 +10293,7 @@
 								<setting name="suggestExistingValues">1</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="adres_city" datatype="List" list="adres_stad_lijst">
+						<metadataElement code="adres_city" datatype="Text">
 							<labels>
 								<label locale="nl_NL">
 									<name>Stad/Gemeente</name>
@@ -10357,9 +10303,10 @@
 								<setting name="fieldWidth">60</setting>
 								<setting name="fieldHeight">1</setting>
 								<setting name="requireValue">0</setting>
+								<setting name="suggestExistingValues">1</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="adres_stateprovince" datatype="List" list="adres_provincie_lijst">
+						<metadataElement code="adres_stateprovince" datatype="Text">
 							<labels>
 								<label locale="nl_NL">
 									<name>Provincie</name>
@@ -10369,9 +10316,10 @@
 								<setting name="fieldWidth">30</setting>
 								<setting name="fieldHeight">1</setting>
 								<setting name="requireValue">0</setting>
+								<setting name="suggestExistingValues">1</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="adres_country" datatype="List" list="adres_land_lijst">
+						<metadataElement code="adres_country" datatype="Text">
 							<labels>
 								<label locale="nl_NL">
 									<name>Land</name>
@@ -10381,6 +10329,7 @@
 								<setting name="fieldWidth">20</setting>
 								<setting name="fieldHeight">1</setting>
 								<setting name="requireValue">0</setting>
+								<setting name="suggestExistingValues">1</setting>
 							</settings>
 						</metadataElement>
 					</elements>
