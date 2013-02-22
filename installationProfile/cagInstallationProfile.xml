@@ -2505,7 +2505,7 @@
 				</item>
 			</items>
 		</list>
-		<list code="distributieAmbachtenActLand_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
+		<list code="distributieAmbLand_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
 			<labels>
 				<label locale="nl_NL">
 					<name>Distributie ambachten activiteiten (landbouw) lijst</name>
@@ -7214,7 +7214,7 @@
 					</labels>
 					<settings/>
 					<elements>
-						<metadataElement code="distributieAmbachten" datatype="List" list="distributieAmbachtenAmb_lijst">
+						<metadataElement code="distributieAmbLand" datatype="List" list="distributieAmbachtenAmb_lijst">
 							<labels>
 								<label locale="nl_NL">
 									<name>Beroepen</name>
@@ -7226,7 +7226,7 @@
 								<setting name="requireValue">0</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="distributieAmbachten_act" datatype="List" list="distributieAmbachtenActLand_lijst">
+						<metadataElement code="distributieAmbLand_act" datatype="List" list="distributieAmbActLand_lijst">
 							<labels>
 								<label locale="nl_NL">
 									<name>Distributie activiteit</name>
@@ -7238,7 +7238,7 @@
 								<setting name="requireValue">0</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="distributieAmbachten_periode" datatype="List" list="ambachtenPeriode_lijst">
+						<metadataElement code="distributieAmbLand_periode" datatype="List" list="ambachtenPeriode_lijst">
 							<labels>
 								<label locale="nl_NL">
 									<name>Periode</name>
@@ -7250,7 +7250,7 @@
 								<setting name="requireValue">0</setting>
 							</settings>
 						</metadataElement>
-						<metadataElement code="distributieAmbachten_waarde" datatype="Text">
+						<metadataElement code="distributieAmbLand_waarde" datatype="Text">
 							<labels>
 								<label locale="nl_NL">
 									<name>Waarde</name>
@@ -7269,7 +7269,7 @@
 							</labels>
 							<settings/>
 							<elements>
-								<metadataElement code="distributieAmbachten_opm" datatype="Text">
+								<metadataElement code="distributieAmbLand_opm" datatype="Text">
 									<labels>
 										<label locale="nl_NL">
 											<name>Opmerking</name>
