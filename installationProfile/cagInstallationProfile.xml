@@ -13299,6 +13299,9 @@
 						<placement code="ca_attribute_opmerkingEntities">
 							<bundle>ca_attribute_opmerkingEntities</bundle>
 						</placement>
+						<placement code="status">
+							<bundle>status</bundle>
+						</placement>
 					</bundlePlacements>
 				</screen>
 				<screen idno="persoonBio" default="0">
@@ -13372,6 +13375,9 @@
 						</placement>
 						<placement code="ca_attribute_bezoekdatum">
 							<bundle>ca_attribute_bezoekdatum</bundle>
+						</placement>
+						<placement code="status">
+							<bundle>status</bundle>
 						</placement>
 					</bundlePlacements>
 				</screen>
