@@ -8999,8 +8999,7 @@
 			</settings>
 			<typeRestrictions>
 				<restriction code="r1">
-					<table>ca_occurrences</table>
-					<type>reference</type>
+					<table>ca_objects</table>
 					<settings>
 						<setting name="minAttributesPerRow">0</setting>
 						<setting name="maxAttributesPerRow">100</setting>
@@ -12525,6 +12524,9 @@
 								<setting name="restrict_to_relationship_types">documentatieRelatie</setting>
 							</settings>
 						</placement>
+						<placement code="ca_attribute_refPagina">
+							<bundle>ca_attribute_refPagina</bundle>
+						</placement>
 						<placement code="ca_mondeling">
 							<bundle>ca_occurrences</bundle>
 							<settings>
@@ -12884,9 +12886,6 @@
 						</placement>
 						<placement code="ca_attribute_refPublicationDate">
 							<bundle>ca_attribute_refPublicationDate</bundle>
-						</placement>
-						<placement code="ca_attribute_refPagina">
-							<bundle>ca_attribute_refPagina</bundle>
 						</placement>
 						<placement code="ca_attribute_refNote">
 							<bundle>ca_attribute_refNote</bundle>
