@@ -8916,98 +8916,108 @@
 			</restriction>
 		  </typeRestrictions>
 		</metadataElement>-->
-		<metadataElement code="verhaalInfo" datatype="Container">
-			<labels>
+		<metadataElement code="refPaginaInfo" datatype="Container">
+		      <labels>
+			<label locale="nl_NL">
+			  <name>Documentatie - Pagina</name>
+			  <description>documentation.page_reference</description>
+			</label>
+		      </labels>
+		      <elements>
+			<metadataElement code="refPagina_line1" datatype="Container">
+			  <labels>
+			    <label locale="nl_NL">
+			      <name>Documentatie - Pagina</name>
+			    </label>
+			  </labels>
+			  <settings>
+			    <setting name="doesNotTakeLocale">0</setting>
+			    <setting name="lineBreakAfterNumberOfElements"/>
+			    <setting name="canBeUsedInSearchForm">0</setting>
+			    <setting name="canBeUsedInDisplay">0</setting>
+			    <setting name="displayTemplate"/>
+			    <setting name="displayDelimiter"/>
+			  </settings>
+			  <elements>
+			    <metadataElement code="refPaginaDoc" datatype="Text">
+			      <labels>
 				<label locale="nl_NL">
-					<name>Getoond in verhaal</name>
+				  <name>Documentatie</name>
 				</label>
-			</labels>
-			<settings>
-				<setting name="doesNotTakeLocale">1</setting>
-			</settings>
-			<elements>
-				<metadataElement code="verhaalurl_line1" datatype="Container">
-					<labels>
-						<label locale="nl_NL">
-							<name>Verhaal</name>
-						</label>
-					</labels>
-					<settings/>
-					<elements>
-						<metadataElement code="verhaalurl_source" datatype="Text">
-							<labels>
-								<label locale="nl_NL">
-									<name>Verhaal</name>
-								</label>
-							</labels>
-							<settings>
-								<setting name="fieldWidth">70</setting>
-								<setting name="fieldHeight">1</setting>
-								<setting name="minChars">0</setting>
-								<setting name="maxChars">65535</setting>
-								<setting name="suggestExistingValues">1</setting>
-							</settings>
-						</metadataElement>
-					</elements>
-				</metadataElement>
-				<metadataElement code="verhaalUrl_line2" datatype="Container">
-					<labels>
-						<label locale="nl_NL">
-							<name>URL</name>
-						</label>
-					</labels>
-					<settings/>
-					<elements>
-						<metadataElement code="verhaalurl_entry" datatype="Url">
-							<labels>
-								<label locale="nl_NL">
-									<name>URL</name>
-								</label>
-							</labels>
-							<settings>
-								<setting name="fieldWidth">70</setting>
-								<setting name="fieldHeight">1</setting>
-							</settings>
-						</metadataElement>
-					</elements>
-				</metadataElement>
-			</elements>
-			<typeRestrictions>
-				<restriction code="r1">
-					<table>ca_objects</table>
-					<settings>
-						<setting name="minAttributesPerRow">0</setting>
-						<setting name="maxAttributesPerRow">1000</setting>
-						<setting name="minimumAttributeBundlesToDisplay">0</setting>
-					</settings>
-				</restriction>
-			</typeRestrictions>
-		</metadataElement>
-		<metadataElement code="refPagina" datatype="Text">
-			<labels>
-				<label locale="nl_NL">
-					<name>Documentatie - Pagina</name>
-					<description>documentation.page_reference</description>
-				</label>
-			</labels>
-			<settings>
-				<setting name="fieldWidth">80</setting>
-				<setting name="fieldHeight">1</setting>
+			      </labels>
+			      <settings>
 				<setting name="minChars">0</setting>
 				<setting name="maxChars">65535</setting>
-				<setting name="suggestExistingValues">1</setting>
-			</settings>
-			<typeRestrictions>
-				<restriction code="r1">
-					<table>ca_objects</table>
-					<settings>
-						<setting name="minAttributesPerRow">0</setting>
-						<setting name="maxAttributesPerRow">100</setting>
-						<setting name="minimumAttributeBundlesToDisplay">0</setting>
-					</settings>
-				</restriction>
-			</typeRestrictions>
-		</metadataElement>
+				<setting name="regex"/>
+				<setting name="fieldWidth">90</setting>
+				<setting name="fieldHeight">1</setting>
+				<setting name="usewysiwygeditor">0</setting>
+				<setting name="doesNotTakeLocale">0</setting>
+				<setting name="canBeUsedInSort">1</setting>
+				<setting name="suggestExistingValues">0</setting>
+				<setting name="suggestExistingValueSort">value</setting>
+				<setting name="default_text"/>
+				<setting name="canBeUsedInSearchForm">1</setting>
+				<setting name="canBeUsedInDisplay">1</setting>
+				<setting name="displayTemplate"/>
+				<setting name="displayDelimiter">,</setting>
+			      </settings>
+			    </metadataElement>
+			  </elements>
+			</metadataElement>
+			<metadataElement code="refPagina_line2" datatype="Container">
+			  <labels>
+			    <label locale="nl_NL">
+			      <name>Documentatie - Pagina</name>
+			    </label>
+			  </labels>
+			  <settings>
+			    <setting name="doesNotTakeLocale">0</setting>
+			    <setting name="lineBreakAfterNumberOfElements"/>
+			    <setting name="canBeUsedInSearchForm">0</setting>
+			    <setting name="canBeUsedInDisplay">0</setting>
+			    <setting name="displayTemplate"/>
+			    <setting name="displayDelimiter"/>
+			  </settings>
+			  <elements>
+			    <metadataElement code="refPagina" datatype="Text">
+			      <labels>
+				<label locale="nl_NL">
+				  <name>Documentatie - Pagina</name>
+				</label>
+			      </labels>
+			      <settings>
+				<setting name="minChars">0</setting>
+				<setting name="maxChars">65535</setting>
+				<setting name="regex"/>
+				<setting name="fieldWidth">40</setting>
+				<setting name="fieldHeight">1</setting>
+				<setting name="usewysiwygeditor">0</setting>
+				<setting name="doesNotTakeLocale">0</setting>
+				<setting name="canBeUsedInSort">1</setting>
+				<setting name="suggestExistingValues">0</setting>
+				<setting name="suggestExistingValueSort">value</setting>
+				<setting name="default_text"/>
+				<setting name="canBeUsedInSearchForm">1</setting>
+				<setting name="canBeUsedInDisplay">1</setting>
+				<setting name="displayTemplate"/>
+				<setting name="displayDelimiter">,</setting>
+			      </settings>
+			    </metadataElement>
+			  </elements>
+			</metadataElement>
+		      </elements>
+		      <typeRestrictions>
+			<restriction>
+			  <table>ca_objects</table>
+			  <settings>
+			    <setting name="minAttributesPerRow">0</setting>
+			    <setting name="maxAttributesPerRow">100</setting>
+			    <setting name="minimumAttributeBundlesToDisplay">0</setting>
+			  </settings>
+			</restriction>
+		      </typeRestrictions>
+		    </metadataElement>
 		<metadataElement code="refAuteur" datatype="Text">
 			<labels>
 				<label locale="nl_NL">
@@ -12524,8 +12534,8 @@
 								<setting name="restrict_to_relationship_types">documentatieRelatie</setting>
 							</settings>
 						</placement>
-						<placement code="ca_attribute_refPagina">
-							<bundle>ca_attribute_refPagina</bundle>
+						<placement code="ca_attribute_refPaginaInfo">
+							<bundle>ca_attribute_refPaginaInfo</bundle>
 						</placement>
 						<placement code="ca_mondeling">
 							<bundle>ca_occurrences</bundle>
@@ -12767,9 +12777,6 @@
 						<restriction code="r1" type="cagObject_type">cagObject_type</restriction>
 					</typeRestrictions>
 					<bundlePlacements>
-						<placement code="ca_attribute_verhaalInfo">
-							<bundle>ca_attribute_verhaalInfo</bundle>
-						</placement>
 						<placement code="ca_attribute_europeana_publiceren">
 							<bundle>ca_attribute_europeana_publiceren</bundle>
 						</placement>
@@ -14057,8 +14064,8 @@
 				<type code="part_of" default="1">
 					<labels>
 						<label locale="nl_NL">
-							<typename>is part of</typename>
-							<typename_reverse>contains</typename_reverse>
+							<typename>is onderdeel van</typename>
+							<typename_reverse>bevat</typename_reverse>
 						</label>
 					</labels>
 					<subTypeLeft></subTypeLeft>
