@@ -9516,7 +9516,7 @@
 				<setting name="fieldWidth">80</setting>
 				<setting name="fieldHeight">6</setting>
 				<setting name="minChars">0</setting>
-				<setting name="maxChars">255</setting>
+				<setting name="maxChars">65535</setting>
 			</settings>
 			<typeRestrictions>
 				<restriction code="r1">
@@ -9974,6 +9974,47 @@
 			<settings/>
 			<elements>
 				<metadataElement code="objectVervaardiging_line1" datatype="Container">
+				  <labels>
+				    <label locale="nl_NL">
+				      <name>object vervaardiger</name>
+				    </label>
+				  </labels>
+				  <settings>
+				    <setting name="doesNotTakeLocale">0</setting>
+				    <setting name="lineBreakAfterNumberOfElements"/>
+				    <setting name="canBeUsedInSearchForm">0</setting>
+				    <setting name="canBeUsedInDisplay">0</setting>
+				    <setting name="displayTemplate"/>
+				    <setting name="displayDelimiter"/>
+				  </settings>
+				  <elements>
+				    <metadataElement code="objectVervaardiger" datatype="Text">
+				      <labels>
+					<label locale="nl_NL">
+					  <name>object vervaardiger</name>
+					</label>
+				      </labels>
+				      <settings>
+					<setting name="minChars">0</setting>
+					<setting name="maxChars">65535</setting>
+					<setting name="regex"/>
+					<setting name="fieldWidth">40</setting>
+					<setting name="fieldHeight">1</setting>
+					<setting name="usewysiwygeditor">0</setting>
+					<setting name="doesNotTakeLocale">0</setting>
+					<setting name="canBeUsedInSort">1</setting>
+					<setting name="suggestExistingValues">0</setting>
+					<setting name="suggestExistingValueSort">value</setting>
+					<setting name="default_text"/>
+					<setting name="canBeUsedInSearchForm">1</setting>
+					<setting name="canBeUsedInDisplay">1</setting>
+					<setting name="displayTemplate"/>
+					<setting name="displayDelimiter">,</setting>
+				      </settings>
+				    </metadataElement>
+				  </elements>
+				</metadataElement>
+				<metadataElement code="objectVervaardiging_line2" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Vervaardiging - Rol</name>
@@ -9996,7 +10037,7 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="objectVervaardiging_line2" datatype="Container">
+				<metadataElement code="objectVervaardiging_line3" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Vervaardiging - Datering</name>
@@ -10021,7 +10062,7 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="objectVervaardiging_line3" datatype="Container">
+				<metadataElement code="objectVervaardiging_line4" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Vervaardiging - Plaats</name>
@@ -10046,7 +10087,7 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="objectVervaardiging_line4" datatype="Container">
+				<metadataElement code="objectVervaardiging_line5" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Vervaardiging - Bijkomende info</name>
@@ -10070,7 +10111,7 @@
 						</metadataElement>
 					</elements>
 				</metadataElement>
-				<metadataElement code="objectVervaardiging_line5" datatype="Container">
+				<metadataElement code="objectVervaardiging_line6" datatype="Container">
 					<labels>
 						<label locale="nl_NL">
 							<name>Model</name>
