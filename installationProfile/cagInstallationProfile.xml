@@ -6563,7 +6563,7 @@
                                 </label>
                         </labels>
                         <settings>
-                                <setting name="fieldWidth">70</setting>
+                                <setting name="fieldWidth">90</setting>
                                 <setting name="fieldHeight">2</setting>
                                 <setting name="minChars">0</setting>
                                 <setting name="maxChars">65535</setting>
@@ -8873,8 +8873,6 @@
                             <setting name="lineBreakAfterNumberOfElements"/>
                             <setting name="canBeUsedInSearchForm">0</setting>
                             <setting name="canBeUsedInDisplay">0</setting>
-                            <setting name="displayTemplate"/>
-                            <setting name="displayDelimiter"/>
                           </settings>
                           <elements>
                             <metadataElement code="refPaginaDoc" datatype="Text">
@@ -8914,8 +8912,6 @@
                             <setting name="lineBreakAfterNumberOfElements"/>
                             <setting name="canBeUsedInSearchForm">0</setting>
                             <setting name="canBeUsedInDisplay">0</setting>
-                            <setting name="displayTemplate"/>
-                            <setting name="displayDelimiter"/>
                           </settings>
                           <elements>
                             <metadataElement code="refPagina" datatype="Text">
@@ -9920,8 +9916,6 @@
                                     <setting name="lineBreakAfterNumberOfElements"/>
                                     <setting name="canBeUsedInSearchForm">0</setting>
                                     <setting name="canBeUsedInDisplay">0</setting>
-                                    <setting name="displayTemplate"/>
-                                    <setting name="displayDelimiter"/>
                                   </settings>
                                   <elements>
                                     <metadataElement code="objectVervaardiger" datatype="Text">
@@ -10106,6 +10100,31 @@
                                 <metadataElement code="acquisition_line1" datatype="Container">
                                         <labels>
                                                 <label locale="nl_NL">
+                                                        <name>Verworven van</name>
+                                                </label>
+                                        </labels>
+                                        <settings/>
+                                        <elements>
+                                                <metadataElement code="acquisitionSource" datatype="Text">
+                                                        <labels>
+                                                                <label locale="nl_NL">
+                                                                        <name>Verworven van</name>
+                                                                        <description>acquisition.source</description>
+                                                                </label>
+                                                        </labels>
+                                                        <settings>
+                                                                <setting name="fieldWidth">40</setting>
+                                                                <setting name="fieldHeight">1</setting>
+                                                                <setting name="minChars">0</setting>
+                                                                <setting name="maxChars">65535</setting>
+                                                                <setting name="suggestExistingValues">1</setting>
+                                                        </settings>
+                                                </metadataElement>
+                                        </elements>
+                                </metadataElement>
+                        	<metadataElement code="acquisition_line2" datatype="Container">
+                                        <labels>
+                                                <label locale="nl_NL">
                                                         <name>Verwerving - Datum</name>
                                                 </label>
                                         </labels>
@@ -10128,7 +10147,7 @@
                                                 </metadataElement>
                                         </elements>
                                 </metadataElement>
-                                <metadataElement code="acquisition_line2" datatype="Container">
+                                <metadataElement code="acquisition_line3" datatype="Container">
                                         <labels>
                                                 <label locale="nl_NL">
                                                         <name>Verwerving - Methode</name>
@@ -10153,7 +10172,7 @@
                                                 </metadataElement>
                                         </elements>
                                 </metadataElement>
-                                <metadataElement code="acquisition_line3" datatype="Container">
+                                <metadataElement code="acquisition_line4" datatype="Container">
                                         <labels>
                                                 <label locale="nl_NL">
                                                         <name>Verwerving - Bijkomende info</name>
@@ -10284,7 +10303,7 @@
                                                                 </label>
                                                         </labels>
                                                         <settings>
-                                                                <setting name="fieldWidth">60</setting>
+                                                                <setting name="fieldWidth">40</setting>
                                                                 <setting name="fieldHeight">1</setting>
 
                                                                 <setting name="suggestExistingValues">1</setting>
@@ -12546,8 +12565,6 @@
                                                                 <setting name="add_label" locale="nl_NL">Voeg trefwoorden toe</setting>
                                                                 <setting name="restrict_to_lists">cag_trefwoorden</setting>
                                                                 <setting name="restrict_to_relationship_types">trefwoord</setting>
-                <!-- er moet gekeken worden of dit werkt-->
-                                                                <setting name="delimiter">,</setting>
                                                         </settings>
                                                 </placement>
                                         </bundlePlacements>
@@ -12638,18 +12655,6 @@
                                                                 <setting name="add_label" locale="nl_NL">Voeg trefwoorden toe</setting>
                                                                 <setting name="restrict_to_lists">cag_trefwoorden</setting>
                                                                 <setting name="restrict_to_relationship_types">trefwoord</setting>
-                <!-- er moet gekeken worden of dit werkt-->
-                                                                <setting name="delimiter">,</setting>
-                                                        </settings>
-                                                </placement>
-            <!-- dit is een test om vocaulabry te testen. Enkel vocabularies mogen zichtbaar zijn. Aks dit werkt moet concept ook aangepast worden -->
-                                                <placement code="ca_vocabulary_terms">
-                                                        <bundle>ca_vocabulary_terms</bundle>
-                                                        <settings>
-                                                                <setting name="label" locale="nl_NL">Trefwoorden voc</setting>
-                                                                <setting name="add_label" locale="nl_NL">Voeg trefwoorden toe</setting>
-                <!-- er moet gekeken worden of dit werkt-->
-                                                                <setting name="delimiter">,</setting>
                                                         </settings>
                                                 </placement>
             <!-- de gerelateerde dingen worden oa ook gebruikt voor de afgebeelde dingen zoals:  content.subject (als objectnaam, plant of dier) physical_characteristic.keyword-->
@@ -12685,10 +12690,23 @@
                                                         <settings>
                                                                 <setting name="label" locale="nl_NL">Bewaarinstelling</setting>
                                                                 <setting name="add_label" locale="nl_NL">Voeg Bewaarinstelling toe</setting>
+                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">bewaarinstelling</setting>
+                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">eigenaarRelatie</setting>
                                                         </settings>
                                                 </placement>
                                                 <placement code="ca_attribute_objectInventarisnrBplts">
                                                         <bundle>ca_attribute_objectInventarisnrBplts</bundle>
+                                                </placement>
+                                                <placement code="ca_verwerver">
+                                                        <bundle>ca_entities</bundle>
+                                                        <settings>
+                                                                <setting name="label" locale="nl_NL">Verworven van</setting>
+                                                                <setting name="add_label" locale="nl_NL">Voeg verwerver toe</setting>
+                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">vorigeeigenaar</setting>
+                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">donor</setting>
+                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">legaat</setting>
+                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">purchase</setting>
+                                                        </settings>
                                                 </placement>
                                                 <placement code="ca_attribute_acquisitionInfo">
                                                         <bundle>ca_attribute_acquisitionInfo</bundle>
@@ -12713,21 +12731,27 @@
                                                 </placement>
                                         </bundlePlacements>
                                 </screen>
-                                <screen idno="objectBeheer" default="0">
+                                 <screen idno="objectRelaties" default="0">
                                         <labels>
                                                 <label locale="nl_NL">
-                                                        <name>Beheer</name>
+                                                        <name>Relaties</name>
                                                 </label>
                                         </labels>
-                                        <typeRestrictions>
-                                                <restriction code="r1" type="cagObject_type">cagObject_type</restriction>
-                                        </typeRestrictions>
                                         <bundlePlacements>
-                                                <placement code="ca_attribute_europeana_publiceren">
-                                                        <bundle>ca_attribute_europeana_publiceren</bundle>
+                                                <placement code="ca_collections">
+                                                        <bundle>ca_collections</bundle>
                                                 </placement>
-                                                <placement code="status">
-                                                        <bundle>status</bundle>
+                                                <placement code="ca_entities">
+                                                        <bundle>ca_entities</bundle>
+                                                </placement>
+                                                <placement code="ca_occurrences">
+                                                        <bundle>ca_occurrences</bundle>
+                                                </placement>
+                                                <placement code="ca_objects">
+                                                        <bundle>ca_objects</bundle>
+                                                </placement>
+                                                <placement code="ca_places">
+                                                        <bundle>ca_places</bundle>
                                                 </placement>
                                         </bundlePlacements>
                                 </screen>
