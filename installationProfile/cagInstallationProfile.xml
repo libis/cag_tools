@@ -12866,6 +12866,14 @@
                                                 <placement code="status">
                                                         <bundle>status</bundle>
                                                 </placement>
+                                                <placement code="nonpreferred_labels">
+                                                        <bundle>nonpreferred_labels</bundle>
+                                                        <settings>
+                                                                <setting name="label" locale="nl_NL">Alternatieve naam</setting>
+                                                                <setting name="add_label" locale="nl_NL">Voeg alternatieve naam toe</setting>
+                                                                <setting name="height">1</setting>
+                                                        </settings>
+                                                </placement>
                                         </bundlePlacements>
                                 </screen>
                                 <screen idno="persoonBio" default="0">
