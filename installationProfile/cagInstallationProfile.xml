@@ -11829,7 +11829,24 @@
                                 </restriction>
                         </typeRestrictions>
                 </metadataElement>
-                <metadataElement code="related_object_notes" datatype="Text">
+                <metadataElement code="related_object_notesInfo" datatype="Container">
+                <labels>
+                                <label locale="nl_NL">
+                                        <name>Materiaal</name>
+                                        <description></description>
+                                </label>
+                        </labels>
+                        <settings/>
+                        <elements>
+                                <metadataElement code="related_object_notes_line1" datatype="Container">
+                                        <labels>
+                                                <label locale="nl_NL">
+                                                        <name>Materiaal</name>
+                                                </label>
+                                        </labels>
+                                        <settings/>
+                                        <elements>
+                        <metadataElement code="related_object_notes" datatype="Text">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Gerelateerd object - Bijkomende info</name>
@@ -11842,6 +11859,10 @@
                                 <setting name="minChars">0</setting>
                                 <setting name="maxChars">65535</setting>
                         </settings>
+                        </metadataElement>
+                        </elements>
+                        </metadataElement>
+                        </elements>
                         <typeRestrictions>
                                 <restriction code="r1">
                                         <table>ca_objects</table>
@@ -12358,8 +12379,8 @@
 													<setting name="label" locale="nl_NL">Gerelateerd concept</setting>
 												  </settings>
 												</placement>
-												<placement code="ca_attribute_related_object_notes">
-												  <bundle>ca_attribute_related_object_notes</bundle>
+												<placement code="ca_attribute_related_object_notesInfo">
+												  <bundle>ca_attribute_related_object_notesInfo</bundle>
 												</placement>
 												<placement code="ca_entities">
 												  <bundle>ca_entities</bundle>
