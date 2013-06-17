@@ -11832,7 +11832,7 @@
                 <metadataElement code="related_object_notesInfo" datatype="Container">
                 <labels>
                                 <label locale="nl_NL">
-                                        <name>Materiaal</name>
+                                        <name>Related object - Bijkomende info</name>
                                         <description></description>
                                 </label>
                         </labels>
@@ -11841,7 +11841,31 @@
                                 <metadataElement code="related_object_notes_line1" datatype="Container">
                                         <labels>
                                                 <label locale="nl_NL">
-                                                        <name>Materiaal</name>
+                                                        <name>Gerelateerd object</name>
+                                                </label>
+                                        </labels>
+                                        <settings/>
+                                        <elements>
+                        <metadataElement code="related_object_rel" datatype="Text">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Gerelateerd object</name>
+                                        <description></description>
+                                </label>
+                        </labels>
+                        <settings>
+                                <setting name="fieldWidth">80</setting>
+                                <setting name="fieldHeight">1</setting>
+                                <setting name="minChars">0</setting>
+                                <setting name="maxChars">65535</setting>
+                        </settings>
+                        </metadataElement>
+                        </elements>
+                        </metadataElement>
+                        <metadataElement code="related_object_notes_line2" datatype="Container">
+                                        <labels>
+                                                <label locale="nl_NL">
+                                                        <name>Gerelateerd object - Bijkomende info</name>
                                                 </label>
                                         </labels>
                                         <settings/>
