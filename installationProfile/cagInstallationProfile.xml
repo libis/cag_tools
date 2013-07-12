@@ -8977,32 +8977,6 @@
                         </restriction>
                       </typeRestrictions>
                     </metadataElement>
-                <metadataElement code="refAuteur" datatype="Text">
-                        <labels>
-                                <label locale="nl_NL">
-                                        <name>Documentatie - Auteur</name>
-                                        <description>documentation.author</description>
-                                </label>
-                        </labels>
-                        <settings>
-                                <setting name="fieldWidth">80</setting>
-                                <setting name="fieldHeight">1</setting>
-                                <setting name="minChars">0</setting>
-                                <setting name="maxChars">65535</setting>
-                                <setting name="suggestExistingValues">1</setting>
-                        </settings>
-                        <typeRestrictions>
-                                <restriction code="r1">
-                                        <table>ca_occurrences</table>
-                                        <type>reference</type>
-                                        <settings>
-                                                <setting name="minAttributesPerRow">0</setting>
-                                                <setting name="maxAttributesPerRow">100</setting>
-                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
-                                        </settings>
-                                </restriction>
-                        </typeRestrictions>
-                </metadataElement>
                 <metadataElement code="gebeurtenisDatum" datatype="DateRange">
                         <labels>
                                 <label locale="nl_NL">
@@ -9259,6 +9233,84 @@
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Documentatie - Datum</name>
+                                        <description>nieuw veld</description>
+                                </label>
+                        </labels>
+                        <settings>
+                                <setting name="fieldWidth">80</setting>
+                                <setting name="fieldHeight">1</setting>
+                                <setting name="minChars">0</setting>
+                                <setting name="maxChars">65535</setting>
+                                <setting name="suggestExistingValues">1</setting>
+                        </settings>
+                        <typeRestrictions>
+                                <restriction code="r1">
+                                        <table>ca_occurrences</table>
+                                        <type>reference</type>
+                                        <settings>
+                                                <setting name="minAttributesPerRow">0</setting>
+                                                <setting name="maxAttributesPerRow">100</setting>
+                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
+                                        </settings>
+                                </restriction>
+                        </typeRestrictions>
+                </metadataElement>
+                <metadataElement code="refPublicationJaargang" datatype="Text">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Tijdschrift - Jaargang</name>
+                                        <description>nieuw veld</description>
+                                </label>
+                        </labels>
+                        <settings>
+                                <setting name="fieldWidth">80</setting>
+                                <setting name="fieldHeight">1</setting>
+                                <setting name="minChars">0</setting>
+                                <setting name="maxChars">65535</setting>
+                                <setting name="suggestExistingValues">1</setting>
+                        </settings>
+                        <typeRestrictions>
+                                <restriction code="r1">
+                                        <table>ca_occurrences</table>
+                                        <type>reference</type>
+                                        <settings>
+                                                <setting name="minAttributesPerRow">0</setting>
+                                                <setting name="maxAttributesPerRow">100</setting>
+                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
+                                        </settings>
+                                </restriction>
+                        </typeRestrictions>
+                </metadataElement>
+                <metadataElement code="refPublicationTijdschriftTitel" datatype="Text">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Tijdschrifttitel</name>
+                                        <description>nieuw veld</description>
+                                </label>
+                        </labels>
+                        <settings>
+                                <setting name="fieldWidth">80</setting>
+                                <setting name="fieldHeight">1</setting>
+                                <setting name="minChars">0</setting>
+                                <setting name="maxChars">65535</setting>
+                                <setting name="suggestExistingValues">1</setting>
+                        </settings>
+                        <typeRestrictions>
+                                <restriction code="r1">
+                                        <table>ca_occurrences</table>
+                                        <type>reference</type>
+                                        <settings>
+                                                <setting name="minAttributesPerRow">0</setting>
+                                                <setting name="maxAttributesPerRow">100</setting>
+                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
+                                        </settings>
+                                </restriction>
+                        </typeRestrictions>
+                </metadataElement>
+                <metadataElement code="refPublicationPlaats" datatype="Text">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Plaats van uitgave</name>
                                         <description>nieuw veld</description>
                                 </label>
                         </labels>
@@ -12485,10 +12537,11 @@
                                                 <placement code="preferred_labels">
                                                         <bundle>preferred_labels</bundle>
                                                         <settings>
-                                                                <setting name="label" locale="nl_NL">Documentatie - titel</setting>
-                                                                <setting name="label" locale="nl_NL">Documentatie - titel</setting>
-                                                                <setting name="suggestExistingValues">1</setting>
+                                                                <setting name="label" locale="nl_NL">Titel of titel van het artikel</setting>
                                                         </settings>
+                                                </placement>
+                                                <placement code="ca_attribute_refPublicationTijdschriftTitel">
+                                                        <bundle>ca_attribute_refPublicationTijdschriftTitel</bundle>
                                                 </placement>
                                                 <placement code="idno">
                                                         <bundle>idno</bundle>
@@ -12496,14 +12549,22 @@
                                                                 <setting name="label" locale="nl_NL">Korte referentie</setting>
                                                         </settings>
                                                 </placement>
-                                                <placement code="ca_attribute_refAuteur">
-                                                        <bundle>ca_attribute_refAuteur</bundle>
+                                                <placement code="ca_entities">
+                                                        <bundle>ca_entities</bundle>
                                                         <settings>
+                                                        	<setting name="label" locale="nl_NL">Auteur</setting>
                                                                 <setting name="add_label" locale="nl_NL">Voeg auteur toe</setting>
+                                                                <setting name="restrict_to_relationship_types">auteurRelatie</setting>
                                                         </settings>
+                                                </placement>
+                                                <placement code="ca_attribute_refPublicationJaargang">
+                                                        <bundle>ca_attribute_refPublicationJaargang</bundle>
                                                 </placement>
                                                 <placement code="ca_attribute_refPublicationDate">
                                                         <bundle>ca_attribute_refPublicationDate</bundle>
+                                                </placement>
+                                                <placement code="ca_attribute_refPublicationPlaats">
+                                                        <bundle>ca_attribute_refPublicationPlaats</bundle>
                                                 </placement>
                                                 <placement code="ca_attribute_refNote">
                                                         <bundle>ca_attribute_refNote</bundle>
@@ -14120,6 +14181,16 @@
                                         </labels>
                                         <subTypeLeft></subTypeLeft>
                                         <subTypeRight></subTypeRight>
+                                </type>
+                                <type code="auteurRelatie" default="0">
+                                        <labels>
+                                                <label locale="nl_NL">
+                                                        <typename>heeft als auteur</typename>
+                                                        <typename_reverse>is auteur van</typename_reverse>
+                                                </label>
+                                        </labels>
+                                        <subTypeLeft></subTypeLeft>
+                                        <subTypeRight>reference</subTypeRight>
                                 </type>
                                 <type code="curator" default="0">
                                         <labels>
