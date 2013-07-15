@@ -59,14 +59,6 @@
                                 </item>
                         </items>
                 </list>
-                <list code="object_sources" hierarchical="1" system="1" vocabulary="0">
-                        <labels>
-                                <label locale="nl_NL">
-                                        <name>Object Source</name>
-                                </label>
-                        </labels>
-                        <items></items>
-                </list>
                 <list code="object_types" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
@@ -109,14 +101,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="beheerderVerzameling_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="beheerderVerzameling_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Beheerder verzameling</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="prive" enabled="1" default="1" rank="1">
+                                <item idno="prive" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>privépersoon</name_singular>
@@ -124,31 +116,31 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="vereniging" enabled="1" default="0" rank="2">
+                                <item idno="vereniging" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                          <name_singular>vereniging / vzw</name_singular>
-														  <name_plural>vereniging / vzw</name_plural>
-														</label>
-													  </labels>
-													</item>
-													<item idno="gemeente" enabled="1" default="0">
-													  <labels>
-														<label locale="nl_NL" preferred="1">
-														  <name_singular>gemeente / stad</name_singular>
-														  <name_plural>gemeente / stad</name_plural>
-														</label>
-													  </labels>
-													</item>
-													<item idno="provincie" enabled="1" default="0">
-													  <labels>
-														<label locale="nl_NL" preferred="1">
-														  <name_singular>provincie / gewest</name_singular>
-														  <name_plural>provincie / gewest</name_plural>
+							  <name_plural>vereniging / vzw</name_plural>
+							</label>
+						  </labels>
+						</item>
+						<item idno="gemeente" enabled="1" default="0">
+						  <labels>
+							<label locale="nl_NL" preferred="1">
+							  <name_singular>gemeente / stad</name_singular>
+							  <name_plural>gemeente / stad</name_plural>
+							</label>
+						  </labels>
+						</item>
+						<item idno="provincie" enabled="1" default="0">
+						  <labels>
+							<label locale="nl_NL" preferred="1">
+							  <name_singular>provincie / gewest</name_singular>
+							  <name_plural>provincie / gewest</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="andere" enabled="1" default="0" rank="5">
+                                <item idno="andere" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>andere overheid</name_singular>
@@ -158,14 +150,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="afstotenCollectie_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="afstotenCollectie_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Afstoten collectie lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -173,7 +165,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -183,14 +175,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="statuten_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="statuten_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Statuten lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -198,7 +190,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -208,14 +200,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="rondleidingen_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="rondleidingen_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Rondleidingen lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -223,7 +215,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -233,14 +225,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="plaatsGelinktCollectie_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="plaatsGelinktCollectie_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>plaats gelinkt aan collectie lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -248,7 +240,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -258,14 +250,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="verzekering_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="verzekering_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Verzekering lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -273,7 +265,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -283,14 +275,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="personeelInDienst_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="personeelInDienst_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Personeel in dienst lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -298,7 +290,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -308,14 +300,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="vrijwilligers_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="vrijwilligers_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Vrijwilligers lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -323,7 +315,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -333,14 +325,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="statuut_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="statuut_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Statuut lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="privaat" enabled="1" default="1" rank="1">
+                                <item idno="privaat" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>privaat</name_singular>
@@ -348,7 +340,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="publiek" enabled="1" default="0" rank="2">
+                                <item idno="publiek" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>publiek</name_singular>
@@ -358,14 +350,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="raadVanBeheer_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="raadVanBeheer_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Raad van beheer lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -373,7 +365,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -383,14 +375,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="vasteOpeningPerJaar_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="vasteOpeningPerJaar_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Vaste openingsdagen per jaar lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="minderDan50" enabled="1" default="1" rank="1">
+                                <item idno="minderDan50" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>minder dan 50</name_singular>
@@ -398,7 +390,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen50en100" enabled="1" default="0" rank="2">
+                                <item idno="tussen50en100" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>50-100</name_singular>
@@ -406,7 +398,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen100en150" enabled="1" default="0" rank="3">
+                                <item idno="tussen100en150" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>100-150</name_singular>
@@ -414,7 +406,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="meerDan150" enabled="1" default="0" rank="4">
+                                <item idno="meerDan150" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>meer dan 150</name_singular>
@@ -424,14 +416,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="afspraakAantal_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="afspraakAantal_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Aantal dagen lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="minderDan25" enabled="1" default="1" rank="1">
+                                <item idno="minderDan25" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>minder dan 25</name_singular>
@@ -439,7 +431,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen25en50" enabled="1" default="0" rank="2">
+                                <item idno="tussen25en50" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>25-50</name_singular>
@@ -447,7 +439,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen50en100" enabled="1" default="0" rank="3">
+                                <item idno="tussen50en100" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>50-100</name_singular>
@@ -455,7 +447,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="meerDan100" enabled="1" default="0" rank="4">
+                                <item idno="meerDan100" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>meer dan 100</name_singular>
@@ -465,14 +457,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="bronUitgaven_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="bronUitgaven_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Belangrijkste bron van uitgaven lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="personeel" enabled="1" default="1" rank="1">
+                                <item idno="personeel" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>personeel</name_singular>
@@ -480,7 +472,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="gebouwen" enabled="1" default="0" rank="2">
+                                <item idno="gebouwen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>gebouwen</name_singular>
@@ -488,7 +480,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="collectie" enabled="1" default="0" rank="3">
+                                <item idno="collectie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>collectie-aankopen</name_singular>
@@ -496,7 +488,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="administratie" enabled="1" default="0" rank="4">
+                                <item idno="administratie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>administratie</name_singular>
@@ -504,7 +496,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="verzekering" enabled="1" default="0" rank="5">
+                                <item idno="verzekering" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>verzekering</name_singular>
@@ -514,14 +506,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="bronInkomsten_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="bronInkomsten_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Belangrijkste bron van inkomsten lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="cafetaria" enabled="1" default="1" rank="1">
+                                <item idno="cafetaria" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>cafetaria</name_singular>
@@ -529,7 +521,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="inkomgelden" enabled="1" default="0" rank="2">
+                                <item idno="inkomgelden" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>inkomgelden</name_singular>
@@ -537,7 +529,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="publicaties" enabled="1" default="0" rank="3">
+                                <item idno="publicaties" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>publicaties</name_singular>
@@ -545,7 +537,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="subsidies" enabled="1" default="0" rank="4">
+                                <item idno="subsidies" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>subsidies</name_singular>
@@ -553,7 +545,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="evenementen" enabled="1" default="0" rank="5">
+                                <item idno="evenementen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>evenementen</name_singular>
@@ -561,7 +553,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="schenkingen" enabled="1" default="0" rank="6">
+                                <item idno="schenkingen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>schenkingen</name_singular>
@@ -569,24 +561,24 @@
                                                 </label>
                                         </labels>
                                 </item>
-								 <item idno="winkel" enabled="1" default="0">
-								  <labels>
-									<label locale="nl_NL" preferred="1">
-									  <name_singular>winkel</name_singular>
-									  <name_plural>winkel</name_plural>
-									</label>
-								  </labels>
-								</item>
+				 <item idno="winkel" enabled="1" default="0">
+				  <labels>
+					<label locale="nl_NL" preferred="1">
+					  <name_singular>winkel</name_singular>
+					  <name_plural>winkel</name_plural>
+					</label>
+				  </labels>
+				</item>
                         </items>
                 </list>
-                <list code="afspraakOpeningPerJaar_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="afspraakOpeningPerJaar_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Openingsdagen op afspraak lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -594,7 +586,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="0" rank="2">
+                                <item idno="nee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -602,7 +594,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="enkelOpAfspraak" enabled="1" default="0" rank="3">
+                                <item idno="enkelOpAfspraak" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>enkel op afspraak</name_singular>
@@ -661,14 +653,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="herkomstBezoekers_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="herkomstBezoekers_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Herkomst bezoekers lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="lokaal" enabled="1" default="1" rank="1">
+                                <item idno="lokaal" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>lokaal</name_singular>
@@ -676,7 +668,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="regionaal" enabled="1" default="0" rank="2">
+                                <item idno="regionaal" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>regionaal</name_singular>
@@ -684,7 +676,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="vlaanderen" enabled="1" default="0" rank="3">
+                                <item idno="vlaanderen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>Vlaanderen</name_singular>
@@ -692,7 +684,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="brussel" enabled="1" default="0" rank="4">
+                                <item idno="brussel" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>Brussel</name_singular>
@@ -700,7 +692,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="belgie" enabled="1" default="0" rank="5">
+                                <item idno="belgie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>België</name_singular>
@@ -708,7 +700,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="internationaal" enabled="1" default="0" rank="6">
+                                <item idno="internationaal" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>internationaal</name_singular>
@@ -733,7 +725,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="individueel" enabled="1" default="1" rank="1">
+                                <item idno="individueel" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>individueel</name_singular>
@@ -741,7 +733,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="inGroep" enabled="1" default="0" rank="2">
+                                <item idno="inGroep" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>in groep</name_singular>
@@ -749,7 +741,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="beideWijze" enabled="1" default="0" rank="3">
+                                <item idno="beideWijze" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>beide</name_singular>
@@ -757,7 +749,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="andereWijze" enabled="1" default="0" rank="4">
+                                <item idno="andereWijze" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>andere</name_singular>
@@ -974,7 +966,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="blank" enabled="1" default="1" rank="1">
+                                <item idno="blank" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>-</name_singular>
@@ -982,7 +974,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="geen" enabled="1" default="0" rank="2">
+                                <item idno="geen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>geen</name_singular>
@@ -990,7 +982,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tijdelijk" enabled="1" default="0" rank="3">
+                                <item idno="tijdelijk" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>tijdelijk</name_singular>
@@ -998,7 +990,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="permanent" enabled="1" default="0" rank="4">
+                                <item idno="permanent" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>permanent</name_singular>
@@ -1008,14 +1000,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="tentoonstellingFreq_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="tentoonstellingFreq_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Frequentie tentoonstelling lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="blank" enabled="1" default="1" rank="1">
+                                <item idno="blank" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>-</name_singular>
@@ -1023,7 +1015,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="meer2Tentoonstellingen" enabled="1" default="0" rank="6">
+                                <item idno="meer2Tentoonstellingen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>meer dan 2 keer per jaar</name_singular>
@@ -1031,7 +1023,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="eenTotTweekeer" enabled="1" default="0" rank="5">
+                                <item idno="eenTotTweekeer" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1-2 keer per jaar</name_singular>
@@ -1039,7 +1031,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="eenKeerPerJaar" enabled="1" default="0" rank="4">
+                                <item idno="eenKeerPerJaar" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1 keer per jaar</name_singular>
@@ -1047,7 +1039,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="minderEenKeerPerJaar" enabled="1" default="0" rank="3">
+                                <item idno="minderEenKeerPerJaar" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>minder dan 1 keer per jaar</name_singular>
@@ -1055,7 +1047,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nooitTentoonstellingen" enabled="1" default="0" rank="2">
+                                <item idno="nooitTentoonstellingen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nooit</name_singular>
@@ -1147,7 +1139,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="inventarisBeschikbaar_lijst" hierarchical="0" system="1" vocabulary="0"  defaultSort="1">
+                <list code="inventarisBeschikbaar_lijst" hierarchical="0" system="1" vocabulary="0" >
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Inventaris lijst</name>
@@ -1262,7 +1254,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="inventarisOpComputer_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="inventarisOpComputer_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Inventaris op computer lijst</name>
@@ -1303,7 +1295,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="inventarisGepubliceerd_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="inventarisGepubliceerd_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Inventaris gepubliceerd lijst</name>
@@ -1377,7 +1369,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="raadpleegFysiekWijze_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="raadpleegFysiekWijze_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Wijze raadplegen fysiek object lijst</name>
@@ -1508,14 +1500,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="archiefBeschikbaar_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="archiefBeschikbaar_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Archief lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -1523,7 +1515,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="1" rank="2">
+                                <item idno="nee" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -1531,7 +1523,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="metConsultatie" enabled="1" default="0" rank="3">
+                                <item idno="metConsultatie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>met consultatie</name_singular>
@@ -1539,7 +1531,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="zonderConsultatie" enabled="1" default="0" rank="4">
+                                <item idno="zonderConsultatie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>zonder consultatie</name_singular>
@@ -1549,14 +1541,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="bibliotheekBeschikbaar_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="bibliotheekBeschikbaar_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Bibliotheek lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="ja" enabled="1" default="1" rank="1">
+                                <item idno="ja" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ja</name_singular>
@@ -1564,7 +1556,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="nee" enabled="1" default="1" rank="2">
+                                <item idno="nee" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>nee</name_singular>
@@ -1572,7 +1564,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="metUitleen" enabled="1" default="0" rank="3">
+                                <item idno="metUitleen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>met uitleen</name_singular>
@@ -1580,7 +1572,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="zonderUitleen" enabled="1" default="0" rank="4">
+                                <item idno="zonderUitleen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>zonder uitleen</name_singular>
@@ -1615,14 +1607,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="promotiemateriaal_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="promotiemateriaal_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Promotiemateriaal lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="affiches" enabled="1" default="1" rank="1">
+                                <item idno="affiches" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>affiches</name_singular>
@@ -1630,7 +1622,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="reclameborden" enabled="1" default="0" rank="2">
+                                <item idno="reclameborden" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>reclameborden</name_singular>
@@ -1638,7 +1630,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="publicitaireGadgets" enabled="1" default="0" rank="3">
+                                <item idno="publicitaireGadgets" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>publicitaire gadgets</name_singular>
@@ -1646,7 +1638,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="trofee" enabled="1" default="0" rank="4">
+                                <item idno="trofee" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>trofee</name_singular>
@@ -1654,7 +1646,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="allerleiPromotiemateriaal" enabled="1" default="0" rank="5">
+                                <item idno="allerleiPromotiemateriaal" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>allerlei</name_singular>
@@ -1664,7 +1656,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="beeldmateriaal_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="beeldmateriaal_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Beeldmateriaal lijst</name>
@@ -1697,14 +1689,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="interesObjLandbouw_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="interesObjLandbouw_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Interessante objecten landbouw lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="affichesLandbouw" enabled="1" default="1" rank="1">
+                                <item idno="affichesLandbouw" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>affiches</name_singular>
@@ -1712,7 +1704,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="bedrijfsarchiefLandbouw" enabled="1" default="0" rank="2">
+                                <item idno="bedrijfsarchiefLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>bedrijfsarchief</name_singular>
@@ -1720,7 +1712,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="blikkenLandbouw" enabled="1" default="0" rank="3">
+                                <item idno="blikkenLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>blikken</name_singular>
@@ -1728,7 +1720,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="emailplaatLandbouw" enabled="1" default="1" rank="4">
+                                <item idno="emailplaatLandbouw" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>emailplaat</name_singular>
@@ -1736,7 +1728,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="fotosLandbouw" enabled="1" default="0" rank="5">
+                                <item idno="fotosLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>fotos</name_singular>
@@ -1744,7 +1736,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="huisraadLandbouw" enabled="1" default="0" rank="6">
+                                <item idno="huisraadLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>huisraad</name_singular>
@@ -1752,7 +1744,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="kledijLandbouw" enabled="1" default="0" rank="7">
+                                <item idno="kledijLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kledij</name_singular>
@@ -1760,7 +1752,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="leerboekenLandbouw" enabled="1" default="0" rank="8">
+                                <item idno="leerboekenLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>leerboeken</name_singular>
@@ -1768,7 +1760,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="medaillesLandbouw" enabled="1" default="0" rank="9">
+                                <item idno="medaillesLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>medailles</name_singular>
@@ -1776,7 +1768,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="meubilairLandbouw" enabled="1" default="0" rank="10">
+                                <item idno="meubilairLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>meubilair</name_singular>
@@ -1784,7 +1776,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="vaandelLandbouw" enabled="1" default="0" rank="11">
+                                <item idno="vaandelLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>vaandel</name_singular>
@@ -1792,7 +1784,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="wandplatenLandbouw" enabled="1" default="0" rank="12">
+                                <item idno="wandplatenLandbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>wandplaten</name_singular>
@@ -2117,14 +2109,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="ambachtenPeriode_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="ambachtenPeriode_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Periode ambachten lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="blank" enabled="1" default="1" rank="1">
+                                <item idno="blank" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>-</name_singular>
@@ -2132,7 +2124,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen500En1500" enabled="1" default="1" rank="2">
+                                <item idno="tussen500En1500" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>500-1500</name_singular>
@@ -2140,7 +2132,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1500En1800" enabled="1" default="0" rank="3">
+                                <item idno="tussen1500En1800" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1500-1800</name_singular>
@@ -2148,7 +2140,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1800En1880" enabled="1" default="0" rank="4">
+                                <item idno="tussen1800En1880" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1800-1880</name_singular>
@@ -2156,7 +2148,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1880En1918" enabled="1" default="0" rank="5">
+                                <item idno="tussen1880En1918" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1880-1918</name_singular>
@@ -2164,7 +2156,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1918En1950" enabled="1" default="0" rank="6">
+                                <item idno="tussen1918En1950" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1918-1950</name_singular>
@@ -2172,7 +2164,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1950En1980" enabled="1" default="0" rank="7">
+                                <item idno="tussen1950En1980" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1950-1980</name_singular>
@@ -2180,7 +2172,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1980En2012" enabled="1" default="0" rank="8">
+                                <item idno="tussen1980En2012" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1980-2012</name_singular>
@@ -2197,7 +2189,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="jaar2004" enabled="1" default="1" rank="1">
+                                <item idno="jaar2004" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2004</name_singular>
@@ -2205,7 +2197,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2005" enabled="1" default="0" rank="2">
+                                <item idno="jaar2005" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2005</name_singular>
@@ -2213,7 +2205,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2006" enabled="1" default="0" rank="3">
+                                <item idno="jaar2006" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2006</name_singular>
@@ -2221,7 +2213,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2007" enabled="1" default="0" rank="4">
+                                <item idno="jaar2007" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2007</name_singular>
@@ -2229,7 +2221,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2008" enabled="1" default="0" rank="5">
+                                <item idno="jaar2008" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2008</name_singular>
@@ -2237,7 +2229,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2009" enabled="1" default="0" rank="6">
+                                <item idno="jaar2009" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2009</name_singular>
@@ -2245,7 +2237,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2010" enabled="1" default="0" rank="7">
+                                <item idno="jaar2010" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2010</name_singular>
@@ -2253,7 +2245,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2011" enabled="1" default="0" rank="8">
+                                <item idno="jaar2011" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2011</name_singular>
@@ -2261,7 +2253,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2012" enabled="1" default="0" rank="9">
+                                <item idno="jaar2012" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2012</name_singular>
@@ -2269,7 +2261,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2013" enabled="1" default="0" rank="10">
+                                <item idno="jaar2013" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2013</name_singular>
@@ -2277,7 +2269,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2014" enabled="1" default="0" rank="11">
+                                <item idno="jaar2014" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2014</name_singular>
@@ -2285,7 +2277,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2015" enabled="1" default="0" rank="12">
+                                <item idno="jaar2015" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2015</name_singular>
@@ -2293,7 +2285,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2016" enabled="1" default="0" rank="13">
+                                <item idno="jaar2016" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2016</name_singular>
@@ -2301,7 +2293,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2017" enabled="1" default="0" rank="14">
+                                <item idno="jaar2017" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2017</name_singular>
@@ -2309,7 +2301,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2017" enabled="1" default="0" rank="15">
+                                <item idno="jaar2017" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2017</name_singular>
@@ -2317,7 +2309,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2018" enabled="1" default="0" rank="16">
+                                <item idno="jaar2018" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2018</name_singular>
@@ -2327,14 +2319,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="distributieAmbachtenAmb_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="distributieAmbachtenAmb_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Distributie ambachten lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="bakker" enabled="1" default="0" rank="1">
+                                <item idno="bakker" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>banketbakker/bakker</name_singular>
@@ -2342,7 +2334,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="beenhouwer" enabled="1" default="0" rank="2">
+                                <item idno="beenhouwer" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>beenhouwer/slager</name_singular>
@@ -2350,7 +2342,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="botermaker" enabled="1" default="0" rank="3">
+                                <item idno="botermaker" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>botermaker</name_singular>
@@ -2358,7 +2350,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="brouwer" enabled="1" default="0" rank="4">
+                                <item idno="brouwer" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>brouwer</name_singular>
@@ -2366,7 +2358,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="cafehouder" enabled="1" default="0" rank="5">
+                                <item idno="cafehouder" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>caféhouder/herbergier</name_singular>
@@ -2374,7 +2366,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="chocolatier" enabled="1" default="0" rank="6">
+                                <item idno="chocolatier" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>chocolatier/pralinesmaker</name_singular>
@@ -2382,7 +2374,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="friturist" enabled="1" default="0" rank="7">
+                                <item idno="friturist" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>friturist</name_singular>
@@ -2390,7 +2382,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="landbouwer" enabled="1" default="0" rank="8">
+                                <item idno="landbouwer" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>landbouwer</name_singular>
@@ -2398,7 +2390,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="ijsbereider" enabled="1" default="0" rank="9">
+                                <item idno="ijsbereider" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ijsbereider/ijsverkoper</name_singular>
@@ -2406,7 +2398,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="imker" enabled="1" default="0" rank="10">
+                                <item idno="imker" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>imker</name_singular>
@@ -2414,7 +2406,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jager" enabled="1" default="0" rank="11">
+                                <item idno="jager" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>jager</name_singular>
@@ -2422,7 +2414,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="kaasmaker" enabled="1" default="0" rank="12">
+                                <item idno="kaasmaker" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kaasmaker</name_singular>
@@ -2430,7 +2422,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="kok" enabled="1" default="0" rank="13">
+                                <item idno="kok" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kok</name_singular>
@@ -2438,7 +2430,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="kruidenmaker" enabled="1" default="0" rank="14">
+                                <item idno="kruidenmaker" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kruidenmaker</name_singular>
@@ -2454,7 +2446,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="mosterdbereider" enabled="1" default="0" rank="16">
+                                <item idno="mosterdbereider" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>mosterdbereider/mosterdverkoper</name_singular>
@@ -2462,7 +2454,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="restauranthouder" enabled="1" default="0" rank="17">
+                                <item idno="restauranthouder" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>restauranthouder</name_singular>
@@ -2470,7 +2462,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="stroopstoker" enabled="1" default="0" rank="18">
+                                <item idno="stroopstoker" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>stroopstoker</name_singular>
@@ -2478,7 +2470,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="stroper" enabled="1" default="0" rank="19">
+                                <item idno="stroper" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>stroper</name_singular>
@@ -2486,7 +2478,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="visser" enabled="1" default="0" rank="20">
+                                <item idno="visser" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>visser/lijnvisser</name_singular>
@@ -2494,7 +2486,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="visverkoper" enabled="1" default="0" rank="21">
+                                <item idno="visverkoper" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>visverkoper/mosselverkoper</name_singular>
@@ -2502,7 +2494,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="wijnbouwer" enabled="1" default="0" rank="22">
+                                <item idno="wijnbouwer" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>wijnbouwer</name_singular>
@@ -2511,40 +2503,40 @@
                                         </labels>
                                 </item>
                                 <item idno="kruidenier" enabled="1" default="0">
-								  <labels>
-									<label locale="nl_NL" preferred="1">
-									  <name_singular>kruidenier</name_singular>
-									  <name_plural>kruidenier</name_plural>
-									</label>
-								  </labels>
-								</item>
-								<item idno="haarsnijder" enabled="1" default="0">
-								  <labels>
-									<label locale="nl_NL" preferred="1">
-									  <name_singular>haarsnijder</name_singular>
-									  <name_plural>haarsnijder</name_plural>
-									</label>
-								  </labels>
-								</item>
-								<item idno="suikerbakker" enabled="1" default="0">
-								  <labels>
-									<label locale="nl_NL" preferred="1">
-									  <name_singular>suikerbakker</name_singular>
-									  <name_plural>suikerbakker</name_plural>
-									</label>
-								  </labels>
-								</item>
-								<item idno="molenaar" enabled="1" default="0">
-								  <labels>
-									<label locale="nl_NL" preferred="1">
-									  <name_singular>molenaar</name_singular>
-									  <name_plural>molenaar</name_plural>
-									</label>
-								  </labels>
-								</item>
+				  <labels>
+					<label locale="nl_NL" preferred="1">
+					  <name_singular>kruidenier</name_singular>
+					  <name_plural>kruidenier</name_plural>
+					</label>
+				  </labels>
+				</item>
+				<item idno="haarsnijder" enabled="1" default="0">
+				  <labels>
+					<label locale="nl_NL" preferred="1">
+					  <name_singular>haarsnijder</name_singular>
+					  <name_plural>haarsnijder</name_plural>
+					</label>
+				  </labels>
+				</item>
+				<item idno="suikerbakker" enabled="1" default="0">
+				  <labels>
+					<label locale="nl_NL" preferred="1">
+					  <name_singular>suikerbakker</name_singular>
+					  <name_plural>suikerbakker</name_plural>
+					</label>
+				  </labels>
+				</item>
+				<item idno="molenaar" enabled="1" default="0">
+				  <labels>
+					<label locale="nl_NL" preferred="1">
+					  <name_singular>molenaar</name_singular>
+					  <name_plural>molenaar</name_plural>
+					</label>
+				  </labels>
+				</item>
                         </items>
                 </list>
-                <list code="distributieAmbachtenAct_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
+                <list code="distributieAmbachtenAct_lijst" hierarchical="1" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Distributie ambachten activiteiten lijst</name>
@@ -2633,7 +2625,7 @@
 								</item>
                         </items>
                 </list>
-                <list code="distributieAmbLand_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
+                <list code="distributieAmbLand_lijst" hierarchical="1" system="1" vocabulary="0">
 				  <labels>
 					<label locale="nl_NL">
 					  <name>Distributie ambachten activiteiten (landbouw) lijst</name>
@@ -2761,7 +2753,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="kuisenverwerking" enabled="1" default="1" rank="1">
+                                <item idno="kuisenverwerking" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kuisen</name_singular>
@@ -2786,7 +2778,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="aardappelverwerking" enabled="1" default="1" rank="1">
+                                <item idno="aardappelverwerking" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>aardappelverwerking</name_singular>
@@ -3287,14 +3279,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="techniek_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="techniek_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Techniek lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="nietGemechaniseerd" enabled="1" default="1" rank="1">
+                                <item idno="nietGemechaniseerd" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>niet gemechaniseerd</name_singular>
@@ -3302,7 +3294,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="gemechaniseerd" enabled="1" default="0" rank="2">
+                                <item idno="gemechaniseerd" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>gemechaniseerd</name_singular>
@@ -3310,7 +3302,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="geautomatiseerd" enabled="1" default="0" rank="3">
+                                <item idno="geautomatiseerd" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>geautomatiseerd</name_singular>
@@ -3319,7 +3311,7 @@
                                         </labels>
                                 </item>
         <!-- bekijken of dit aanvaardbaar is. Dit is voor techniek bij bereiding -->
-                                <item idno="nvt" enabled="1" default="0" rank="4">
+                                <item idno="nvt" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>n.v.t.</name_singular>
@@ -3404,7 +3396,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="audiovisueelMateriaal_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="audiovisueelMateriaal_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Audiovisueel materiaal lijst</name>
@@ -3429,7 +3421,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="anderMateriaal_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="anderMateriaal_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Ander materiaal lijst</name>
@@ -3454,7 +3446,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="audiovisueelMateriaalOrg_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="audiovisueelMateriaalOrg_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Originiele filmopname lijst</name>
@@ -3479,7 +3471,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="immatAgrErfgoed_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="immatAgrErfgoed_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Immaterieel agrarisch erfgoed lijst</name>
@@ -3560,14 +3552,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="ambachtenNeringen_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="ambachtenNeringen_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Ambachten en neringen lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="behanger" enabled="1" default="0" rank="1">
+                                <item idno="behanger" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>behanger / schilder</name_singular>
@@ -3825,7 +3817,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="tekstmateriaal_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="tekstmateriaal_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Tekstmateriaal lijst</name>
@@ -3915,14 +3907,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="bewaarconditiesCollectie_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="bewaarconditiesCollectie_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Bewaarcondities collectie lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="geacclimatiseerd" enabled="1" default="1" rank="1">
+                                <item idno="geacclimatiseerd" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>geacclimatiseerd</name_singular>
@@ -3930,7 +3922,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="verwarmd" enabled="1" default="0" rank="2">
+                                <item idno="verwarmd" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>verwarmd</name_singular>
@@ -3938,7 +3930,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="winddicht" enabled="1" default="0" rank="3">
+                                <item idno="winddicht" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>winddicht</name_singular>
@@ -3946,7 +3938,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="onderAfdak" enabled="1" default="0" rank="4">
+                                <item idno="onderAfdak" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>onder afdak</name_singular>
@@ -3954,7 +3946,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="openLucht" enabled="1" default="0" rank="5">
+                                <item idno="openLucht" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>open lucht</name_singular>
@@ -4326,14 +4318,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="focus_collectie_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="focus_collectie_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Focus collectie</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="lokaalFocus" enabled="1" default="1" rank="1">
+                                <item idno="lokaalFocus" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>lokaal</name_singular>
@@ -4341,7 +4333,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="regionaalFocus" enabled="1" default="0" rank="2">
+                                <item idno="regionaalFocus" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>regionaal</name_singular>
@@ -4391,14 +4383,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="overnamebeleid_collectie_lijst" hierarchical="1" system="1" vocabulary="0" defaultSort="1">
+                <list code="overnamebeleid_collectie_lijst" hierarchical="1" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Overnamebeleid lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="allesOvername" enabled="1" default="1" rank="1">
+                                <item idno="allesOvername" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>alles</name_singular>
@@ -4406,7 +4398,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="gerichtOvername" enabled="1" default="0" rank="2">
+                                <item idno="gerichtOvername" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>gericht</name_singular>
@@ -4414,7 +4406,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="passiefOvername" enabled="1" default="0" rank="3">
+                                <item idno="passiefOvername" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>passief</name_singular>
@@ -4422,7 +4414,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="afgeslotenOvername" enabled="1" default="0" rank="4">
+                                <item idno="afgeslotenOvername" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>afgesloten</name_singular>
@@ -4432,14 +4424,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="collectieverwerving_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="collectieverwerving_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Collectieverwerving lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="aankoopVerwerving" enabled="1" default="1" rank="1">
+                                <item idno="aankoopVerwerving" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>aankoop</name_singular>
@@ -4447,7 +4439,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="bruikleenVerwerving" enabled="1" default="0" rank="2">
+                                <item idno="bruikleenVerwerving" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>bruikleen</name_singular>
@@ -4455,7 +4447,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="passiefOvername" enabled="1" default="0" rank="3">
+                                <item idno="passiefOvername" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>passief</name_singular>
@@ -4463,7 +4455,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="ruilVerwerving" enabled="1" default="0" rank="4">
+                                <item idno="ruilVerwerving" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ruil</name_singular>
@@ -4471,7 +4463,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="schenkingenVerwerving" enabled="1" default="0" rank="5">
+                                <item idno="schenkingenVerwerving" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>schenkingen</name_singular>
@@ -4479,7 +4471,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="andereVerwerving" enabled="1" default="0" rank="6">
+                                <item idno="andereVerwerving" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>andere</name_singular>
@@ -4497,7 +4489,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="jaar2004" enabled="1" default="1" rank="1">
+                                <item idno="jaar2004" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2004</name_singular>
@@ -4505,7 +4497,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2005" enabled="1" default="0" rank="2">
+                                <item idno="jaar2005" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2005</name_singular>
@@ -4513,7 +4505,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2006" enabled="1" default="0" rank="3">
+                                <item idno="jaar2006" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2006</name_singular>
@@ -4521,7 +4513,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2007" enabled="1" default="0" rank="4">
+                                <item idno="jaar2007" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2007</name_singular>
@@ -4529,7 +4521,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2008" enabled="1" default="0" rank="5">
+                                <item idno="jaar2008" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2008</name_singular>
@@ -4537,7 +4529,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2009" enabled="1" default="0" rank="6">
+                                <item idno="jaar2009" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2009</name_singular>
@@ -4545,7 +4537,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2010" enabled="1" default="0" rank="7">
+                                <item idno="jaar2010" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2010</name_singular>
@@ -4553,7 +4545,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2011" enabled="1" default="0" rank="8">
+                                <item idno="jaar2011" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2011</name_singular>
@@ -4561,7 +4553,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2012" enabled="1" default="0" rank="9">
+                                <item idno="jaar2012" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2012</name_singular>
@@ -4569,7 +4561,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2013" enabled="1" default="0" rank="10">
+                                <item idno="jaar2013" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2013</name_singular>
@@ -4577,7 +4569,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2014" enabled="1" default="0" rank="11">
+                                <item idno="jaar2014" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2014</name_singular>
@@ -4585,7 +4577,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2015" enabled="1" default="0" rank="12">
+                                <item idno="jaar2015" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2015</name_singular>
@@ -4593,7 +4585,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2016" enabled="1" default="0" rank="13">
+                                <item idno="jaar2016" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2016</name_singular>
@@ -4601,7 +4593,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2017" enabled="1" default="0" rank="14">
+                                <item idno="jaar2017" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2017</name_singular>
@@ -4609,7 +4601,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2017" enabled="1" default="0" rank="15">
+                                <item idno="jaar2017" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2017</name_singular>
@@ -4617,7 +4609,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="jaar2018" enabled="1" default="0" rank="16">
+                                <item idno="jaar2018" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>2018</name_singular>
@@ -4627,14 +4619,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="frequentieOvername_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="frequentieOvername_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Frequentie overname lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="vermeerderdFrequentie" enabled="1" default="1" rank="1">
+                                <item idno="vermeerderdFrequentie" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>vermeerderd</name_singular>
@@ -4642,7 +4634,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="verminderdFrequentie" enabled="1" default="0" rank="2">
+                                <item idno="verminderdFrequentie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>verminderd</name_singular>
@@ -4650,7 +4642,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="fluctueertFrequentie" enabled="1" default="0" rank="3">
+                                <item idno="fluctueertFrequentie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>fluctueert</name_singular>
@@ -4658,7 +4650,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="stabielFrequentie" enabled="1" default="0" rank="4">
+                                <item idno="stabielFrequentie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>stabiel</name_singular>
@@ -5003,14 +4995,14 @@
                         </items>
                 </list>
     <!-- deze lijst moet nog aangevuld worden door aangeleverde info -->
-                <list code="organisatieType_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="organisatieType_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Organisatie type lijst</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="aandeel_collectiebeheerder" enabled="1" default="1" rank="1">
+                                <item idno="aandeel_collectiebeheerder" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>museum/collectiebeheerder</name_singular>
@@ -5018,7 +5010,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_belevingscentrum" enabled="1" default="0" rank="2">
+                                <item idno="aandeel_belevingscentrum" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>bezoekers-/belevingscentrum</name_singular>
@@ -5026,7 +5018,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_ledenorganisatie" enabled="1" default="0" rank="3">
+                                <item idno="aandeel_ledenorganisatie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>plaatselijke ledenorganisatie</name_singular>
@@ -5034,7 +5026,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_cooperatie" enabled="1" default="0" rank="4">
+                                <item idno="aandeel_cooperatie" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>bedrijf/cooperatie</name_singular>
@@ -5042,7 +5034,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_bibliotheek" enabled="1" default="0" rank="5">
+                                <item idno="aandeel_bibliotheek" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>bibliotheek/archief/documentatiecentrum/fotoverzameling/AV</name_singular>
@@ -5050,7 +5042,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_expertisecentrum" enabled="1" default="0" rank="6">
+                                <item idno="aandeel_expertisecentrum" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>expertisecentrum/onderzoeksinstelling</name_singular>
@@ -5058,7 +5050,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_erfgoedcel" enabled="1" default="0" rank="7">
+                                <item idno="aandeel_erfgoedcel" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>erfgoedcel/convenant</name_singular>
@@ -5066,7 +5058,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_koepel" enabled="1" default="0" rank="8">
+                                <item idno="aandeel_koepel" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>landelijke organisatie/koepel/federatie</name_singular>
@@ -5074,7 +5066,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_overheid" enabled="1" default="0" rank="9">
+                                <item idno="aandeel_overheid" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>overheid</name_singular>
@@ -5084,14 +5076,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="landbouwCollectieAandeel_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="landbouwCollectieAandeel_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Aandeel landbouw (procent)</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="kleinerDan_10" enabled="1" default="1" rank="1">
+                                <item idno="kleinerDan_10" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kleiner dan 10%</name_singular>
@@ -5099,7 +5091,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen10en25" enabled="1" default="0" rank="2">
+                                <item idno="tussen10en25" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>10-25%</name_singular>
@@ -5107,7 +5099,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen25en50" enabled="1" default="0" rank="3">
+                                <item idno="tussen25en50" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>25-50%</name_singular>
@@ -5115,7 +5107,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="groterDan50" enabled="1" default="0" rank="4">
+                                <item idno="groterDan50" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>groter dan 50%</name_singular>
@@ -5123,7 +5115,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="gelijkAan100" enabled="1" default="0" rank="5">
+                                <item idno="gelijkAan100" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>100%</name_singular>
@@ -5140,7 +5132,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="kleinerDan_10" enabled="1" default="1" rank="1">
+                                <item idno="kleinerDan_10" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kleiner dan 10%</name_singular>
@@ -5148,7 +5140,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen10en25" enabled="1" default="0" rank="2">
+                                <item idno="tussen10en25" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>10-25%</name_singular>
@@ -5156,7 +5148,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen25en50" enabled="1" default="0" rank="3">
+                                <item idno="tussen25en50" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>25-50%</name_singular>
@@ -5164,7 +5156,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="groterDan50" enabled="1" default="0" rank="4">
+                                <item idno="groterDan50" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>groter dan 50%</name_singular>
@@ -5172,7 +5164,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="gelijkAan100" enabled="1" default="0" rank="5">
+                                <item idno="gelijkAan100" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>100%</name_singular>
@@ -5336,7 +5328,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="kleinerDan_1000" enabled="1" default="1" rank="1">
+                                <item idno="kleinerDan_1000" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kleiner dan 1000</name_singular>
@@ -5344,7 +5336,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1000en3000" enabled="1" default="0" rank="2">
+                                <item idno="tussen1000en3000" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1000-3000</name_singular>
@@ -5352,7 +5344,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen3000en6000" enabled="1" default="0" rank="3">
+                                <item idno="tussen3000en6000" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>3000-6000</name_singular>
@@ -5360,7 +5352,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen6000en10000" enabled="1" default="0" rank="4">
+                                <item idno="tussen6000en10000" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>6000-10000</name_singular>
@@ -5368,7 +5360,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="groterDan10000stuks" enabled="1" default="0" rank="5">
+                                <item idno="groterDan10000stuks" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>groter dan 10000</name_singular>
@@ -5385,7 +5377,7 @@
                                 </label>
                         </labels>
                         <items>
-                                <item idno="kleinerDan_1000" enabled="1" default="1" rank="1">
+                                <item idno="kleinerDan_1000" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>kleiner dan 1000</name_singular>
@@ -5393,7 +5385,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen1000en3000" enabled="1" default="0" rank="2">
+                                <item idno="tussen1000en3000" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>1000-3000</name_singular>
@@ -5401,7 +5393,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen3000en6000" enabled="1" default="0" rank="3">
+                                <item idno="tussen3000en6000" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>3000-6000</name_singular>
@@ -5409,7 +5401,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="tussen6000en10000" enabled="1" default="0" rank="4">
+                                <item idno="tussen6000en10000" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>6000-10000</name_singular>
@@ -5417,7 +5409,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="groterDan10000stuks" enabled="1" default="0" rank="5">
+                                <item idno="groterDan10000stuks" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>groter dan 10000</name_singular>
@@ -5427,14 +5419,14 @@
                                 </item>
                         </items>
                 </list>
-                <list code="aandeel_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="aandeel_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Aandeel (bij landbouw collectie)</name>
                                 </label>
                         </labels>
                         <items>
-                                <item idno="aandeel_hoofd" enabled="1" default="1" rank="1">
+                                <item idno="aandeel_hoofd" enabled="1" default="1">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>hoofd</name_singular>
@@ -5442,7 +5434,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_deel" enabled="1" default="0" rank="2">
+                                <item idno="aandeel_deel" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>deel</name_singular>
@@ -5450,7 +5442,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_minimaal" enabled="1" default="0" rank="3">
+                                <item idno="aandeel_minimaal" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>minimaal</name_singular>
@@ -5458,7 +5450,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="aandeel_geen" enabled="1" default="0" rank="4">
+                                <item idno="aandeel_geen" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>geen</name_singular>
@@ -5468,7 +5460,7 @@
                                 </item>
                         </items>
                 </list>
-                <list code="aandeel_werkveld_lijst" hierarchical="0" system="1" vocabulary="0" defaultSort="1">
+                <list code="aandeel_werkveld_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Werkveld lijst</name>
@@ -5476,7 +5468,7 @@
                         </labels>
                         <items>
                         <!-- waarom is dit toegevoegd -->
-                                <item idno="tempImport" enabled="1" default="0" rank="1">
+                                <item idno="tempImport" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>temp</name_singular>
@@ -5484,7 +5476,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="werkveld_landbouw" enabled="1" default="0" rank="2">
+                                <item idno="werkveld_landbouw" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>landbouw</name_singular>
@@ -5492,7 +5484,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="werkveld_voeding" enabled="1" default="0" rank="3">
+                                <item idno="werkveld_voeding" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>voeding</name_singular>
@@ -5500,7 +5492,7 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="werkveld_ICE" enabled="1" default="0" rank="4">
+                                <item idno="werkveld_ICE" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>ICE</name_singular>
