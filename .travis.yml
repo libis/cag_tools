@@ -18,5 +18,5 @@ before_script:
   - pear install --alldeps phpmd/PHP_PMD
   - phpenv rehash
 script:
-  - phpunit - tests/phpunit.xml
+  - phpunit -c tests/phpunit.xml
   - phpcs --standard=PEAR --extensions=php --ignore=*/libraries/*,*/archive/* .
