@@ -33,7 +33,7 @@
 set_time_limit(36000);
 require_once("/www/libis/vol03/lias_html/ca_cag/setup.php");
 
-if (!file_exists('/www/libis/vol03/lias_html/ca_cag/cag_tools/data/AmoveThes 2011-07.xml')) {
+if (!file_exists('/www/libis/vol03/lias_html/ca_cag/cag_tools/data/AmoveThes 2011-09.xml')) {
 	die("ERROR: you must place the am_move.xml data file in the same directory as this script.\n");
 }
 
