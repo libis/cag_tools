@@ -20,3 +20,4 @@ before_script:
 script:
   - phpunit -c tests/phpunit.xml
   - phpcs --standard=PEAR --extensions=php --ignore=*/libraries/*,*/archive/* .
+  - phpmd . text codesize,unusedcode,naming,design --ignore=application/libraries/,application/archive/
