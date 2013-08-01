@@ -4774,6 +4774,22 @@
                                                 </label>
                                         </labels>
                                 </item>
+                                <item idno="beeldhouwerVervaardiger" enabled="1" default="0">
+                                        <labels>
+                                                <label locale="nl_NL" preferred="1">
+                                                        <name_singular>beeldhouwer</name_singular>
+                                                        <name_plural>beeldhouwer</name_plural>
+                                                </label>
+                                        </labels>
+                                </item>
+                                 <item idno="beenhouwerVervaardiger" enabled="1" default="0">
+                                        <labels>
+                                                <label locale="nl_NL" preferred="1">
+                                                        <name_singular>beenhouwer</name_singular>
+                                                        <name_plural>beenhouwer</name_plural>
+                                                </label>
+                                        </labels>
+                                </item>
                                 <item idno="bronsgieter" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
@@ -4795,6 +4811,14 @@
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>brouwerij</name_singular>
                                                         <name_plural>brouwerij</name_plural>
+                                                </label>
+                                        </labels>
+                                </item>
+                                <item idno="detailhandelVervaardiger" enabled="1" default="0">
+                                        <labels>
+                                                <label locale="nl_NL" preferred="1">
+                                                        <name_singular>detailhandel</name_singular>
+                                                        <name_plural>detailhandel</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -4843,6 +4867,14 @@
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>lithograaf</name_singular>
                                                         <name_plural>lithograaf</name_plural>
+                                                </label>
+                                        </labels>
+                                </item>
+                                <item idno="melkerij" enabled="1" default="0">
+                                        <labels>
+                                                <label locale="nl_NL" preferred="1">
+                                                        <name_singular>melkerij</name_singular>
+                                                        <name_plural>melkerij</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -4910,6 +4942,14 @@
                                                 </label>
                                         </labels>
                                 </item>
+                                <item idno="stroopfabriek" enabled="1" default="0">
+                                        <labels>
+                                                <label locale="nl_NL" preferred="1">
+                                                        <name_singular>stroopfabriek</name_singular>
+                                                        <name_plural>stroopfabriek</name_plural>
+                                                </label>
+                                        </labels>
+                                </item>
                                 <item idno="tekenaar" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
@@ -4971,6 +5011,14 @@
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>wijnbouwer</name_singular>
                                                         <name_plural>wijnbouwer</name_plural>
+                                                </label>
+                                        </labels>
+                                </item>
+                                <item idno="wijnhuisVervaardiger" enabled="1" default="0">
+                                        <labels>
+                                                <label locale="nl_NL" preferred="1">
+                                                        <name_singular>wijnhuis</name_singular>
+                                                        <name_plural>wijnhuis</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
