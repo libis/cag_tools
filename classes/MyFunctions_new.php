@@ -15,7 +15,7 @@ class MyFunctions_new
     }
 
     function setLogging() {
-        $logDir = __MY_DIR__."/cag_tools/log/";
+        $logDir = readlink(__MY_DIR_2__."/cag_tools/log/");
         $log = new KLogger($logDir, KLogger::DEBUG);
 
         return $log;
@@ -33,7 +33,7 @@ class MyFunctions_new
 
     //inlezen configuratiebestand naar array
     function ReadMappingcsv($bestand) {
-            $file = __MY_DIR__."/cag_tools/mapping/".$bestand;
+            $file = __MY_DIR_2__."/cag_tools/mapping/".$bestand;
             $data = array();
             if (($fh = fopen($file, "r")) !== FALSE) {
                 $i = 0;
@@ -167,25 +167,28 @@ class MyFunctions_new
         // insert the object
         $vn_rc = $t_place->insert();
 
-        if ($t_place->numErrors()) {
-            $log->logError("ERROR INSERTING PLAATS:", $key.join("; ", $t_place->getErrors())."\n");
-        } else {
-            $log->logInfo("aanmaak plaats ".$key." gelukt ");
-
+        try {
+            if ($t_place->numErrors()) {
+                throw new Exception("ERROR INSERTING PLAATS".$key . join("; ", $t_place->getErrors())."\n");
+            }
             // Set a preferred label for the object
             $t_place->addLabel(
                     array('name' => ($key)),
                     $locale, null, true
             );
 
-            if ($t_place->numErrors()) {
-                $log->logError("ERROR ADD LABEL TO {$key}: ".join("; ", $t_place->getErrors())."\n");
-            }else {
-                $log->logInfo("aanmaak label voor plaats ".$key." gelukt");
+            try {
+                if ($t_place->numErrors()) {
+                    throw new Exception("ERROR ADDING LABEL TO ".$key . join("; ", $t_place->getErrors())."\n");
+                }
+            } catch (Exception $e) {
+                $log->logError($e->getMessage());
             }
+        } catch (Exception $e) {
+            $log->logError($e->getMessage());
         }
+        unset($t_place);
         return $vn_rc;
-
     }
 
     function createEntity($Identificatie, $type, $status, $locale) {
@@ -369,6 +372,29 @@ class MyFunctions_new
         }
     }
 
+/*
+    function createContainer($object, $data, $info, $container){
+
+        try {
+            $object->addAttribute($data, $container);
+
+            $object->update();
+
+            if ($object->numErrors()) {
+                throw new Exception("ERROR UPDATING {$container} / {$info}  ".
+                           join('; ', $object->getErrors()));
+            }
+            $message =  "SUCCESS";
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            $message = "FAILURE";
+        }
+        return $message ;
+    }
+ *
+ */
+
     function createContainer($object, $data , $info, $container){
 
         $object->addAttribute($data, $container);
@@ -376,13 +402,14 @@ class MyFunctions_new
         $object->update();
 
         if ($object->numErrors()) {
-               $message =  "ERROR UPDATING {$container} / {$info} \n".
+               $message =  "ERROR UPDATING {$container} / {$info} ".
                        join('; ', $object->getErrors())."\n";
         }else{
                $message = "update {$container} / {$info} gelukt \n";
         }
         return $message;
     }
+
 
     function createRelationship($object, $right, $vs_right_string, $relationship) {
         #1 documentatie + container: regPaginaInfo
@@ -418,7 +445,7 @@ class MyFunctions_new
 
         #9 related
         if ($right == "ca_objects") {
-            $t_obj = new ca_objects();
+            $t_obj = new ca_objects_bis();
             $t_obj->getObjectIDsByElementID($vs_right_string, 'adlibObjectNummer');
         }
 
@@ -442,4 +469,64 @@ class MyFunctions_new
             return $message;
         }
     }
+
+    function check_input($key, $input)
+    {
+    #19 //input kan op zijn beurt een 'lege' array bevatten -> opvangen en veralgemenen
+        // het plaatsen van de ; achteraan wordt van hoofdprogr naar hier gebracht
+        if ( (is_array($input)) and (empty($input)) )
+        {   $input = '';    }
+
+        if (($key == '$adresWebsite') and (substr($input,0,7) != 'http://'))
+        {
+            $input = 'http://'.$input;
+        } else {
+            $input = $input;
+        }
+        $input = $input.';';
+
+        return $input;
+    }
+
+    /**
+    * Checks date if matches given format and validity of the date.
+    * Examples:
+    * <code>
+    * is_date('22.22.2222', 'mm.dd.yyyy'); // returns false
+    * is_date('11/30/2008', 'mm/dd/yyyy'); // returns true
+    * is_date('30-01-2008', 'dd-mm-yyyy'); // returns true
+    * is_date('2008 01 30', 'yyyy mm dd'); // returns true
+    * </code>
+    * @param string $value the variable being evaluated.
+    * @param string $format Format of the date. Any combination of <i>mm<i>, <i>dd<i>, <i>yyyy<i>
+    * with single character separator between.
+    */
+    function is_valid_date($value, $format = 'dd.mm.yyyy'){
+        if(strlen($value) >= 6 && strlen($format) == 10){
+
+            // find separator. Remove all other characters from $format
+            $separator_only = str_replace(array('m','d','y'),'', $format);
+            $separator = $separator_only[0]; // separator is first character
+
+            if($separator && strlen($separator_only) == 2){
+                // make regex
+                $regexp = str_replace('mm', '(0?[1-9]|1[0-2])', $format);
+                $regexp = str_replace('dd', '(0?[1-9]|[1-2][0-9]|3[0-1])', $regexp);
+                $regexp = str_replace('yyyy', '(19|20)?[0-9][0-9]', $regexp);
+                $regexp = str_replace($separator, "\\" . $separator, $regexp);
+                if($regexp != $value && preg_match('/'.$regexp.'\z/', $value)){
+
+                    // check date
+                    $arr=explode($separator,$value);
+                    $day=$arr[0];
+                    $month=$arr[1];
+                    $year=$arr[2];
+                    if(@checkdate($month, $day, $year))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
 }
+

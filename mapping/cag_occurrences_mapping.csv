@@ -1,0 +1,7 @@
+origin;destination;tabblad;scherm;bestand;groep
+object_number;adlibObjectNummer;identificatie;objectnummer;;materiaal
+documentation.author;refAuteur;referentie;documentatie;ca_occurrences
+documentation.free_text;refNote;referentie;documentatie;ca_occurrences
+documentation.page_reference;refPagina;referentie;documentatie;ca_occurrences
+documentation.title.article;preferred_label_occur_1;identificatie;documentatie;ca_occurrences
+documentation.title;preferred_label_occur_2;identificatie;documentatie;ca_occurrences

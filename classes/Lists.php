@@ -16,7 +16,7 @@ class Lists
         $teller2 = 1;
         //inlezen xml-bestand met XMLReader, node per node
         $reader2 = new XMLReader();
-        $reader2->open(__MY_DIR__."/cag_tools/data/".$xml);
+        $reader2->open(__CA_BASE_DIR__."/cag_tools/data/".$xml);
 
         while ($reader2->read() && $reader2->name !== "record");
         //=====================================================begin van de loop
@@ -64,7 +64,7 @@ class Lists
         $teller = 1;
         //inlezen xml-bestand met XMLReader, node per node
         $reader = new XMLReader();
-        $reader->open(__MY_DIR__."/cag_tools/data/".$xml);
+        $reader->open(__CA_BASE_DIR__."/cag_tools/data/".$xml);
 
         while ($reader->read() && $reader->name !== 'record');
         //=====================================================begin van de loop
@@ -105,11 +105,14 @@ class Lists
     function settings1($type)
     {
         if ($type == "LOCAL") {
-            define("__MY_DIR__", "c:/xampp/htdocs/ca_cag");
+            define("__MY_DIR__", "c:/xampp/htdocs");
+            define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
         }
         if ($type == "SERVER") {
             define("__MY_DIR__", "/www/libis/vol03/lias_html");
+            define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
         }
+
     }
 
     function settings2()
@@ -117,15 +120,17 @@ class Lists
         require_once(__MY_DIR__."/ca_cag/setup.php");
         require_once(__CA_LIB_DIR__."/core/Db.php");
         require_once(__CA_MODELS_DIR__."/ca_locales.php");
-        require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
+        require_once(__MY_DIR_2__."/cag_tools/classes/KLogger.php");
 
-        include __MY_DIR__."/cag_tools/classes/MyFunctions_new.php";
+        include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
+
+        define("__PROG__","lists");
     }
 }
 
 error_reporting(-1);
-set_time_limit(36000);
-$type = "SERVER";
+set_time_limit(0);
+$type = "LOCAL";
 $t_test = new Lists();
 $t_test->settings1($type);
 $t_test->settings2();
@@ -139,5 +144,5 @@ $t_test->createCAGthesaurusList("sinttruiden.xml", $pn_locale_id, $log, $mapping
 $t_test->createCAGthesaurusList("objecten.xml", $pn_locale_id, $log, $mappingarray, $t_func);
 //CAG_trefwoorden
 // bestand sinttruiden bevat geen trefwoorden
-//$t_test->createCAGtrefwoordLijst("sinttruiden.xml", $pn_locale_id, $log, $mappingarray, $t_func);
+$t_test->createCAGtrefwoordLijst("sinttruiden.xml", $pn_locale_id, $log, $mappingarray, $t_func);
 $t_test->createCAGtrefwoordLijst("objecten.xml", $pn_locale_id, $log, $mappingarray, $t_func);

@@ -1,0 +1,8 @@
+origin;destination;tabblad;scherm;bestand
+creator;vervaardiger;fysieke;vervaardiger;ca_objects_x_entities
+current_owner;eigenaar_van;verwerving;bewaarinstelling;ca_objects_x_entities
+institution.name;bewaarinstelling;beheer;bewaarinstelling;ca_objects_x_entities
+alternative_number.institution;bewaarinstelling_van;verwerving;bewaarinstelling;ca_objects_x_entities
+acquisition.source;acquisitionSource;verwerving;verwerving;ca_objects_x_entities
+association.person;gerelateerd_aan;relaties;gerelateerde;ca_objects_x_entities
+association.person.type;org_type;relaties;gerelateerde;ca_objects_x_entities

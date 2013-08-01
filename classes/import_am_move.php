@@ -30,13 +30,21 @@
 /*
  * Step 1: Initialisation
  */
+error_reporting(-1);
 set_time_limit(36000);
-require_once("/www/libis/vol03/lias_html/ca_cag/setup.php");
+$type = "LOCAL";
 
-if (!file_exists('/www/libis/vol03/lias_html/ca_cag/cag_tools/data/AmoveThes 2011-09.xml')) {
-	die("ERROR: you must place the am_move.xml data file in the same directory as this script.\n");
+if ($type == "LOCAL") {
+    define("__MY_DIR__", "c:/xampp/htdocs");
+    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
+}
+if ($type == "SERVER") {
+    define("__MY_DIR__", "/www/libis/vol03/lias_html");
+    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
 }
 
+define("__PROG__","entities_2");
+require_once(__MY_DIR__."/ca_cag/setup.php");
 require_once(__CA_LIB_DIR__.'/core/Db.php');
 require_once(__CA_MODELS_DIR__.'/ca_locales.php');
 require_once(__CA_MODELS_DIR__.'/ca_lists.php');
@@ -44,7 +52,10 @@ require_once(__CA_MODELS_DIR__.'/ca_list_items.php');
 require_once(__CA_MODELS_DIR__.'/ca_list_items_x_list_items.php');
 require_once(__CA_MODELS_DIR__.'/ca_relationship_types.php');
 
-$_ = new Zend_Translate('gettext', __CA_APP_DIR__.'/locale/nl_NL/messages.mo', 'en_US');
+if (!file_exists(__MY_DIR_2__.'/cag_tools/data/AmoveThes 2012-09.xml')) {
+	die("ERROR: you must place the am_move.xml data file in the same directory as this script.\n");
+}
+//$_ = new Zend_Translate('gettext', __CA_APP_DIR__.'/locale/nl_NL/messages.mo', 'en_US');
 
 $t_locale = new ca_locales();
 $pn_en_locale_id = $t_locale->loadLocaleByCode('en_US');
@@ -80,7 +91,7 @@ $vn_list_id = $t_list->getPrimaryKey();
 $o_db = new Db();
 $o_config = Configuration::load();
 /*
- * 
+ *
 $qr = "delete from  ca_list_items_x_list_items";
 $qr_del_labels = $o_db->query($qr);
 $qr = "delete from ca_list_item_labels WHERE item_id IN( select item_id from ca_list_items where list_id=$vn_list_id)";
@@ -89,7 +100,7 @@ $qr = "delete from ca_objects_x_vocabulary_terms WHERE item_id IN( select item_i
 $qr_voc_terms = $o_db->query($qr);
 $qr = "delete from  ca_list_items where list_id=$vn_list_id";
 $qr_del_items = $o_db->query($qr);
- * 
+ *
  */
 
 // get list item types (should be defined by base installation profile [base.profile])
@@ -133,11 +144,11 @@ $t_rel_types = new ca_relationship_types();
 $vn_list_item_relation_type_id_related = 	$t_rel_types->getRelationshipTypeID('ca_list_items_x_list_items', 'related');
 
 // create log file
-$logFile = fopen("/www/libis/vol03/lias_html/ca_cag/cag_tools/log/output.log", 'w') or die("can't open file");
+$logFile = fopen(__MY_DIR_2__."/cag_tools/log/am_move_output.log", 'w') or die("can't open file");
 
 // load voc_terms
 $o_xml = new XMLReader();
-$o_xml->open('data/AmoveThes 2011-07.xml');
+$o_xml->open(__MY_DIR_2__.'/cag_tools/data/AmoveThes 2012-09.xml');
 
 /*
  * Step 2: Import
