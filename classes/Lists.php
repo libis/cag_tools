@@ -130,7 +130,7 @@ class Lists
 
 error_reporting(-1);
 set_time_limit(0);
-$type = "LOCAL";
+$type = "SERVER";
 $t_test = new Lists();
 $t_test->settings1($type);
 $t_test->settings2();

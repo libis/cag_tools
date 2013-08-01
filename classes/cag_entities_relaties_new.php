@@ -7,7 +7,7 @@
  */
 error_reporting(-1);
 set_time_limit(0);
-$type = "LOCAL";
+$type = "SERVER";
 
 if ($type == "LOCAL") {
     define("__MY_DIR__", "c:/xampp/htdocs");
