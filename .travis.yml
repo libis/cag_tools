@@ -10,9 +10,12 @@ before_script:
   - echo "extension=imagick.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - pear config-set preferred_state stable
   - pear install pear/PHP_CodeSniffer
+  - pear channel-discover components.ez.no
+  - pear install ezc/ConsoleTools
   - pear config-set auto_discover 1
   - pear install pear.phpunit.de/phpcpd
   - pear install pear.phpunit.de/PHP_CodeCoverage
+  - pear install -f pear.phpunit.de/phpdcd
   - pear channel-discover pear.phpmd.org
   - pear channel-discover pear.pdepend.org
   - pear install --alldeps phpmd/PHP_PMD
@@ -21,3 +24,5 @@ script:
   - phpunit -c tests/phpunit.xml
   - phpcs --standard=psr2 --extensions=php --ignore=*/libraries/*,*/archive/* .
   - phpmd . text codesize,unusedcode,naming,design
+  - phpcpd .
+  - phpdcd .
