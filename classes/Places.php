@@ -32,8 +32,10 @@ class Places
         // 0. Landen
         $root = array('België' => $gewest, 'Zweden' => '', 'Italië' => '', 'Oostenrijk' => '', 'Frankrijk' => '',
                       'Verenigde Staten' => '', 'Verenigd Koninkrijk' => '', 'Nederland' => '', 'Duitsland' => '',
-                      'Zwitserland' => '', 'Canada' => '', 'Spanje' => '', 'Argentinië' => '');
-
+                      'Zwitserland' => '', 'Canada' => '', 'Spanje' => '', 'Argentinië' => '', 'Noorwegen' => '',
+                      'Chili' => '', 'Argentinië' => '', 'Cuba' => '', 'Denemarken' => '', 'Hongarije' => '',
+                      'India' => '', 'Europa' => '', 'Japan' => '', 'Pakistan' => '', 'Polen' => '', 'DIVERSEN' => '');
+        
 
          // de rootstructuur aanmaken
         $log->logInfo("CREATIE  ROOT-STRUCTURE");
@@ -280,7 +282,7 @@ define("__PROG__","places");
 require_once(__MY_DIR__."/ca_cag/setup.php");
 require_once(__CA_LIB_DIR__."/core/Db.php");
 require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once(__MY_DIR_2__."/cag_tools/classes/KLogger.php");
+require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
 //require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
 require_once(__MY_DIR_2__."/cag_tools/classes/ca_places_bis.php");
 require_once(__CA_LIB_DIR__.'/core/Parsers/DelimitedDataParser.php');

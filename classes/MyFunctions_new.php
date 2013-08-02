@@ -15,7 +15,7 @@ class MyFunctions_new
     }
 
     function setLogging() {
-        $logDir = readlink(__MY_DIR_2__."/cag_tools/log/");
+        $logDir = "/www/libis/vol03/lias_html/cag_tools-staging/shared/log/";
         $log = new KLogger($logDir, KLogger::DEBUG);
 
         return $log;

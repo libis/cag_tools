@@ -120,7 +120,7 @@ class Lists
         require_once(__MY_DIR__."/ca_cag/setup.php");
         require_once(__CA_LIB_DIR__."/core/Db.php");
         require_once(__CA_MODELS_DIR__."/ca_locales.php");
-        require_once(readlink(__MY_DIR_2__."/cag_tools/classes/KLogger.php"));
+        require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
 
         include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
 
