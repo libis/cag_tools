@@ -33,9 +33,9 @@ class Places
         $root = array('België' => $gewest, 'Zweden' => '', 'Italië' => '', 'Oostenrijk' => '', 'Frankrijk' => '',
                       'Verenigde Staten' => '', 'Verenigd Koninkrijk' => '', 'Nederland' => '', 'Duitsland' => '',
                       'Zwitserland' => '', 'Canada' => '', 'Spanje' => '', 'Argentinië' => '', 'Noorwegen' => '',
-                      'Chili' => '', 'Argentinië' => '', 'Cuba' => '', 'Denemarken' => '', 'Hongarije' => '',
-                      'India' => '', 'Europa' => '', 'Japan' => '', 'Pakistan' => '', 'Polen' => '', 'DIVERSEN' => '');
-        
+                      'Chili' => '', 'Cuba' => '', 'Denemarken' => '', 'Hongarije' => '', 'India' => '',
+                      'Europa' => '', 'Japan' => '', 'Pakistan' => '', 'Polen' => '', 'DIVERSEN' => '');
+
 
          // de rootstructuur aanmaken
         $log->logInfo("CREATIE  ROOT-STRUCTURE");
