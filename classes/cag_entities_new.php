@@ -205,7 +205,7 @@ while ($reader->name === 'record' ) {
                     $Identificatie = $pref['preferred_label'][0];
 
             } else {
-                $Identificatie [] = '---???-'.$resultarray['adlibObjectNummer'].'-???--- ';
+                $Identificatie = '---???-'.$resultarray['adlibObjectNummer'].'-???--- ';
             }
 //------------------------------------------------------------------------------
             //workflow_statusses ->
@@ -239,7 +239,7 @@ while ($reader->name === 'record' ) {
             if ($t_entity->numErrors()) {
                 $log->logInfo("ERROR INSERTING record: ", $Identificatie);
                 $log->logInfo("ERROR message(s) ", join('; ', $t_entity->getErrors()) );
-                continue;
+                //continue;
             }else{
                 $log->logInfo("INSERT gelukt voor: ", $Identificatie);
 
@@ -252,7 +252,7 @@ while ($reader->name === 'record' ) {
                 if ($t_entity->numErrors()) {
                     $log->logInfo("ERROR ADDING PREFERRED LABEL : ", $Identificatie);
                     $log->logInfo("ERROR message(s) ", join('; ', $t_entity->getErrors()) );
-                    continue;
+                    //continue;
                 }else{
                     $log->logInfo("ADDLABEL gelukt voor: ", $Identificatie);
                 }
@@ -268,7 +268,7 @@ while ($reader->name === 'record' ) {
                     if ($t_entity->numErrors()) {
                         $log->logInfo("ERROR ADDING PREFERRED LABEL : ", $Identificatie);
                         $log->logInfo("ERROR message(s) ", join('; ', $t_entity->getErrors()) );
-                        continue;
+                        //continue;
                     }else{
                         $log->logInfo("ADDLABEL gelukt voor: ", $Identificatie);
                     }
@@ -527,7 +527,12 @@ while ($reader->name === 'record' ) {
     unset($used_for);
 
     $teller = $teller + 1;
-    $reader->next();
+
+    if ($teller == 10) {
+        die;
+    }else{
+        $reader->next();
+    }
 }
 
 $reader->close();
