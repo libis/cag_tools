@@ -53,7 +53,7 @@ $mappingarray = $t_func->ReadMappingcsv("cag_entities_uit_objecten.csv");
 
 //inlezen xml-bestand met XMLReader, node per node
 $reader = new XMLReader();
-$reader->open(__CA_BASE_DIR__."/cag_tools/data/objecten.xml");
+$reader->open(__MY_DIR_2__."/cag_tools/data/objecten.xml");
 //$reader->open('/www/libis/vol03/lias_html/ca_cag/cag_tools/data/sinttruiden.xml');
 
 while ($reader->read() && $reader->name !== 'record');
@@ -120,7 +120,7 @@ $log->logInfo('Inhoud entities-array', $entities);
 
 //inlezen xml-bestand met XMLReader, node per node
 $reader2 = new XMLReader();
-$reader2->open(__CA_BASE_DIR__."/cag_tools/data/sinttruiden.xml");
+$reader2->open(__MY_DIR_2__."/cag_tools/data/sinttruiden.xml");
 
 while ($reader2->read() && $reader2->name !== 'record');
 //==============================================================================begin van de loop

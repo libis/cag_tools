@@ -52,7 +52,7 @@ $mappingarray = $t_func->ReadMappingcsv("cag_entities_mapping.csv");
 
 //inlezen xml-bestand met XMLReader, node per node
 $reader = new XMLReader();
-$reader->open(__CA_BASE_DIR__."/cag_tools/data/entities.xml");
+$reader->open(__MY_DIR_2__."/cag_tools/data/entities.xml");
 
 while ($reader->read() && $reader->name !== 'record');
 //==============================================================================begin van de loop

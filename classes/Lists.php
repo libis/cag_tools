@@ -16,7 +16,7 @@ class Lists
         $teller2 = 1;
         //inlezen xml-bestand met XMLReader, node per node
         $reader2 = new XMLReader();
-        $reader2->open(__CA_BASE_DIR__."/cag_tools/data/".$xml);
+        $reader2->open(__MY_DIR_2__."/cag_tools/data/".$xml);
 
         while ($reader2->read() && $reader2->name !== "record");
         //=====================================================begin van de loop
@@ -64,7 +64,7 @@ class Lists
         $teller = 1;
         //inlezen xml-bestand met XMLReader, node per node
         $reader = new XMLReader();
-        $reader->open(__CA_BASE_DIR__."/cag_tools/data/".$xml);
+        $reader->open(__MY_DIR_2__."/cag_tools/data/".$xml);
 
         while ($reader->read() && $reader->name !== 'record');
         //=====================================================begin van de loop

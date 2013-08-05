@@ -1,0 +1,5 @@
+origin;destination;relatie;bestand;group
+bibliographical_reference;reference;;occurrence;
+broader_term;broader;broaderRelatie;objects;
+narrower_term;narrower;narrowerRelatie;objects;
+term;preferred_label;title;objects;

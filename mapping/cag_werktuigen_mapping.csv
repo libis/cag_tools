@@ -1,0 +1,13 @@
+origin;destination;relatie;bestand;group
+priref;adlibObjectNummer;;objects;adlib
+bibliographical_reference;reference;;occurrence;reference
+broader_term;broader;broaderRelatie;objects;adlib
+description_long;technischeBeschrijving;;objects;
+description_short;algemeneBeschrijving;;objects;
+narrower_term;narrower;narrowerRelatie;objects;adlib
+publication_data;workflow_statuses;;objects;
+reproduction.identifier_URL;digitoolUrl;afbeelding_item;objects;
+scope_note;conceptDefinitie;scope_note;objects;
+term;preferred_label;title;objects;
+title:non_preferred_label_alt;alternative;objects;
+used_for;non_preferred_label_use;used_for;objects;

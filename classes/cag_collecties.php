@@ -51,7 +51,7 @@ $mappingarray = $t_func->ReadMappingcsv("cag_collecties_mapping.csv");
 //++++++++++++++++++
 
 $reader = new XMLReader();
-$reader->open(__CA_BASE_DIR__."/cag_tools/data/objecten.xml");
+$reader->open(__MY_DIR_2__."/cag_tools/data/objecten.xml");
 
 while ($reader->read() && $reader->name !== 'record');
 //==============================================================================begin van de loop

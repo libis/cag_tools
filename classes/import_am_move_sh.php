@@ -1,3 +1,3 @@
 <?php
-exec("nohup sh import_am_move.sh > process.out 2> process.err < /dev/null &");
+exec("nohup sh import_am_move.sh > ../log/process.out 2> ../log/process.err");
 ?>

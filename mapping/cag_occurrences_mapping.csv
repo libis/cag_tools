@@ -5,3 +5,4 @@ documentation.free_text;refNote;referentie;documentatie;ca_occurrences
 documentation.page_reference;refPagina;referentie;documentatie;ca_occurrences
 documentation.title.article;preferred_label_occur_1;identificatie;documentatie;ca_occurrences
 documentation.title;preferred_label_occur_2;identificatie;documentatie;ca_occurrences
+object_name.authority;objectnaamOpmerkingen_3;identificatie;objectnaam_bijkomende_info;
