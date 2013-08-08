@@ -341,7 +341,7 @@ class MyFunctions_new
         if (is_array($string1)) {       $string1 = $string1['0'];         }
         if (is_array($string2)) {       $string2 = $string2['0'];         }
 
-        $string1 = cleanDate($string1, $type);
+        $string1 = $this->cleanDate($string1, $type);
         //$string2 = trim(str_replace($zoek,$vervang,$string2));
 
         if ( (isset($string1)) && (!empty($string1)) && (isset($string2)) && (!empty($string2)) )
