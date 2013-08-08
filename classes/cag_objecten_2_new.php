@@ -290,7 +290,7 @@ while ($reader->name === 'record' ) {
                             $afmeting['unit'][$i] = 'cm';
                         }
                         if (($afmeting['unit'][$i] != "cm")) {
-                            $log->logInfo("afmijkende unit of measurement", ($afmeting['unit'][$i]) );
+                            $log->logInfo("afwijkende unit of measurement", ($afmeting['unit'][$i]) );
                             $afmeting['unit'][$i] = 'cm';
                         }
                         switch ($afmeting['dimensions_notes_2'][$i]) {

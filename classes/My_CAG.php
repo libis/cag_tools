@@ -1,6 +1,6 @@
 <?php
 # CREATE or UPDATE or RELATION
-define("__TYPE__", "CREATE");
+define("__TYPE__", "RELATION");
 # blank of ST of TEST
 define("__PART__", "");
 # welk onderdeel ????)
@@ -31,7 +31,7 @@ define("__PART__", "");
 # 9. related                 -> objects (+update object)
 #
 # ALL or ALL_2 or RELAT
-define("__META__", "ALL");
+define("__META__", "vervaardiging");
 
 # xml-file: objecten.xml of sinttruiden.xml
 if (__PART__ == "") {

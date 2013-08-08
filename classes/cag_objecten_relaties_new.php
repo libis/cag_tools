@@ -42,7 +42,7 @@ $t_relatie = new ca_relationship_types();
 $o_db = new Db();
 $t_place = new ca_places_bis();
 
-$t_texp = new TimeExpressionParser();
+$t_texp = new TimeExpressionParser($pb_debug=true);
 $t_texp->setLanguage('nl_NL');
 
 $t_object = new ca_objects_bis();
@@ -253,19 +253,6 @@ while ($reader->name === 'record' )
                     $vervaardigerRol = $t_list->getItemIDFromList('vervaardiger_rol', 'blank');
                 }
                 //vervaardigingDate
-                /*
-                if ( (strlen($res_vervaardiger['objectVervaardigingDate_2'][$i])) == 7 ) {
-                    $Date_2 = substr($res_vervaardiger['objectVervaardigingDate_2'][$i], -2)."-".substr($res_vervaardiger['objectVervaardigingDate_2'][$i],0,4);
-                }else{
-                    $Date_2 = $res_vervaardiger['objectVervaardigingDate_2'][$i];
-                }
-                if ( (strlen($res_vervaardiger['objectVervaardigingDate_2'][$i])) == 7 ) {
-                    $Date_2 = substr($res_vervaardiger['objectVervaardigingDate_2'][$i], -2)."-".substr($res_vervaardiger['objectVervaardigingDate_2'][$i],0,4);
-                }else{
-                    $Date_2 = $res_vervaardiger['objectVervaardigingDate_2'][$i];
-                }
-                 *
-                 */
                 $vervaardigingDate_1 =
                      $t_func->stringJoin($res_vervaardiger['objectVervaardigingDate_5'][$i], $res_vervaardiger['objectVervaardigingDate_2'][$i], " ");
 
@@ -276,15 +263,14 @@ while ($reader->name === 'record' )
                      $t_func->stringJoin($vervaardigingDate_1, $vervaardigingDate_2, " - ");
 
                 $log->logInfo('originele datum ', $vervaardigingDate);
-                $ttt = $t_texp->preprocess($vervaardigingDate);
-                $log->logInfo('geprepareerde datum', $ttt);
+                $vervaardigingDate = $t_texp->preprocess($vervaardigingDate);
+                $log->logInfo('geprepareerde datum', ($vervaardigingDate));
 
-                if (!empty($vervaardigingDate)) {
-                    if (!($t_texp->parse($ttt))) {
-                        $log->logInfo("WARNING: problemen met datum", $vervaardigingDate);
-                        $vervaardigingDate = "";
-                    }
+                if (!($t_texp->parse($vervaardigingDate))) {
+                    $log->logInfo("WARNING: problemen met datum", $vervaardigingDate);
+                    $vervaardigingDate = "";
                 }
+
                 /*
                 //vervaardigingPlace
                 if (isset($res_vervaardiger['objectVervaardigingPlace'][$i]) && (!empty($res_vervaardiger['objectVervaardigingPlace'][$i])) ) {
