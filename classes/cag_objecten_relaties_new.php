@@ -42,7 +42,7 @@ $t_relatie = new ca_relationship_types();
 $o_db = new Db();
 $t_place = new ca_places_bis();
 
-$t_texp = new TimeExpressionParser($pb_debug=true);
+$t_texp = new TimeExpressionParser(null, null, true);
 $t_texp->setLanguage('nl_NL');
 
 $t_object = new ca_objects_bis();
@@ -238,14 +238,16 @@ while ($reader->name === 'record' )
                 $t_func->Initialiseer($output);
 
                 //vervaardiger - ok
-                if (isset($res_vervaardiger['vervaardiger'][$i]) && (!empty($res_vervaardiger['vervaardiger'][$i])) ) {
+                if (isset($res_vervaardiger['vervaardiger'][$i])
+                && (!empty($res_vervaardiger['vervaardiger'][$i])) ) {
                     $vervaardiger = $res_vervaardiger['vervaardiger'][$i];
                 }
 
                 //vervaardigerRol - ok
-                if (isset($res_vervaardiger['vervaardigerRol'][$i]) && (!empty($res_vervaardiger['vervaardigerRol'][$i])) ) {
-                    $vervaardigerRol = $t_list->getItemIDFromList('vervaardiger_rol', $res_vervaardiger['vervaardigerRol'][$i]);
-                    if (!$t_list->getItemIDFromList('vervaardiger_rol', $res_vervaardiger['vervaardigerRol'][$i])) {
+                if (isset($res_vervaardiger['vervaardigerRol'][$i])
+                && (!empty($res_vervaardiger['vervaardigerRol'][$i])) ) {
+                    $vervaardigerRol = $t_list->getItemIDFromListByLabel('vervaardiger_rol', $res_vervaardiger['vervaardigerRol'][$i]);
+                    if (!$vervaardigerRol) {
                         $log->logInfo ("WARNING: fout in vervaardigerRol", $res_vervaardiger['vervaardigerRol'][$i]);
                         $vervaardigerRol = $t_list->getItemIDFromList('vervaardiger_rol', 'blank');
                     }
