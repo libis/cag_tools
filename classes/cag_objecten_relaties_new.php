@@ -266,7 +266,7 @@ while ($reader->name === 'record' )
                 $vervaardigingDate = $t_texp->preprocess($vervaardigingDate);
                 $log->logInfo('geprepareerde datum', ($vervaardigingDate));
 
-                if ( (!empty($vervaardigingDate) || (!$t_texp->parse($vervaardigingDate)))) {
+                if ( (empty($vervaardigingDate) || (!$t_texp->parse($vervaardigingDate)))) {
                     $log->logInfo("WARNING: problemen met datum", $vervaardigingDate);
                     $vervaardigingDate = "";
                 }
