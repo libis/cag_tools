@@ -273,7 +273,6 @@ while ($reader->name === 'record' )
                     $vervaardigingDate = "";
                 }
 
-                /*
                 //vervaardigingPlace
                 if (isset($res_vervaardiger['objectVervaardigingPlace'][$i]) && (!empty($res_vervaardiger['objectVervaardigingPlace'][$i])) ) {
                     $vs_gemeente = $res_vervaardiger['objectVervaardigingPlace'][$i];
@@ -368,8 +367,6 @@ while ($reader->name === 'record' )
                 unset($vervaardigingDate);
                 unset($temp);
                 unset($data);
-                 *
-                 */
             }
             unset($res_vervaardiger);
             unset($aantal);

@@ -325,7 +325,7 @@ class MyFunctions_new
         if ($type == "links") {
             $zoek = array('(moeilijk leesbaar)', 'moeilijk leesbaar', 'exact',
                           'kort na', 'of kort na', 'of iets vroeger', 'of later',
-                          'vroeger dan');
+                          'vroeger dan', 'of kort erna');
         } elseif ($type == "rechts") {
             $zoek = array('circa', 'ongeveer', 'exact', );
         } elseif ($type == "geen") {
