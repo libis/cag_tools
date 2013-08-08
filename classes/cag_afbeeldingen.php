@@ -21,7 +21,7 @@ require_once(__MY_DIR__."/ca_cag/setup.php");
 require_once(__CA_LIB_DIR__."/core/Db.php");
 require_once(__CA_LIB_DIR__.'/core/Parsers/DelimitedDataParser.php');
 require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once(__MY_DIR_2____.'/cag_tools/classes/ca_objects_bis.php');
+require_once(__MY_DIR_2__.'/cag_tools/classes/ca_objects_bis.php');
 require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
 //require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
 
