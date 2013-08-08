@@ -229,16 +229,18 @@ while ($reader->name === 'record' ) {
             for ($i=0; $i <= ($aantal); $i++) {
 
                 $cag_thesaurus_id = "";
-                if (isset($naam_array['objectNaam'][$i])) {
+                if ( (isset($naam_array['objectNaam'][$i])) && (!empty($naam_array['objectNaam'][$i])) ) {
+                    $log->logInfo("objectNaam", $naam_array['objectNaam'][$i]);
                     $cag_thesaurus_id = $t_list->getItemIDFromList('cag_thesaurus', trim($naam_array['objectNaam'][$i]));
+                    $log->logInfo("thesaurus_id", $cag_thesaurus_id);
                 }
 
                 $objectNaamTemp = "";
                 if (isset($naam_array['objectnaamOpmerkingen_1'][$i])) {
-                    $objectnaamOpmerkingen  = $objectnaamOpmerkingen.(trim($naam_array['objectnaamOpmerkingen_1'][$i]))."\n";
+                    $objectNaamTemp  = $objectNaamTemp.(trim($naam_array['objectnaamOpmerkingen_1'][$i]))."\n";
                 }
                 if (isset($naam_array['objectnaamOpmerkingen_2'][$i])) {
-                    $objectnaamOpmerkingen  = $objectnaamOpmerkingen.(trim($naam_array['objectnaamOpmerkingen_2'][$i]))."\n";
+                    $objectNaamTemp  = $objectNaamTemp.(trim($naam_array['objectnaamOpmerkingen_2'][$i]))."\n";
                 }
                 #39 objectnaamOpmerkingen_3 word verwijderd -> naar ca_occurrences
                 /*
@@ -252,23 +254,28 @@ while ($reader->name === 'record' ) {
                 if (substr($objectnaamOpmerkingen, -2) === "\n") {
                     $objectnaamOpmerkingen = substr($objectnaamOpmerkingen, 0, -2);
                 }
+                $log->logInfo("objectnaamOpmerkingen", $objectnaamOpmerkingen);
 
-                $t_object->addAttribute(array(
-                        'locale_id'             =>	$pn_locale_id,
-                        'objectNaam'            =>	$cag_thesaurus_id,
-                        'objectnaamOpmerkingen' =>	$objectnaamOpmerkingen
-                ), 'cagObjectnaamInfo');
-            //-------------
-                $t_object->update();
-            //-------------
+                if (!empty($cag_thesaurus_id)) {
+                    $t_object->addAttribute(array(
+                            'locale_id'             =>	$pn_locale_id,
+                            'objectNaam'            =>	$cag_thesaurus_id,
+                            'objectnaamOpmerkingen' =>	$objectnaamOpmerkingen
+                    ), 'cagObjectnaamInfo');
+                //-------------
+                    $t_object->update();
+                //-------------
 
-                if ($t_object->numErrors()) {
-                        $message = "ERROR UPDATING cagObjectnaamInfo_1: ".join('; ', $t_object->getErrors())." \n  ";
-                        $log->logInfo($message);
-                        continue;
-                }else{
-                        $message = "update gelukt cagObjectnaamInfo_1 ";
-                        $log->logInfo($message);
+                    if ($t_object->numErrors()) {
+                            $message = "ERROR UPDATING cagObjectnaamInfo_1: ".join('; ', $t_object->getErrors())." \n  ";
+                            $log->logInfo($message);
+                            continue;
+                    }else{
+                            $message = "update gelukt cagObjectnaamInfo_1 ";
+                            $log->logInfo($message);
+                    }
+                } else {
+                    $log->logError("ERROR: ongeldige waarde voor objectnaam", $cag_thesaurus_id);
                 }
                 unset($cag_thesaurus_id);
                 unset($objectnaamOpmerkingen);

@@ -528,11 +528,7 @@ while ($reader->name === 'record' ) {
 
     $teller = $teller + 1;
 
-    if ($teller == 10) {
-        die;
-    }else{
-        $reader->next();
-    }
+    $reader->next();
 }
 
 $reader->close();
