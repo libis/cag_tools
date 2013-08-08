@@ -321,16 +321,28 @@ class MyFunctions_new
         return $resultarray2;
     }
 
-    function stringJoin($string1, $string2, $delimit) {
+    function cleanDate($string, $type) {
+        if ($type == "links") {
+            $zoek = array('(moeilijk leesbaar)', 'moeilijk leesbaar', 'exact',
+                          'kort na', 'of kort na', 'of iets vroeger', 'of later',
+                          'vroeger dan');
+        } elseif ($type == "rechts") {
+            $zoek = array('circa', 'ongeveer', 'exact', );
+        } elseif ($type == "geen") {
+            return $string;
+        } else {
+            throw new Exception("type 'links' of 'rechts' is vereist" );
+        }
+        return trim(str_replace($zoek,'',$string));
+    }
+
+    function stringJoin($string1, $string2, $delimit, $type) {
         $stringResult = '';
         if (is_array($string1)) {       $string1 = $string1['0'];         }
         if (is_array($string2)) {       $string2 = $string2['0'];         }
 
-        $zoek = array('(moeilijk leesbaar)', 'jaren');
-        $vervang = array('','');
-
-        $string1 = trim(str_replace($zoek,$vervang,$string1));
-        $string2 = trim(str_replace($zoek,$vervang,$string2));
+        $string1 = cleanDate($string1, $type);
+        //$string2 = trim(str_replace($zoek,$vervang,$string2));
 
         if ( (isset($string1)) && (!empty($string1)) && (isset($string2)) && (!empty($string2)) )
         {

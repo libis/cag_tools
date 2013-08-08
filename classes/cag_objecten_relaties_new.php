@@ -256,13 +256,13 @@ while ($reader->name === 'record' )
                 }
                 //vervaardigingDate
                 $vervaardigingDate_1 =
-                     $t_func->stringJoin($res_vervaardiger['objectVervaardigingDate_5'][$i], $res_vervaardiger['objectVervaardigingDate_2'][$i], " ");
+                     $t_func->stringJoin($res_vervaardiger['objectVervaardigingDate_5'][$i], $res_vervaardiger['objectVervaardigingDate_2'][$i], " ", 'links');
 
                 $vervaardigingDate_2 =
-                     $t_func->stringJoin($res_vervaardiger['objectVervaardigingDate_3'][$i], $res_vervaardiger['objectVervaardigingDate_1'][$i], " ");
+                     $t_func->stringJoin($res_vervaardiger['objectVervaardigingDate_3'][$i], $res_vervaardiger['objectVervaardigingDate_1'][$i], " ", 'rechts');
 
                 $vervaardigingDate =
-                     $t_func->stringJoin($vervaardigingDate_1, $vervaardigingDate_2, " - ");
+                     $t_func->stringJoin($vervaardigingDate_1, $vervaardigingDate_2, " - ", 'geen');
 
                 $log->logInfo('originele datum ', $vervaardigingDate);
                 $vervaardigingDate = $t_texp->preprocess($vervaardigingDate);
