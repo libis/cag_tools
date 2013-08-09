@@ -229,13 +229,21 @@ while ($reader->name === 'record' )
         if ($aantal_vervaardiger > 0) {
 
             $container = "objectVervaardigingInfo";
-            $output = array('vervaardiger','vervaardigerRol','vervaardigingDate','vervaardigingPlace','vervaardigingNote','serienummer');
+            //$output = array('vervaardiger','vervaardigerRol','vervaardigingDate','vervaardigingPlace','vervaardigingNote','serienummer');
             $res_vervaardiger = $t_func->makeArray2($resultarray, $aantal_vervaardiger, $fields);
             $aantal = $aantal_vervaardiger - 1;
 
             for ($i=0; $i <= ($aantal) ; $i++) {
 
-                $t_func->Initialiseer($output);
+                //$t_func->Initialiseer($output);
+                $vervaardiger = '';
+                $vervaardigerRol = '';
+                $vervaardigingDate_1 = '';
+                $vrevaardigingDate_2 = '';
+                $vervaardigingDate = '';
+                $vervaardigingPlace = '';
+                $vervaardigingNote = '';
+                $serienummer = '';
 
                 //vervaardiger - ok
                 if (isset($res_vervaardiger['vervaardiger'][$i])
@@ -326,9 +334,6 @@ while ($reader->name === 'record' )
                     $vervaardigingNote = implode("\n", $temp);
                 }
 
-                //serienummer
-                $serienummer ="";
-
                 if ( (!empty($vervaardiger)) || (!empty($vervaardigingDate)) || (!empty($vervaardigingPlace)) ||
                      (!empty($vervaardigingNote)) || (!empty($serienummer)) || ($vervaardigerRol != "") ) {
 
@@ -362,9 +367,12 @@ while ($reader->name === 'record' )
                         }
                     }
                 }
-                $t_func->Vernietig($output);
+                //$t_func->Vernietig($output);
+                unset($vervaardiger);
+                unset($vervaardigerRol);
                 unset($vervaardigingDate_1);
                 unset($vervaardigingDate_2);
+                unset($vervaardigingDate);
                 unset($vervaardigingNote);
                 unset($vervaardigingDate);
                 unset($temp);
@@ -630,7 +638,7 @@ while ($reader->name === 'record' )
 
             for ($i=0; $i <= ($aantal); $i++) {
 
-                if ( (isset($res_acq['acquisitionSource'][$i])) && (!empty($res_inst['acquisitionSource'][$i])) ) {
+                if ( (isset($res_acq['acquisitionSource'][$i])) && (!empty($res_acq['acquisitionSource'][$i])) ) {
 
                     $vs_right_string = trim($res_acq['acquisitionSource'][$i]);
 

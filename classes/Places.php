@@ -26,7 +26,7 @@ class Places
         $bru = array('Brussel (provincie)' => '');
 
         $wal = array('Brabant Wallon (provincie)' => $brwa, 'Hainaut (provincie)' => $hain, 'Liège (provincie)' => $lieg,
-                     'Namur (provincie)' => $namu, 'Hainaut (provincie)' => $hain, 'Luxembourg (provincie)' => $luxe);
+                     'Namur (provincie)' => $namu, 'Luxembourg (provincie)' => $luxe);
         // 1. Onder België: de 3 gewesten
         $gewest = array('Brussel' => $bru, 'Vlaanderen' => $vla, 'Wallonië' => $wal, 'Speciaal' => '');
         // 0. Landen

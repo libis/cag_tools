@@ -434,7 +434,7 @@ class MyFunctions_new
         #4 trefwoorden
         if ($right == "ca_objects_x_vocabulary_terms") {
             $t_list = new ca_lists();
-            $va_right_keys[0] = $t_list->getItemIDFromList('cag_trefwoorden', $vs_right_string);
+            $va_right_keys = $t_list->getItemIDFromList('cag_trefwoorden', $vs_right_string);
         }
         #5 collecties
         if ($right == "ca_collections") {
@@ -453,7 +453,7 @@ class MyFunctions_new
         #9 related
         if ($right == "ca_objects") {
             $t_obj = new ca_objects_bis();
-            $t_obj->getObjectIDsByElementID($vs_right_string, 'adlibObjectNummer');
+            $va_right_keys = $t_obj->getObjectIDsByElementID($vs_right_string, 'adlibObjectNummer');
         }
 
         if ((sizeof($va_right_keys)) == 0 ) {
