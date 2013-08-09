@@ -328,21 +328,16 @@ class MyFunctions_new
                           'vroeger dan', 'of kort erna');
         } elseif ($type == "rechts") {
             $zoek = array('circa', 'ongeveer', 'exact', );
-        } elseif ($type == "geen") {
-            return $string;
         } else {
             throw new Exception("type 'links' of 'rechts' is vereist" );
         }
         return trim(str_replace($zoek,'',$string));
     }
 
-    function stringJoin($string1, $string2, $delimit, $type) {
+    function stringJoin($string1, $string2, $delimit) {
         $stringResult = '';
         if (is_array($string1)) {       $string1 = $string1['0'];         }
         if (is_array($string2)) {       $string2 = $string2['0'];         }
-
-        $string1 = $this->cleanDate($string1, $type);
-        //$string2 = trim(str_replace($zoek,$vervang,$string2));
 
         if ( (isset($string1)) && (!empty($string1)) && (isset($string2)) && (!empty($string2)) )
         {
