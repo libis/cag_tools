@@ -238,8 +238,6 @@ while ($reader->name === 'record' )
                 //$t_func->Initialiseer($output);
                 $vervaardiger = '';
                 $vervaardigerRol = '';
-                $vervaardigingDate_1 = '';
-                $vrevaardigingDate_2 = '';
                 $vervaardigingDate = '';
                 $vervaardigingPlace = '';
                 $vervaardigingNote = '';
@@ -248,7 +246,10 @@ while ($reader->name === 'record' )
                 //vervaardiger - ok
                 if (isset($res_vervaardiger['vervaardiger'][$i])
                 && (!empty($res_vervaardiger['vervaardiger'][$i])) ) {
-                    $vervaardiger = $res_vervaardiger['vervaardiger'][$i];
+                    $t_entity = new ca_entities();
+                    $va_right_keys = $t_entity->getEntityIDsByName('', $res_vervaardiger['vervaardiger'][$i]);
+                    $t_entity->getPrimaryKey();;
+                    $vervaardiger = $t_entity->getLabelForDisplay();
                 }
 
                 //vervaardigerRol - ok
@@ -271,16 +272,15 @@ while ($reader->name === 'record' )
                      $t_func->stringJoin($t_func->cleanDate($res_vervaardiger['objectVervaardigingDate_3'][$i],'rechts'),
                              $res_vervaardiger['objectVervaardigingDate_1'][$i], " ");
 
-                $vervaardigingDate =
+                $vervaardigingDate_3 =
                      $t_func->stringJoin($vervaardigingDate_1, $vervaardigingDate_2, " - ", 'geen');
 
-                $log->logInfo('originele datum ', $vervaardigingDate);
-                $vervaardigingDate = $t_texp->preprocess($vervaardigingDate);
-                $log->logInfo('geprepareerde datum', ($vervaardigingDate));
+                $log->logInfo('originele datum ', $vervaardigingDate_3);
 
-                if ( (empty($vervaardigingDate) || (!$t_texp->parse($vervaardigingDate)))) {
-                    $log->logInfo("WARNING: problemen met datum", $vervaardigingDate);
-                    $vervaardigingDate = "";
+                if ( (!empty($vervaardigingDate_3)) && ($t_texp->parse($vervaardigingDate_3)) ) {
+                    $vervaardigingDate = $t_texp->parse($vervaardigingDate_3);
+                } else {
+                    $log->logWarn('WARNING: problemen met datum:', $t_texp->getParseErrorMessage());
                 }
 
                 //vervaardigingPlace
@@ -361,7 +361,7 @@ while ($reader->name === 'record' )
 
                             $qry2 = "update ca_attribute_values
                                      set value_integer1 = ".$vervaardigingPlace.
-                                    " where element_id = 274 and attribute_id = ".$attribute_id;
+                                    " where element_id = 282 and attribute_id = ".$attribute_id;
 
                             $o_db->query($qry2);
                         }
@@ -372,16 +372,16 @@ while ($reader->name === 'record' )
                 unset($vervaardigerRol);
                 unset($vervaardigingDate_1);
                 unset($vervaardigingDate_2);
+                unset($vervaardigingDate_3);
                 unset($vervaardigingDate);
                 unset($vervaardigingNote);
-                unset($vervaardigingDate);
+                unset($vervaardigingPlace);
                 unset($temp);
                 unset($data);
             }
             unset($res_vervaardiger);
             unset($aantal);
             unset($container);
-            unset($output);
         }
         unset($aantal_vervaardiger);
         unset($fields);
