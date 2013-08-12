@@ -12431,12 +12431,14 @@
 						  <bundle>ca_objects</bundle>
 						  <settings>
 							<setting name="label" locale="nl_NL">Gerelateerd object</setting>
+							<setting name="restrict_to_types">cagObject_type</setting>
 						  </settings>
 						</placement>
 						<placement code="ca_concept">
 						  <bundle>ca_objects</bundle>
 						  <settings>
 							<setting name="label" locale="nl_NL">Gerelateerd concept</setting>
+							<setting name="restrict_to_types">cagConceptVoorwerp_type</setting>
 						  </settings>
 						</placement>
 						<placement code="ca_attribute_related_object_notesInfo">
@@ -12716,7 +12718,7 @@
                                                 <placement code="ca_attribute_adlibObjectNummer">
                                                         <bundle>ca_attribute_adlibObjectNummer</bundle>
                                                 </placement>
-												<placement code="ca_attribute_plaatsGelinktCollectieInfo">
+						<placement code="ca_attribute_plaatsGelinktCollectieInfo">
                                                         <bundle>ca_attribute_plaatsGelinktCollectieInfo</bundle>
                                                 </placement>
                                                 <placement code="ca_entities">
@@ -12853,7 +12855,7 @@
                                                 <placement code="ca_attribute_tekstmateriaalInfo">
                                                         <bundle>ca_attribute_tekstmateriaalInfo</bundle>
                                                 </placement>
-												<placement code="ca_attribute_promotiemateriaalInfo">
+						<placement code="ca_attribute_promotiemateriaalInfo">
                                                         <bundle>ca_attribute_promotiemateriaalInfo</bundle>
                                                 </placement>
                                                 <placement code="ca_attribute_anderMateriaalInfo">
@@ -12874,10 +12876,10 @@
                                                 <placement code="ca_attribute_bereidingSpecInfo">
                                                         <bundle>ca_attribute_bereidingSpecInfo</bundle>
                                                 </placement>
-												<placement code="ca_attribute_nabewerkingInfo">
+						<placement code="ca_attribute_nabewerkingInfo">
                                                         <bundle>ca_attribute_nabewerkingInfo</bundle>
                                                 </placement>
-												<placement code="ca_attribute_distributieInfo">
+						<placement code="ca_attribute_distributieInfo">
                                                         <bundle>ca_attribute_distributieInfo</bundle>
                                                 </placement>
                                                 <placement code="ca_attribute_consumptieInfo">
