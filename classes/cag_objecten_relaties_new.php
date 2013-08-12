@@ -45,6 +45,8 @@ $t_place = new ca_places_bis();
 $t_texp = new TimeExpressionParser(null, null, true);
 $t_texp->setLanguage('nl_NL');
 
+$t_entity = new ca_entities();
+
 $t_object = new ca_objects_bis();
 $t_object->setMode(ACCESS_WRITE);
 //==============================================================================initialisaties
@@ -246,8 +248,9 @@ while ($reader->name === 'record' )
                 //vervaardiger - ok
                 if (isset($res_vervaardiger['vervaardiger'][$i])
                 && (!empty($res_vervaardiger['vervaardiger'][$i])) ) {
-                    $t_entity = new ca_entities();
+
                     $va_right_keys = $t_entity->getEntityIDsByName('', $res_vervaardiger['vervaardiger'][$i]);
+                    $t_entity->load($va_right_keys[0]);
                     $t_entity->getPrimaryKey();;
                     $vervaardiger = $t_entity->getLabelForDisplay();
                 }
