@@ -281,7 +281,7 @@ while ($reader->name === 'record' )
                 $log->logInfo('originele datum ', $vervaardigingDate_3);
 
                 if ( (!empty($vervaardigingDate_3)) && ($t_texp->parse($vervaardigingDate_3)) ) {
-                    $vervaardigingDate = $t_texp->parse($vervaardigingDate_3);
+                    $vervaardigingDate = ($vervaardigingDate_3);
                 } else {
                     $log->logWarn('WARNING: problemen met datum:', $t_texp->getParseErrorMessage());
                 }
@@ -592,7 +592,7 @@ while ($reader->name === 'record' )
                 }
                 if ( (isset($res_inst['objectInventarisnrBplts_2'][$i])) && (!empty($res_inst['objectInventarisnrBplts_2'][$i])) &&
                      (!isset($res_inst['objectInventarisnrBplts_1'][$i])) ) {
-                    $res_inst['objectInventarisBplts'][$i] = $res_inst['objectInventarisnrBplts_2'][i];
+                    $res_inst['objectInventarisBplts'][$i] = $res_inst['objectInventarisnrBplts_2'][$i];
                 }
                 if ( (!isset($res_inst['objectInventarisnrBplts_2'][$i])) && (isset($res_inst['objectInventarisnrBplts_1'][$i])) &&
                      (!empty($res_inst['objectInventarisnrBplts_2'][$i])) ) {
