@@ -13962,16 +13962,6 @@
                                         <subTypeLeft>cagConceptVoorwerp_type</subTypeLeft>
                                         <subTypeRight>cagConceptVoorwerp_type</subTypeRight>
                                 </type>
-                                <type code="narrowerRelatie" default="0">
-                                        <labels>
-                                                <label locale="nl_NL">
-                                                        <typename>is nauwere term van</typename>
-                                                        <typename_reverse>is bredere term van</typename_reverse>
-                                                </label>
-                                        </labels>
-                                        <subTypeLeft>cagConceptVoorwerp_type</subTypeLeft>
-                                        <subTypeRight>cagConceptVoorwerp_type</subTypeRight>
-                                </type>
                                 <type code="conceptRelatie" default="0">
                                         <labels>
                                                 <label locale="nl_NL">
