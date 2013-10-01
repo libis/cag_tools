@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 
-
 class PlacesAlternatives {
 
-    function importGegevens($log)
+    function importGegevens()
     {
+        global $log;
+
         $log->logInfo("Import BE.csv \n");
 
         $o_tab_parser = new DelimitedDataParser("\t");
         // Read csv; line by line till end of file.
-        if (!$o_tab_parser->parse(__MY_DIR_2__."/cag_tools/data/BE.csv")) {
+        if (!$o_tab_parser->parse(__MY_DIR__."/cag_tools/data/BE.csv")) {
                 die("Couldn't parse BE.csv data");
         }
 
@@ -43,28 +44,12 @@ class PlacesAlternatives {
     }
 }
 
-error_reporting(-1);
-set_time_limit(0);
-$type = "SERVER";
-
-if ($type == "LOCAL") {
-    define("__MY_DIR__", "c:/xampp/htdocs");
-    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
-}
-if ($type == "SERVER") {
-    define("__MY_DIR__", "/www/libis/vol03/lias_html");
-    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
-}
-
 define("__PROG__","places_alternatives");
-require_once(__MY_DIR__."/ca_cag/setup.php");
-require_once(__CA_LIB_DIR__."/core/Db.php");
-require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
-//require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
-require_once(__MY_DIR_2__."/cag_tools/classes/ca_places_bis.php");
+
+include('header.php');
+
+require_once(__MY_DIR__."/cag_tools/classes/ca_places_bis.php");
 require_once(__CA_LIB_DIR__.'/core/Parsers/DelimitedDataParser.php');
-include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
@@ -76,51 +61,66 @@ $t_place->setMode(ACCESS_WRITE);
 $t_test = new PlacesAlternatives();
 
 //inlezen BE.csv in een array
-$alt = $t_test->importGegevens($log);
+$alt = $t_test->importGegevens();
+
+$teller = 0;
 
 foreach($alt as $value) {
 
     $zoekterm = trim($value['0'])." - %";
-    $log->logInfo("=====".$alt."=====");
+
+    $log->logInfo("=====".$alt."=====", $value);
 
     $va_keys = $t_place->getPlaceIDsByNamePart($zoekterm);
 
     if (sizeof($va_keys)> 0) {
 
         if (sizeof($va_keys) > 1) {
-            $log->logInfo("meerdere gemeenten gevonden, voegen alternatieve labels toe aan eerste");
+            #56
+            $log->logError("ERROR: meerdere gemeenten gevonden voor ", $zoekterm);
+            $log->logError("ERROR: namelijk ", $va_keys);
+            $teller = $teller + 1;
         } else {
-            $log->logInfo("1 gemeente gevonden, voegen alternatieve labels toe");
-        }
-        $place_id = $va_keys['0'];
-        $t_place->load($place_id);
-        $t_place->getPrimaryKey();
-        $t_place->set('place_id', $place_id);
+            $log->logInfo("slechts 1 gemeente gevonden, voegen alternatieve labels toe", $va_keys);
 
-        $temp = explode(",", $value['1']);
+            $place_id = $va_keys['0'];
+            $t_place->load($place_id);
+            $t_place->getPrimaryKey();
+            $t_place->set('place_id', $place_id);
 
-        foreach ($temp as $alternatief) {
-            $log->logInfo("verwerking alternatief: ", $alternatief);
-            $zoekterm2 = trim($alternatief)."%";
-            if (!$t_place->getPlaceIDsByNamePart($zoekterm2)) {
-                $t_place->addLabel(
-                        array('name' => ($alternatief)),
-                        $pn_locale_id, null, false
-                );
-                try {
+            $temp = explode(",", $value['1']);
+
+            $log->logInfo("de alternatieven", $temp);
+
+            foreach ($temp as $alternatief) {
+
+                $zoekterm2 = trim($alternatief)."%";
+
+                $log->logInfo("verwerking alternatief: ", $zoekterm2);
+
+                if (!$t_place->getPlaceIDsByNamePart($zoekterm2)) {
+                    $t_place->addLabel(
+                            array('name' => ($alternatief)),
+                            $pn_locale_id, null, false
+                    );
+
                     if ($t_place->numErrors()) {
-                        throw new Exception("ERROR ADDING LABEL ".$alternatief . join("; ", $t_place->getErrors())."\n");
+                        $log->logERROR("ERROR ADDING ALTERNATIVE FOR ", $alternatief . join("; ", $t_place->getErrors())."\n");
+                    } else {
+                        $log->logInfo("Alternatief met succes toegevoegd", $alternatief);
                     }
-                } catch (Exception $e) {
-                    $log->logError($e->getMessage());
                 }
+                unset($zoekterm2);
             }
-            unset($zoekterm2);
+            unset($place_id);
+            unset($temp);
+            unset ($alternatief);
         }
-        unset($place_id);
-        unset($temp);
+    } else {
+        $log->logInfo("geen geldige gemeente gevonden om mee te linken", $va_keys);
     }
     unset($zoekterm);
     unset($va_keys);
 }
 $log->logInfo("IMPORT COMPLETE.");
+$log-> logInfo("gemeenten met 'meerdere records gevonden'", $teller);

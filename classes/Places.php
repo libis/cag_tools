@@ -7,7 +7,10 @@
 
 class Places
 {
-    function createRootStructure($t_func, $vn_hierarchy_id, $pn_locale_id, $log) {
+    function createRootStructure($t_func, $vn_hierarchy_id, $pn_locale_id)
+    {
+        global $log;
+
         // Root-info
         $antw = array('Antwerpen', 'Mechelen', 'Turnhout');
         $limb = array('Hasselt', 'Maaseik', 'Tongeren');
@@ -85,8 +88,10 @@ class Places
 
     }
 
-    function importHoofdGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id, $log)
+    function importHoofdGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id)
     {
+        global $log;
+
         $log->logInfo("Import BELGIE_NEW_1.csv \n");
 
         $o_tab_parser = new DelimitedDataParser("\t");
@@ -95,6 +100,7 @@ class Places
                 die("Couldn't parse BELGIE_NEW_1.csv data");
         }
 
+        $options = 1;
         $vn_c1 = 1;
 
         $o_tab_parser->nextRow(); // skip first row (headings)
@@ -114,7 +120,7 @@ class Places
 
                 $this->VerwerkGemeente($vs_arrondissement, $vs_gewest, $vs_provincie,
                         $vs_gemeente, $vs_postcode, $vs_latitude, $vs_longitude,
-                        $t_func, $vn_hierarchy_id, $pn_locale_id, $log);
+                        $t_func, $vn_hierarchy_id, $pn_locale_id, $options);
 
                 $vn_c1++;
         }
@@ -123,8 +129,10 @@ class Places
         $log->logInfo("FINISHED CREATIE HOOFD-GEMEENTEN \n");
     }
 
-    function importDeelGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id, $log)
+    function importDeelGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id)
     {
+        global $log;
+
         $log->logInfo("Import BELGIE_NEW_2.csv \n");
 
         $o_tab_parser = new DelimitedDataParser("\t");
@@ -133,6 +141,7 @@ class Places
                 die("Couldn't parse BELGIE_NEW_2.csv data \n");
         }
 
+        $options = 0;
         $vn_c2 = 1;
 
         $o_tab_parser->nextRow(); // skip first row (headings)
@@ -156,7 +165,7 @@ class Places
 
                     $this->VerwerkGemeente($vs_arrondissement, $vs_gewest, $vs_provincie,
                             $vs_gemeente, $vs_postcode, $vs_latitude, $vs_longitude,
-                            $t_func, $vn_hierarchy_id, $pn_locale_id, $log);
+                            $t_func, $vn_hierarchy_id, $pn_locale_id, $options);
                 }
 
                 $vn_c2++;
@@ -166,8 +175,10 @@ class Places
         $log->logInfo("FINISHED CREATIE DEEL-GEMEENTEN \n");
     }
 
-    function importSpecialekes($t_func, $vn_hierarchy_id, $pn_locale_id, $log)
+    function importSpecialekes($t_func, $vn_hierarchy_id, $pn_locale_id)
     {
+        global $log;
+
         $log->logInfo("Import BELGIE_NEW_3.csv \n");
 
         $o_tab_parser = new DelimitedDataParser("\t");
@@ -176,6 +187,7 @@ class Places
                 die("Couldn't parse BELGIE_NEW_3.csv data \n");
         }
 
+        $options = 0;
         $vn_c3 = 1;
 
         $o_tab_parser->nextRow(); // skip first row (headings)
@@ -194,7 +206,7 @@ class Places
 
                 $this->VerwerkGemeente($vs_arrondissement, $vs_gewest, $vs_provincie,
                         $vs_gemeente, $vs_postcode, $vs_latitude, $vs_longitude,
-                        $t_func, $vn_hierarchy_id, $pn_locale_id, $log);
+                        $t_func, $vn_hierarchy_id, $pn_locale_id, $options);
 
                 $vn_c3++;
         }
@@ -205,7 +217,9 @@ class Places
 
     function VerwerkGemeente($vs_arrondissement, $vs_gewest, $vs_provincie,
         $vs_gemeente, $vs_postcode, $vs_latitude, $vs_longitude,
-        $t_func, $vn_hierarchy_id, $pn_locale_id, $log){
+        $t_func, $vn_hierarchy_id, $pn_locale_id, $options)
+    {
+        global $log;
 
         $t_list = new ca_lists();
         $t_place = new ca_places_bis();
@@ -228,8 +242,12 @@ class Places
             $va_parent_id = $t_place->getPlaceIDsByName(($vs_provincie.' (provincie)'));
             $va_root = $t_place ->getPlaceIDsByName($vs_arrondissement, $va_parent_id[0]);
         }
-
-        $zoekterm = trim($vs_gemeente)." - %";
+#63
+        if ($options === 1) {
+            $zoekterm = trim($vs_gemeente)." - %";
+        } else {
+            $zoekterm = trim($vs_gemeente)." - ".$vs_postcode;
+        }
         $vs_gemeente = trim($vs_gemeente)." - ".$vs_postcode;
 
         if (!$t_place->getPlaceIDsByNamePart($zoekterm)) {
@@ -265,39 +283,25 @@ class Places
 
 }
 
-error_reporting(-1);
-set_time_limit(0);
-$type = "SERVER";
-
-if ($type == "LOCAL") {
-    define("__MY_DIR__", "c:/xampp/htdocs");
-    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
-}
-if ($type == "SERVER") {
-    define("__MY_DIR__", "/www/libis/vol03/lias_html");
-    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
-}
-
 define("__PROG__","places");
-require_once(__MY_DIR__."/ca_cag/setup.php");
-require_once(__CA_LIB_DIR__."/core/Db.php");
-require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
-//require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
-require_once(__MY_DIR_2__."/cag_tools/classes/ca_places_bis.php");
+
+include('header.php');
+
+require_once(__MY_DIR__."/cag_tools/classes/ca_places_bis.php");
 require_once(__CA_LIB_DIR__.'/core/Parsers/DelimitedDataParser.php');
-include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
-//$mappingarray = $t_func->ReadMappingcsv("cag_lists_mapping.csv");
+
 $t_list = new ca_lists();
 $vn_hierarchy_id = $t_list->getItemIDFromList('place_hierarchies', 'i1');
 unset($t_list);
 
 $t_test = new Places();
-$t_test->createRootStructure($t_func, $vn_hierarchy_id, $pn_locale_id, $log);
-$t_test->importHoofdGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id, $log);
-$t_test->importDeelGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id, $log);
-$t_test->importSpecialekes($t_func, $vn_hierarchy_id, $pn_locale_id, $log);
+$t_test->createRootStructure($t_func, $vn_hierarchy_id, $pn_locale_id);
+$t_test->importHoofdGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id);
+$t_test->importDeelGemeenten($t_func, $vn_hierarchy_id, $pn_locale_id);
+$t_test->importSpecialekes($t_func, $vn_hierarchy_id, $pn_locale_id);
+
+$log->logInfo("EINDE VERWERKING PLACES");
