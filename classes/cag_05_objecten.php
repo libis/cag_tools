@@ -31,7 +31,7 @@ $alternatief_velden = array('objectnaamAlternatief_1', 'objectnaamAlternatief_2'
 $titel_velden = array('titelAlternatief_1', 'titelAlternatief_2');
 $opschrift_velden = array('opschrift_content', 'opschrift_description', 'opschrift_position',
         'opschriftDate', 'opschriftTranslation', 'opschriftNotes_1', 'opschriftNotes_2',
-        'opschriftNotes_3', 'opschriftNotes_4', 'opschriftNotes_5', 'opschriftNotes_6');
+        'opschriftNotes_3', 'opschriftNotes_5');
 $materiaal_velden = array('materiaalDeel', 'materiaalNaamOnderdeel', 'materiaal', 'materiaalNotes');
 $afmeting_velden = array('dimensions_notes_1', 'dimensions_notes_2', 'dimensions_precisie',
             'unit', 'value', 'dimensionsDeel', 'dimensionsNaamOnderdeel');
@@ -383,14 +383,13 @@ while ($reader->name === 'record') {
     $o_note_1 = 'opschriftNotes_1';
     $o_note_2 = 'opschriftNotes_2';
     $o_note_3 = 'opschriftNotes_3';
-    $o_note_4 = 'opschriftNotes_4';
+    //$o_note_4 = 'opschriftNotes_4';
     $o_note_5 = 'opschriftNotes_5';
-    $o_note_6 = 'opschriftNotes_6';
+    //$o_note_6 = 'opschriftNotes_6';
 
     if ( (isset($resultarray[$o_content])) || (isset($resultarray[$o_desc])) || (isset($resultarray[$o_pos])) ||
          (isset($resultarray[$o_date])) || (isset($resultarray[$o_trans])) || (isset($resultarray[$o_note_1])) ||
-         (isset($resultarray[$o_note_2])) || (isset($resultarray[$o_note_3])) || (isset($resultarray[$o_note_4])) ||
-         (isset($resultarray[$o_note_5])) || (isset($resultarray[$o_note_6])) ) {
+         (isset($resultarray[$o_note_2])) || (isset($resultarray[$o_note_3])) || (isset($resultarray[$o_note_5])) ) {
         //hoeveel herhalingen zijn er ?
         $opschrift_aantal = $t_func->Herhalen($resultarray, $opschrift_velden);
 
@@ -413,14 +412,15 @@ while ($reader->name === 'record') {
                 if (isset($opschrift[$o_note_3][$i]) && (!empty($opschrift[$o_note_3][$i])) ) {
                     $opschriftTemp = $opschriftTemp."Taal: ".$opschrift[$o_note_3][$i]."\n";
                 }
-                if (isset($opschrift[$o_note_4][$i]) && (!empty($opschrift[$o_note_4][$i])) ) {
-                    $opschriftTemp = $opschriftTemp."Methode: ".$opschrift[$o_note_4][$i]."\n";
-                }
+#               if (isset($opschrift[$o_note_4][$i]) && (!empty($opschrift[$o_note_4][$i])) ) {
+#                   $opschriftTemp = $opschriftTemp."Methode: ".$opschrift[$o_note_4][$i]."\n";
+#               }
                 if (isset($opschrift[$o_note_5][$i]) && (!empty($opschrift[$o_note_5][$i])) ) {
                     $opschriftTemp = $opschriftTemp."Opm.: ".$opschrift[$o_note_5][$i]."\n";
                 }
-                if (isset($opschrift[$o_note_6][$i]) && (!empty($opschrift[$o_note_6][$i])) ) {
-                    $opschriftTemp = $opschriftTemp."Type: ".$opschrift[$o_note_6][$i]; }
+#               if (isset($opschrift[$o_note_6][$i]) && (!empty($opschrift[$o_note_6][$i])) ) {
+#                   $opschriftTemp = $opschriftTemp."Type: ".$opschrift[$o_note_6][$i];
+#               }
 
                 // een eventuele <enter> achteraan verwijderen
                 $o_notes = trim($opschriftTemp);
