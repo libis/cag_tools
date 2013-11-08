@@ -6204,6 +6204,28 @@
                                                                 <setting name="fieldHeight">1</setting>
                                                         </settings>
                                                 </metadataElement>
+                                        </elements>
+                                </metadataElement>
+                                <metadataElement code="dimensions_line3" datatype="Container">
+                                        <labels>
+                                                <label locale="nl_NL">
+                                                        <name>Dimensions</name>
+                                                </label>
+                                        </labels>
+                                        <settings/>
+                                        <elements>
+                                                <metadataElement code="dimensions_weight" datatype="Weight">
+                                                        <labels>
+                                                                <label locale="nl_NL">
+                                                                        <name>Gewicht</name>
+                                                                        <description></description>
+                                                                </label>
+                                                        </labels>
+                                                        <settings>
+                                                                <setting name="fieldWidth">6</setting>
+                                                                <setting name="fieldHeight">1</setting>
+                                                        </settings>
+                                                </metadataElement>
                                                 <metadataElement code="dimensions_dikte" datatype="Length">
                                                         <labels>
                                                                 <label locale="nl_NL">
@@ -6218,7 +6240,7 @@
                                                 </metadataElement>
                                         </elements>
                                 </metadataElement>
-                                <metadataElement code="dimensions_line3" datatype="Container">
+                                <metadataElement code="dimensions_line4" datatype="Container">
                                         <labels>
                                                 <label locale="nl_NL">
                                                         <name>Afmeting - Bijkomende info</name>
@@ -8749,14 +8771,14 @@
                 <metadataElement code="objectInventarisnrBpltsInfo" datatype="Container">
 				  <labels>
 					<label locale="nl_NL">
-					  <name>Inventarisnummer op bewaarplaats</name>
+					  <name>Gerelateerd nummer</name>
 					</label>
 				  </labels>
 				  <elements>
 					<metadataElement code="objectInventarisnrBplts_line1" datatype="Container">
 					  <labels>
 						<label locale="nl_NL">
-						  <name>Inventarisnummer op bewaarplaats</name>
+						  <name>Gerelateerd nummer</name>
 						</label>
 					  </labels>
 					  <settings/>
@@ -8764,7 +8786,7 @@
 						<metadataElement code="objectInventarisnrBplts_inst" datatype="Text">
 						  <labels>
 							<label locale="nl_NL">
-							  <name>Inventarisnummer op bewaarplaats - instelling</name>
+							  <name>Gerelateerd nummer - instelling</name>
 							</label>
 						  </labels>
 						  <settings>
@@ -8779,7 +8801,7 @@
 					<metadataElement code="objectInventarisnrBplts_line2" datatype="Container">
 					  <labels>
 						<label locale="nl_NL">
-						  <name>Inventarisnummer op bewaarplaats</name>
+						  <name>Gerelateerd nummer</name>
 						</label>
 					  </labels>
 					  <settings/>
@@ -8787,7 +8809,7 @@
 						<metadataElement code="objectInventarisnrBplts" datatype="Text">
 						  <labels>
 							<label locale="nl_NL">
-							  <name>Inventarisnummer op bewaarplaats</name>
+							  <name>Gerelateerd nummer</name>
 							</label>
 						  </labels>
 						  <settings>
@@ -8795,6 +8817,20 @@
 							<setting name="maxChars">65535</setting>
 							<setting name="fieldWidth">90</setting>
 							<setting name="fieldHeight">1</setting>
+						  </settings>
+						</metadataElement>
+						<metadataElement code="objectInventarisnrBpltsType" datatype="Text">
+						  <labels>
+							<label locale="nl_NL">
+							  <name>Type nummer</name>
+							</label>
+						  </labels>
+						  <settings>
+							<setting name="minChars">0</setting>
+							<setting name="maxChars">65535</setting>
+							<setting name="fieldWidth">90</setting>
+							<setting name="fieldHeight">1</setting>
+							<setting name="suggestExistingValues">1</setting>
 						  </settings>
 						</metadataElement>
 					  </elements>
@@ -9813,6 +9849,21 @@
                                                                 <label locale="nl_NL">
                                                                         <name>Verwerving - Datum</name>
                                                                         <description>pedigree.acquisition.date acquisition.date acquisition.date.precision</description>
+                                                                </label>
+                                                        </labels>
+                                                        <settings>
+                                                                <setting name="fieldWidth">40</setting>
+                                                                <setting name="fieldHeight">1</setting>
+                                                                <setting name="minChars">0</setting>
+                                                                <setting name="maxChars">65535</setting>
+                                                                <setting name="suggestExistingValues">1</setting>
+                                                        </settings>
+                                                </metadataElement>
+                                                <metadataElement code="acquisitionPlace" datatype="Place">
+                                                        <labels>
+                                                                <label locale="nl_NL">
+                                                                        <name>Verwerving - Plaats</name>
+                                                                        <description>nieuw veld</description>
                                                                 </label>
                                                         </labels>
                                                         <settings>
@@ -11808,7 +11859,7 @@
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Move - Objectnaam</name>
-                                        <description>nieuw veld?</description>
+                                        <description>nieuw veld</description>
                                 </label>
                         </labels>
                         <settings>
@@ -13736,6 +13787,46 @@
                                         <subTypeLeft></subTypeLeft>
                                         <subTypeRight></subTypeRight>
                                 </type>
+                                <type code="GebruiktdoorRelatie" default="0">
+					<labels>
+						<label locale="nl_NL">
+							<typename>gebruikt door</typename>
+							<typename_reverse>heeft gebruikt</typename_reverse>
+						</label>
+					</labels>
+					<subTypeLeft></subTypeLeft>
+					<subTypeRight></subTypeRight>
+				</type>
+				<type code="AtelierRelatie" default="0">
+					<labels>
+						<label locale="nl_NL">
+							<typename>komt uit atelier van</typename>
+							<typename_reverse>heeft in atelier</typename_reverse>
+						</label>
+					</labels>
+					<subTypeLeft></subTypeLeft>
+					<subTypeRight></subTypeRight>
+				</type>
+				<type code="ContactpersoonRelatie" default="0">
+					<labels>
+						<label locale="nl_NL">
+							<typename>heeft als contactpersoon</typename>
+							<typename_reverse>is contactpersoon voor</typename_reverse>
+						</label>
+					</labels>
+					<subTypeLeft></subTypeLeft>
+					<subTypeRight></subTypeRight>
+				</type>
+				<type code="OntvangerRelatie" default="0">
+					<labels>
+						<label locale="nl_NL">
+							<typename>heeft als ontvanger</typename>
+							<typename_reverse>is ontvanger van</typename_reverse>
+						</label>
+					</labels>
+					<subTypeLeft></subTypeLeft>
+					<subTypeRight></subTypeRight>
+				</type>
                         </types>
                 </relationshipTable>
                 <relationshipTable name="ca_objects_x_collections">
@@ -13871,8 +13962,8 @@
                                 <type code="documentatieRelatie" default="1">
                                         <labels>
                                                 <label locale="nl_NL">
-                                                        <typename>is documentatie van</typename>
-                                                        <typename_reverse>heeft als documentatie</typename_reverse>
+                                                        <typename>is bron van</typename>
+                                                        <typename_reverse>heeft als bron</typename_reverse>
                                                 </label>
                                         </labels>
                                         <subTypeLeft></subTypeLeft>
