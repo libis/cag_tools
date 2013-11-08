@@ -518,13 +518,14 @@ while ($reader->name === 'record') {
 //  Omtrek ->   Length: dimensions_circumference                                (id=40)
 //  Diameter -> Length: dimensions_diameter                                     (id=41)
 //  Lengte ->   Length: dimensions_lengte                                       (id=42)
+//  Gewicht->   Length: dimensions_weight                                       (id=)
 //  Dikte ->    Length: dimensions_dikte                                        (id=43)
 //  Bijk.Info-> Text: dimensions_notes (2) notes_2 bevat hoogte etc....         (id=45)
 //  ?? notes_2 dimensions_precisie  value unit
 
     $dim_note_1 = 'dimensions_notes_1';
     $dim_note_2 = 'dimensions_notes_2';
-    $dim_prec = 'dimensions_precision';
+    $dim_prec = 'dimensions_precisie';
     $unit ='unit';
     $value = 'value';
     $dim_deel = 'dimensionsDeel';
@@ -551,8 +552,10 @@ while ($reader->name === 'record') {
             $dimensions_circumference = '';
             $dimensions_diameter = '';
             $dimensions_lengte = '';
+            $dimensions_weight = '';
             $dimensions_dikte = '';
             $dimensionsDeel = '';
+            $dimensionsNoteTemp = array();
             $dimensionsNote = '';
 
             for ($i = 0; $i <= ($aantal) ; $i++) {
@@ -568,6 +571,10 @@ while ($reader->name === 'record') {
                 }
                 if ($dimensionsNaamOnderdeel !== $dimensionsNaamOnderdeel_old) {
 
+                    if (!empty($dimensionsNoteTemp)) {
+                        $dimensionsNote = implode("\n", $dimensionsNoteTemp);
+                    }
+
                     $container = "dimensionsInfo";
                     $data = array(  'locale_id'                 =>	$pn_locale_id,
                                     'dimensionsDeel'            =>	$dimensionsDeel,
@@ -578,6 +585,7 @@ while ($reader->name === 'record') {
                                     'dimensions_circumference'  =>	$dimensions_circumference,
                                     'dimensions_diameter'       =>	$dimensions_diameter,
                                     'dimensions_lengte'         =>	$dimensions_lengte,
+                                    'dimensions_weight'         =>      $dimensions_weight,
                                     'dimensions_dikte'          =>	$dimensions_dikte,
                                     'dimensions_notes'          =>      $dimensionsNote);
                     $my_objects->addSomeObjectAttribute($vn_left_id, $container, $data);
@@ -589,8 +597,10 @@ while ($reader->name === 'record') {
                     $dimensions_circumference = '';
                     $dimensions_diameter = '';
                     $dimensions_lengte = '';
+                    $dimensions_weight = '';
                     $dimensions_dikte = '';
-                    $dimensionsDeel= '';
+                    $dimensionsDeel = '';
+                    $dimensionsNoteTemp = array();
                     $dimensionsNote = '';
                     unset($data);
                     //en zetten de nieuwe naam in oud
@@ -622,10 +632,10 @@ while ($reader->name === 'record') {
                         if ( (!isset($afmeting[$unit][$i])) || (empty($afmeting[$unit][$i])) ) {
                             $afmeting[$unit][$i] = 'cm';
                         }
-                        //nagaan of waarde geen '-' bevat -> in opmerkingen
+                        //nagaan of waarde geen '-' bevat -> in opmerkingen plaatsen
                         if ( (strpos($afmeting[$value][$i],'-')) > 0 ) {
-                            $dimensionsNote =
-                            $afmeting[$dim_note_2][$i].' '.$afmeting[$value][$i].' '.$afmeting[$unit][$i]."\n";
+                            $dimensionsNoteTemp[$i] =
+                            $afmeting[$dim_note_2][$i].': '.$afmeting[$value][$i].' '.$afmeting[$unit][$i];
                         } else {
                             switch ($afmeting[$dim_note_2][$i]) {
                                case "breedte" :
@@ -647,12 +657,15 @@ while ($reader->name === 'record') {
                                case "lengte";
                                    $dimensions_lengte = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
                                    break;
+                               case "gewicht";
+                                   $dimensions_weight = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                   break;
                                case "dikte":
                                    $dimensions_dikte = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
                                    break;
                                default:
-                                   $dimensionsNote =
-                                   $afmeting[$dim_note_2][$i].' '.$afmeting[$value][$i].' '.$afmeting[$unit][$i]."\n";
+                                   $dimensionsNoteTemp[$i] =
+                                   $afmeting[$dim_note_2][$i].': '.$afmeting[$value][$i].' '.$afmeting[$unit][$i];
                                    break;
                            }
                         }
@@ -660,26 +673,21 @@ while ($reader->name === 'record') {
 
                     //precision (in $dimensionsNote veld (samen met dimensions_notes_1)
                     if ( (isset($afmeting[$dim_prec][$i])) && (!empty($afmeting[$dim_prec][$i]))  ) {
-                        //controle of de opmerking er niet al in zit
-                        if (!stristr($dimensionsNote, $afmeting[$dim_prec][$i])) {
-                            $dimensionsNote = $dimensionsNote.$afmeting[$dim_prec][$i].' ';
-                        }
-                        if ( (isset($afmeting[$dim_note_1][$i])) && (!empty($afmeting[$dim_note_1][$i]))  ) {
-                           if (!stristr($dimensionsNote, $afmeting[$dim_note_1][$i])) {
-                                $dimensionsNote = $dimensionsNote.$afmeting[$dim_note_1][$i].' ';
-                           }
-                        }
-                    }else{      //geen precision info
-                       if ( (isset($afmeting[$dim_note_1][$i])) && (!empty($afmeting[$dim_note_1][$i]))  ) {
-                           if (!stristr($dimensionsNote, $afmeting[$dim_note_1][$i])) {
-                                $dimensionsNote = $dimensionsNote.$afmeting[$dim_note_1][$i].' ';
-                           }
-                       }
+                        $dimensionsNoteTemp[$i] = $afmeting[$dim_note_2][$i].': '.$afmeting[$dim_prec][$i].' '.$dimensionsNoteTemp[$i];
+                    }
+                    //bijkomende opmerking
+                    if ( (isset($afmeting[$dim_note_1][$i])) && (!empty($afmeting[$dim_note_1][$i]))  ) {
+                         $dimensionsNoteTemp[$i] = $dimensionsNoteTemp[$i].' == '.$afmeting[$dim_note_1][$i];
                     }
                 }
 
                 if ($afmeting_aantal === ($i + 1) ) {
                     //print 'enige of laatste iteratie';
+
+                    if (!empty($dimensionsNoteTemp)) {
+                        $dimensionsNote = implode("\n", $dimensionsNoteTemp);
+                    }
+
                     $container = "dimensionsInfo";
                     $data = array(  'locale_id'                 =>	$pn_locale_id,
                                     'dimensionsDeel'            =>	$dimensionsDeel,
@@ -690,6 +698,7 @@ while ($reader->name === 'record') {
                                     'dimensions_circumference'  =>	$dimensions_circumference,
                                     'dimensions_diameter'       =>	$dimensions_diameter,
                                     'dimensions_lengte'         =>	$dimensions_lengte,
+                                    'dimensions_weight'         =>      $dimensions_weight,
                                     'dimensions_dikte'          =>	$dimensions_dikte,
                                     'dimensions_notes'          =>      $dimensionsNote);
                     $my_objects->addSomeObjectAttribute($vn_left_id, $container, $data);
@@ -703,8 +712,10 @@ while ($reader->name === 'record') {
                     unset($dimensions_circumference);
                     unset($dimensions_diameter);
                     unset($dimensions_lengte);
+                    unset($dimensions_weight);
                     unset($dimensions_dikte);
                     unset($dimensionsDeel);
+                    unset($dimensionsNoteTemp);
                     unset($dimensionsNote);
                 }
             }
