@@ -67,10 +67,10 @@ while ($reader->name === 'record') {
     $idno = sprintf('%08d', $teller);
     // voor sinttruiden
     if (__PART__ === "ST"){
-        $idno = 'st_'.$idno;
+        $idno = 'st'.$idno;
     }
     if (__PART__ === "TEST"){
-        $idno = 'test_'.$idno;
+        $idno = 'test'.$idno;
     }
     $log->logInfo('idno ',($idno));
 

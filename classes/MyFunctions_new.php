@@ -7,49 +7,65 @@
 class MyFunctions_new
 {
     function idLocale($taal) {
-        //initialiseren objecten read or write
+//***
         $t_locale = new ca_locales();
         $locale_id = $t_locale->loadLocaleByCode($taal);
 
+        if (empty($locale_id)) {
+            throw new UserException(UserErrors::INVALIDLOCAL);
+        }
         return $locale_id;
     }
 
     function setLogging() {
-        $logDir = "/www/libis/vol03/lias_html/cag_tools-staging/shared/log/";
+//***
+        $logDir = __MY_DIR__."/cag_tools-staging/shared/log/";
         $log = new KLogger($logDir, KLogger::DEBUG);
 
         return $log;
     }
 
-    /**
-    //inlezen (in array) mapping-bestand
-    function setMapping($bestand, $o_myfunc) {
-        $mapping = __CA_BASE_DIR__."/cag_tools/mapping/".$bestand;
-        $mappingarray = $o_myfunc->ReadMappingcsv($mapping);
-        return $mappingarray;
+    function cleanUp($value) {
+//***
+        //todo: als woord begint met de of een -> moet met komma blanco achterraan komen
+        //        de boerenbond -> boerenbond, de
+        //$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
+        //$value = preg_replace("%[^-/+|\w ]%", ' ', $value);
+        $search = array("'", '"', '-', '_', '+', '|', '^', '[', ']', '/', '%', '%', '.', ',', '(', ')');
+        $replace = ' ';
+        $value = str_replace($search, $replace, $value);
+        $value = strtoupper(trim($value));
+        //$title = preg_replace("/[\/_|+ -]+/", $separator, $title);
+        if ((substr($value, 0, 4) === 'HET ')) {
+            $value = substr($value, 4).', HET';
+        }
+        if ((substr($value, 0, 3) === 'DE ')) {
+            $value = substr($value, 3).', DE';
+        }
+        return $value;
     }
-     *
-     */
 
     //inlezen configuratiebestand naar array
     function ReadMappingcsv($bestand) {
-            $file = __MY_DIR_2__."/cag_tools/mapping/".$bestand;
-            $data = array();
-            if (($fh = fopen($file, "r")) !== FALSE) {
-                $i = 0;
-                while (($lineArray = fgetcsv($fh, 200, ';')) !== FALSE) {
-                    for ($j=0; $j<count($lineArray); $j++) {
-                        $data[$i][$j] = $lineArray[$j];
-                    }
-                    $i++;
+//***
+        $file = __MY_DIR__."/cag_tools/mapping/".$bestand;
+        $data = array();
+        if (($fh = fopen($file, "r")) !== FALSE) {
+            $i = 0;
+            while (($lineArray = fgetcsv($fh, 200, ';')) !== FALSE) {
+                for ($j=0; $j<count($lineArray); $j++) {
+                    $data[$i][$j] = $lineArray[$j];
                 }
-                fclose($fh);
+                $i++;
             }
-            return $data;
+            fclose($fh);
+        }
+        return $data;
     }
 
     // inlezen XML-node naar array
     function ReadXMLnode($reader) {
+//***
             $dom = new DOMDocument;
             $node = simplexml_import_dom($dom->importNode($reader->expand(), true));
             $json = json_encode($node);
@@ -59,7 +75,7 @@ class MyFunctions_new
 
     //De XMLArray converteren naar Array met enkel benodigde gegevens
     function XMLArraytoResultArray($xmlarray,$mappingarray){
-
+//***
         //maken array van de te weerhouden tags (op basis van Mapping-bestand
         $hooiberg = array();
         for ($j = 1; $j <= count($mappingarray) - 1 ; $j++) {
@@ -104,55 +120,6 @@ class MyFunctions_new
         return $exists;
     }
 
-    function createList($listcode, $data, $locale) {
-            $message = "";
-            if (is_array($data))
-            {
-                foreach($data as $value)
-                {
-                    if (!(is_array($value)) && (!empty($value)) )
-                    {
-                        $message = $message.$this->createListItem($listcode, $value, $locale);
-                    }
-                }
-            } else {
-                if (!empty($data)){
-                    $message = $this->createListItem($listcode, $data, $locale);
-                }
-            }
-            return $message;
-    }
-
-    function createListItem($listcode, $data, $locale) {
-            $t_list = new ca_lists();
-            $t_list->load(array('list_code' => $listcode));
-
-            $t_item = $t_list->getItemIDFromList($listcode, trim($data));
-
-            if ($t_item){
-                $message = "Item {$data}/{$t_item} bestaat reeds \n";
-            }else{
-
-                $t_item = $t_list->addItem(trim($data), true, false, null, null,
-                                           trim($data),'', 4, 1);
-                if (!$t_item){
-                    $message = "Toevoegen item {$data} mislukt \n";
-                } else {
-                    //add preferred labels
-                    if (!($t_item->addLabel(array(
-                        'name_singular' => trim($data),
-                        'name_plural'   => trim($data),
-                        'description'   =>  ''
-                    ),$locale, null, true ))) {
-                            $message =  "ERROR ADD LABEL TO ".($data).": ".join("; ", $t_item->getErrors())."  \n  ";
-                    }else{
-                            $message =  "addlabel {$data} gelukt \n";
-                    }
-                }
-            }
-            return $message;
-    }
-
     function createPlace($key, $parent, $place, $hierarchy, $locale, $log) {
         $t_place =  new ca_places_bis();
         //$parent = $t_place->getPlaceIDsByName($key);
@@ -191,6 +158,7 @@ class MyFunctions_new
         return $vn_rc;
     }
 
+    /*
     function createEntity($Identificatie, $type, $status, $locale) {
         $t_entity = new ca_entities();
         $t_entity->setMode(ACCESS_WRITE);
@@ -215,8 +183,9 @@ class MyFunctions_new
         {   print "ERROR ADD LABEL TO {$Identificatie}: ".join('; ', $t_entity->getErrors())."<br/>";   }
 
         return $vn_rc;
-
     }
+     *
+     */
     //lijkt niet te werken, maar waarom ??? -> te onderzoeken
     function createListItem2($listcode, $data, $locale) {
         $t_list = new ca_lists();
@@ -321,17 +290,28 @@ class MyFunctions_new
         return $resultarray2;
     }
 
+    function cleanDateSpecial($string) {
+
+        $zoek = array('(moeilijk leesbaar)', 'moeilijk leesbaar');
+        $result = trim(str_replace($zoek, '', $string));
+
+        return $result;
+    }
+
     function cleanDate($string, $type) {
-        if ($type == "links") {
-            $zoek = array('(moeilijk leesbaar)', 'moeilijk leesbaar', 'exact',
-                          'kort na', 'of kort na', 'of iets vroeger', 'of later',
-                          'vroeger dan', 'of kort erna');
-        } elseif ($type == "rechts") {
+        if ($type === "links") {
+            $zoek = array('exact');
+            $temp = trim(str_replace($zoek, '', $string));
+            $zoek2 = array('kort na', 'of kort na', 'of iets vroeger', 'of later', 'vroeger dan', 'of kort erna');
+            $vervang2 = 'circa';
+            $result = trim(str_replace($zoek2, $vervang2, $temp));
+        } elseif ($type === "rechts") {
             $zoek = array('circa', 'ongeveer', 'exact', );
+            $result = trim(str_replace($zoek, '', $string));
         } else {
             throw new Exception("type 'links' of 'rechts' is vereist" );
         }
-        return trim(str_replace($zoek,'',$string));
+        return $result;
     }
 
     function stringJoin($string1, $string2, $delimit) {
@@ -359,17 +339,17 @@ class MyFunctions_new
     }
 
     # OKE
-    function Initialiseer($variabelen){
+    function Initialiseer(&$variabelen){
         if (is_array($variabelen)) {
 
             foreach ($variabelen as $value) {
-                return $$value = "";
+                return $$value = '';
             }
         }
     }
 
     # OKE
-    function Vernietig($variabelen){
+    function Vernietig(&$variabelen){
         if (is_array($variabelen)) {
 
             foreach ($variabelen as $value) {
@@ -399,24 +379,6 @@ class MyFunctions_new
         }
         return $message ;
     }
- *
- */
-
-    function createContainer($object, $data , $info, $container){
-
-        $object->addAttribute($data, $container);
-
-        $object->update();
-
-        if ($object->numErrors()) {
-               $message =  "ERROR UPDATING {$container} / {$info} ".
-                       join('; ', $object->getErrors())."\n";
-        }else{
-               $message = "update {$container} / {$info} gelukt \n";
-        }
-        return $message;
-    }
-
 
     function createRelationship($object, $right, $vs_right_string, $relationship) {
         #1 documentatie + container: regPaginaInfo
@@ -476,6 +438,8 @@ class MyFunctions_new
             return $message;
         }
     }
+ *
+ */
 
     function check_input($key, $input)
     {
@@ -484,7 +448,7 @@ class MyFunctions_new
         if ( (is_array($input)) and (empty($input)) )
         {   $input = '';    }
 
-        if (($key == '$adresWebsite') and (substr($input,0,7) != 'http://'))
+        if (($key === '$adresWebsite') and (substr($input,0,7) !== 'http://'))
         {
             $input = 'http://'.$input;
         } else {
@@ -536,4 +500,3 @@ class MyFunctions_new
         return false;
     }
 }
-

@@ -1,0 +1,59 @@
+Volgorde uitvoeren programma's:
+
+SERVER  DONE    CLA*LOG**1. Lists.php
+                    OLD**1. cag_lists.php               ok  (inclusief trefwoorden)
+SERVER  DONE    CLA*LOG**2. Places.php
+                    OLD*LOG**5. cag_plaatsen_new.php    ok
+                        OLD**5. cag_plaatsen.php
+SERVER  DONE    CLA*LOG**2.a. PlacesAlternatives.php    ok
+
+Opgelet: manueel DIVERSEN toevoegen - niet meer nodig: opgevangen in Places.php
+
+SERVER  DONE    LOG**3. cag_collecties.php              ok  (ahv key van array)
+SERVER  DONE    LOG**4. cag_entities_new.php
+                    OLD**4. cag_entities.php            ok  (bevat nog aantal 'eigen' functies)
+SERVER  DONE    LOG**4a. cag_entities_2_new.php  (new)  ok  (ahv key van array)
+SERVER  DONE    LOG**5. cag_entities_relaties_new.php   ok
+                    OLD**5. cag_entities_relaties.php
+SERVER  DONE    **6. import_am_move.php                 ok
+
+SERVER  DONE    LOG**7. cag_occurrences.php             ok
+SERVER  DONE    LOG**7a. cag_occurrences_2.php          ok  nieuw programma
+
+================================================================================
+
+DONE    My_CAG  TYPE=CREATE - META=ALL - PART="" (objecten.xml)
+DONE    My_CAG  TYPE=CREATE - META=ALL - PART="ST" (sinttruiden.xml)
+SERVER  DONE    LOGXXX**8a. cag_objecten_new.php
+            OLDXXX**8. cag_objecten.php
+
+DONE    My_CAG  TYPE=UPDATE - META=ALL_2 - PART="" (objecten.xml)
+DONE    My_CAG  TYPE=UPDATE - META=ALL_2 - PART="ST" (sinttruiden.xml)
+SERVER  DONE    LOGXXX**9a. cag_objecten_2new.php
+            OLDXXX**9. cag_objecten_2.php
+
+DONE    My_CAG  TYPE=RELATION - META=RELAT - PART="" (objecten.xml)
+DONE    My_CAG  TYPE=RELATION - META=RELAT - PART="ST" (sinttruiden.xml)
+SERVER  DONE    LOGXXX**10. cag_objecten_relaties_new.php
+            OLDXXX**10. cag_objecten_relaties.php
+
+SERVER  LOG**11. cag_werktuigen.php
+SERVER  LOG**12. cag_werktuigen_relaties.php       hier wordt derde reeks occur gemaakt (vanaf idno 200) inclusief relaties
+SERVER  LOG**13. cag_kaasmakerij.php               ok
+
+SERVER  LOG**17. cag_sets.php
+
+SERVER  LOG**20. cag_afbeeldingen.php
+
+
+Extends van de CA-models programma's:
+1. ca_objects_bis.php
+        function getObjectIDsByIdno
+        function getObjectIDsByElementID
+2. ca_places_bis.php
+        function getPlaceIDsByNamePart
+3. ca_entitites_bis.php
+        function getEntityIDByIdno
+
+Eigen functies
+1. MyFunctions_new.php

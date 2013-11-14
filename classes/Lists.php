@@ -10,7 +10,7 @@
 
 class Lists
 {
-    public function createCAGList($xml, $gegeven, $lijst, $pn_locale_id, $mappingarray)
+    public function createList($xml, $gegeven, $lijst, $pn_locale_id, $mappingarray)
     {
         global $log;
         global $t_func;
@@ -19,7 +19,7 @@ class Lists
 
         //inlezen xml-bestand met XMLReader, node per node
         $reader2 = new XMLReader();
-        $reader2->open(__MY_DIR__."/cag_tools/data/".$xml);
+        $reader2->open(__MY_DIR__.__MY_DATA__.$xml);
 
         while ($reader2->read() && $reader2->name !== "record");
         //=====================================================begin van de loop
@@ -41,7 +41,7 @@ class Lists
 
                 $aantal = $aantal_on - 1 ;
 
-                for ($i=0; $i <= $aantal; $i++){
+                for ($i=0; $i <= $aantal; $i++) {
 
                     if (!empty($res_on[$gegeven][$i])) {
 
@@ -76,10 +76,10 @@ class Lists
 
     public function createListItem($listcode, $data, $locale) {
 
-        global $log;
+       global $log;
 
-        $t_list = new ca_lists();
-        $t_list->load(array('list_code' => $listcode));
+       $t_list = new ca_lists();
+       $t_list->load(array('list_code' => $listcode));
 
        $listitem = $t_list->getItemIDFromList($listcode, trim($data));
 

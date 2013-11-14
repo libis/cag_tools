@@ -2,9 +2,8 @@
 # CREATE or UPDATE or RELATION
 define("__TYPE__", "RELATION");
 # blank of ST of TEST
-define("__PART__", "");
-# welk onderdeel ????)
-# kies uit: voor # cag_objecten.php
+define("__PART__", "ST");
+
 # 1.2. adlibObjectNummer     -> singlefield: adlibObjectNummer,
 # 1.3. CAG objectnaam        -> container: objectNaam,
 # 1.4. Alternatieve benaming -> singlefieldarray: Alternatief,
@@ -12,7 +11,6 @@ define("__PART__", "");
 # 2.1. Fysieke beschrijving  -> singlefield: physicalDescription,
 # 2.2. Aantal objecten       -> singlefieldarray: numberOfObjects
 # 2.5. Opschrift             -> container: opschrift
-#                   voor cag_objecten_2.php
 # 2.7. Materiaal             -> container: materiaal
 # 2.8. Afmetingen            -> container: afmeting
 # 2.9. Volledigheid          -> container: completeness
@@ -30,16 +28,14 @@ define("__PART__", "");
 # 8. verworven               -> entities
 # 9. related                 -> objects (+update object)
 #
-# ALL or ALL_2 or RELAT
-define("__META__", "vervaardiging");
 
 # xml-file: objecten.xml of sinttruiden.xml
 if (__PART__ == "") {
-    define("__DATA__", __MY_DIR_2__."/cag_tools/data/objecten.xml");
+    define("__DATA__", __MY_DIR__."/cag_tools/data/objecten.xml");
 } elseif (__PART__ == "ST") {
-    define("__DATA__", __MY_DIR_2__."/cag_tools/data/sinttruiden.xml");
+    define("__DATA__", __MY_DIR__."/cag_tools/data/sinttruiden.xml");
 }elseif (__PART__ == "TEST"){
-    define("__DATA__", __MY_DIR_2__."/cag_tools/data/test_objecten.xml");
+    define("__DATA__", __MY_DIR__."/cag_tools/data/test_objecten.xml");
 }
 
 # csv-file
@@ -48,6 +44,3 @@ if (__TYPE__ == "RELATION") {
 }else{
     define("__MAPPING__", "cag_objecten_mapping.csv");
 }
-
-# log-file
-define("__LOGGING__", __MY_DIR_2__."/cag_tools/log/objecten_".__PART__."_".__META__."_output.log");
