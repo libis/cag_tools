@@ -62,10 +62,10 @@ while ($reader->name === 'record' ) {
     $idno = sprintf('%08d', $teller);
     // voor sinttruiden
     if (__PART__ === "ST"){
-        $idno = 'st_'.$idno;
+        $idno = 'st'.$idno;
     }
     if (__PART__ === "TEST"){
-        $idno = 'test_'.$idno;
+        $idno = 'test'.$idno;
     }
     $log->logInfo('idno ',($idno));
     $log->logInfo("adlibObjectNummer", $resultarray['adlibObjectNummer']);
@@ -380,7 +380,8 @@ while ($reader->name === 'record' ) {
 
                 $zoek = array('circa', 'jaren', 'vóór', 'voor');
 
-                if (strstr($vervaardigingDate, $zoek)) {
+                if ( (strstr($vervaardigingDate, 'circa')) || (strstr($vervaardigingDate, 'jaren')) ||
+                     (strstr($vervaardigingDate, 'vóór'))  || (strstr($vervaardigingDate, 'voor')) ) {
                     $temp[] = $vervaardigingDate;
                     $vervaardigingDate_org = $vervaardigingDate;
                     $vervaardigingDate = trim(str_replace($zoek, '', $vervaardigingDate));
@@ -552,7 +553,7 @@ while ($reader->name === 'record' ) {
             unset($relationship);
         }
     }
-    
+
     /* refactoring dubbele code
     if ( (isset($resultarray[$col_1])) && (!empty($resultarray[$col_1])) ) {
 
