@@ -633,51 +633,53 @@ while ($reader->name === 'record') {
                             $afmeting[$unit][$i] = 'cm';
                         }
                         //nagaan of waarde geen '-' bevat -> in opmerkingen plaatsen
-                        if ( (strpos($afmeting[$value][$i],'-')) > 0 ) {
-                            $dimensionsNoteTemp[$i] =
+                        if ( (strpos($afmeting[$value][$i],'-') > 0 ) ||  (strpos($afmeting[$value][$i],'+') > 0 ) ) {
+                            $dimensionsNoteTemp[] =
                             $afmeting[$dim_note_2][$i].': '.$afmeting[$value][$i].' '.$afmeting[$unit][$i];
                         } else {
-                            switch ($afmeting[$dim_note_2][$i]) {
-                               case "breedte" :
-                                   $dimensions_width = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "hoogte";
-                                   $dimensions_height = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "diepte":
-                                   $dimensions_depth = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "omtrek":
-                                   $dimensions_circumference = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "diameter":
-                               case "doorsnede":
-                                   $dimensions_diameter = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "lengte";
-                                   $dimensions_lengte = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "gewicht";
-                                   $dimensions_weight = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               case "dikte":
-                                   $dimensions_dikte = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                               default:
-                                   $dimensionsNoteTemp[$i] =
-                                   $afmeting[$dim_note_2][$i].': '.$afmeting[$value][$i].' '.$afmeting[$unit][$i];
-                                   break;
-                           }
+                            if ( (isset($afmeting[$value][$i])) && (!empty($afmeting[$value][$i])) ) {
+                                switch ($afmeting[$dim_note_2][$i]) {
+                                   case "breedte" :
+                                       $dimensions_width = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "hoogte";
+                                       $dimensions_height = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "diepte":
+                                       $dimensions_depth = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "omtrek":
+                                       $dimensions_circumference = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "diameter":
+                                   case "doorsnede":
+                                       $dimensions_diameter = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "lengte";
+                                       $dimensions_lengte = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "gewicht";
+                                       $dimensions_weight = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   case "dikte":
+                                       $dimensions_dikte = $afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                                   default:
+                                       $dimensionsNoteTemp[] =
+                                       $afmeting[$dim_note_2][$i].': '.$afmeting[$value][$i].' '.$afmeting[$unit][$i];
+                                       break;
+                               }
+                            }
                         }
                     }
 
                     //precision (in $dimensionsNote veld (samen met dimensions_notes_1)
                     if ( (isset($afmeting[$dim_prec][$i])) && (!empty($afmeting[$dim_prec][$i]))  ) {
-                        $dimensionsNoteTemp[$i] = $afmeting[$dim_note_2][$i].': '.$afmeting[$dim_prec][$i].' '.$dimensionsNoteTemp[$i];
+                        $dimensionsNoteTemp[] = $afmeting[$dim_note_2][$i].': '.$afmeting[$dim_prec][$i];
                     }
                     //bijkomende opmerking
                     if ( (isset($afmeting[$dim_note_1][$i])) && (!empty($afmeting[$dim_note_1][$i]))  ) {
-                         $dimensionsNoteTemp[$i] = $dimensionsNoteTemp[$i].' == '.$afmeting[$dim_note_1][$i];
+                         $dimensionsNoteTemp[] = $afmeting[$dim_note_2][$i].': '.$afmeting[$dim_note_1][$i];
                     }
                 }
 
