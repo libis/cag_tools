@@ -34,7 +34,7 @@ $data[] = array('objecten.xml', 'trefwoord_4', 'cag_trefwoorden');
 $count = sizeof($data) - 1;
 
 for ($i = 0; $i <= $count; $i++) {
-    $t_lijst->createCAGList($data[$i][0], $data[$i][1], $data[$i][2], $pn_locale_id, $mappingarray);
+    $t_lijst->createList($data[$i][0], $data[$i][1], $data[$i][2], $pn_locale_id, $mappingarray);
 }
 
 $log->logInfo("Einde CAGList");
