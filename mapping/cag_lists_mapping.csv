@@ -2,5 +2,6 @@ origin;destination;tabblad;scherm;bestand
 object_number;adlibObjectNummer;identificatie;objectnummer;
 object_name;objectNaam;identificatie;objectnaam;
 association.subject;trefwoord_1;inhoudelijke;trefwoord;
+association.subject.type;trefwoord_2;inhoudelijke;trefwoord;
 content.subject;trefwoord_3;inhoudelijke;trefwoord;
 content.subject.name;trefwoord_4;inhoudelijke;trefwoord;

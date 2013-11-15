@@ -1,6 +1,6 @@
 origin;destination;tabblad;scherm;bestand;groep
 description;inhoudBeschrijving;inhoud;inhoud;ca_objects;all
-institution.name;Bewaarinstelling;Bewaarinstelling;Verwerving;ca_entities;all
+institution.name;bewaarinstelling;bewaarinstelling;Verwerving;ca_entities;all
 object_category;objectNaam_1;CAG_objectnaam;Identificatie;ca_objects;all
 object_name;objectNaam_2;CAG_objectnaam;Identificatie;ca_objects;all
 object_number;adlibObjectNummer;ObjectNummer;Identificatie;ca_objects;all

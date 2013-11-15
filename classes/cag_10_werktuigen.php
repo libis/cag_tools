@@ -2,33 +2,21 @@
 /* Doel van dit programma:
  *
  */
-error_reporting(-1);
-set_time_limit(0);
-$type = "SERVER";
-
-if ($type == "LOCAL") {
-    define("__MY_DIR__", "c:/xampp/htdocs");
-    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
-}
-if ($type == "SERVER") {
-    define("__MY_DIR__", "/www/libis/vol03/lias_html");
-    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
-}
 define("__PROG__","werktuigen");
-require_once(__MY_DIR__."/ca_cag/setup.php");
-require_once(__CA_LIB_DIR__."/core/Db.php");
-require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once(__MY_DIR_2__.'/cag_tools/classes/ca_objects_bis.php');
-require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
-//require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
 
-include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
+include('header.php');
+
+require_once(__MY_DIR__."/cag_tools/classes/ca_objects_bis.php");
+require_once(__MY_DIR__."/cag_tools/classes/Objects.php");
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
+$t_object = new ca_objects_bis();
+$my_objects = new Objects();
+
 $pn_object_type_id = $t_list->getItemIDFromList('object_types', 'cagConceptVoorwerp_type');
 $preferred_use = $t_list->getItemIDFromList('object_label_types', 'uf');
 $preferred_alt = $t_list->getItemIDFromList('object_label_types', 'alt');
@@ -40,7 +28,7 @@ $mappingarray = $t_func->ReadMappingcsv("cag_werktuigen_mapping.csv");
 
 //inlezen xml-bestand met XMLReader, node per node
 $reader = new XMLReader();
-$reader->open(__MY_DIR_2__."/cag_tools/data/Werktuigen.xml");
+$reader->open(__MY_DIR__."/cag_tools/data/Werktuigen.xml");
 
 while ($reader->read() && $reader->name !== 'record');
 //==============================================================================begin van de loop
@@ -54,9 +42,9 @@ while ($reader->name === 'record' ) {
 
     $teller = $teller + 1;
     $log->logInfo( '=========='.$teller.'========');
-
+    $log->logInfo('de originele data', $resultarray);
     $idno = sprintf('%04d', $teller);
-    $idno = 'concept_'.$idno;
+    $idno = 'concept'.$idno;
     $log->logInfo("idno: ", $idno);
 
     //einde inlezen één record, begin verwerking één record
@@ -80,7 +68,7 @@ while ($reader->name === 'record' ) {
     if (isset($resultarray['publication_data']) && (strtoupper($resultarray['publication_data'])) == 'JA' ) {
         $status1 = 'JA';
     } else {
-        $status1 = 'nee';
+        $status1 = 'NEE';
     }
 
     if (($status1 == 'JA') )    {   $status = $t_list->getItemIDFromList('workflow_statuses', 'i2');}
@@ -88,36 +76,9 @@ while ($reader->name === 'record' ) {
     if (($status1 == 'NEE'))    {   $status = $t_list->getItemIDFromList('workflow_statuses', 'i0');}
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    $t_object = new ca_objects();
-    $t_object->setMode(ACCESS_WRITE);
-    $t_object->set('type_id', $pn_object_type_id);
-    //opgelet !!! vergeet leading zeros niet
-    $t_object->set('idno', $idno);
-    $t_object->set('status', $status); //workflow_statuses
-    $t_object->set('access', 1);       //1=accessible to public
-    $t_object->set('locale_id', $pn_locale_id);
-    //----------
-    $t_object->insert();
-    //----------
-    if ($t_object->numErrors()) {
-        $log->logInfo("ERROR INSERTING ".$vs_Identificatie.": ".join('; ', $t_object->getErrors()));
-        continue;
-    }else{
-        $log->logInfo('insert '.$vs_Identificatie.' gelukt ');
-        //----------
-        $t_object->addLabel(array(
-                'name'      => $vs_Identificatie
-        ),$pn_locale_id, null, true );
+    $vn_left_id = $my_objects->insertObject($vs_Identificatie, $idno, $status, $pn_object_type_id, $pn_locale_id);
 
-        if ($t_object->numErrors()) {
-            $log->logInfo("ERROR ADD LABEL TO " .$vs_Identificatie.": ".join('; ', $t_object->getErrors()));
-            continue;
-        }else{
-            $log->logInfo('addlabel '.$vs_Identificatie.' gelukt');
-        }
-    }
-
-    $resultarray['primary_key'] = $t_object->getPrimaryKey();
+    $log->logInfo('object_id ',($vn_left_id));
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //Alternatieve Naam
@@ -199,24 +160,14 @@ while ($reader->name === 'record' ) {
     //De verwerking
     //**************************************************************************
     //
-    foreach ($singlefield as $value)
-    {
-        if (isset($resultarray[$value]))
-        {
-            $t_object->addAttribute(array(
-                    $value          =>  trim($resultarray[$value]),
-                    'locale_id'     =>  $pn_locale_id
-            ), $value);
-            //-------------
-            $t_object->update();
-            //-------------
-
-            if ($t_object->numErrors()) {
-                    $log->logInfo("ERROR UPDATING ".$value.": ".join('; ', $t_object->getErrors()));
-                    continue;
-            }else{
-                    $log->logInfo('update '.$value.' gelukt ');
-            }
+    foreach ($singlefield as $value) {
+        if ( (isset($resultarray[$value])) && (!empty($resultarray[$value])) ) {
+            $container = $value;
+            $data = array($value    =>  trim($resultarray[$value]),
+                    'locale_id'     =>  $pn_locale_id);
+            $my_objects->addSomeObjectAttribute($vn_left_id, $container, $data);
+            unset($container);
+            unset($data);
         }
     }
 

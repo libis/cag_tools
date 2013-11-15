@@ -30,29 +30,15 @@
 /*
  * Step 1: Initialisation
  */
-error_reporting(-1);
-set_time_limit(36000);
-$type = "SERVER";
+define("__PROG__","move");
 
-if ($type == "LOCAL") {
-    define("__MY_DIR__", "c:/xampp/htdocs");
-    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
-}
-if ($type == "SERVER") {
-    define("__MY_DIR__", "/www/libis/vol03/lias_html");
-    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
-}
+include('header.php');
 
-define("__PROG__","entities_2");
-require_once(__MY_DIR__."/ca_cag/setup.php");
-require_once(__CA_LIB_DIR__.'/core/Db.php');
-require_once(__CA_MODELS_DIR__.'/ca_locales.php');
-require_once(__CA_MODELS_DIR__.'/ca_lists.php');
 require_once(__CA_MODELS_DIR__.'/ca_list_items.php');
 require_once(__CA_MODELS_DIR__.'/ca_list_items_x_list_items.php');
 require_once(__CA_MODELS_DIR__.'/ca_relationship_types.php');
 
-if (!file_exists(__MY_DIR_2__.'/cag_tools/data/AmoveThes 2012-09.xml')) {
+if (!file_exists(__MY_DIR__.'/cag_tools/data/AmoveThes 2012-09.xml')) {
 	die("ERROR: you must place the am_move.xml data file in the same directory as this script.\n");
 }
 //$_ = new Zend_Translate('gettext', __CA_APP_DIR__.'/locale/nl_NL/messages.mo', 'en_US');
@@ -148,7 +134,7 @@ $logFile = fopen("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/am_mov
 
 // load voc_terms
 $o_xml = new XMLReader();
-$o_xml->open(__MY_DIR_2__.'/cag_tools/data/AmoveThes 2012-09.xml');
+$o_xml->open(__MY_DIR__.'/cag_tools/data/AmoveThes 2012-09.xml');
 
 /*
  * Step 2: Import

@@ -2,34 +2,20 @@
 /* Doel van dit programma:
  *
  */
-error_reporting(-1);
-set_time_limit(36000);
-$type = "SERVER";
-
-if ($type == "LOCAL") {
-    define("__MY_DIR__", "c:/xampp/htdocs");
-    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
-}
-if ($type == "SERVER") {
-    define("__MY_DIR__", "/www/libis/vol03/lias_html");
-    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
-}
 define("__PROG__","sets");
-require_once(__MY_DIR__."/ca_cag/setup.php");
-require_once(__CA_LIB_DIR__."/core/Db.php");
-require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once(__CA_MODELS_DIR__.'/ca_sets.php');
-require_once(__MY_DIR_2__.'/cag_tools/classes/ca_objects_bis.php');
-require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
-//require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
 
-include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
+include('header.php');
+
+require_once(__CA_MODELS_DIR__.'/ca_sets.php');
+require_once(__MY_DIR__."/cag_tools/classes/ca_objects_bis.php");
+require_once(__MY_DIR__."/cag_tools/classes/Objects.php");
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
+
 $vn_set_type_id	= $t_list->getItemIDFromList('set_types', 'public_presentation');
 //==============================================================================initialisaties
 $teller = 0;
@@ -41,7 +27,7 @@ $mappingarray = $t_func->ReadMappingcsv("cag_sets_mapping.csv");
 
 //inlezen xml-bestand met XMLReader, node per node
 $reader = new XMLReader();
-$reader->open(__MY_DIR_2__."/cag_tools/data/objecten.xml");
+$reader->open(__MY_DIR__."/cag_tools/data/objecten.xml");
 
 while ($reader->read() && $reader->name !== 'record');
 //==============================================================================begin van de loop
@@ -51,27 +37,26 @@ while ($reader->name === 'record' ) {
 
     $resultarray = $t_func->XMLArraytoResultArray($xmlarray,$mappingarray);
 
-    $teller = $teller+1;
+    $teller = $teller + 1;
     $log->logInfo( '=========='.$teller.'========');
 
     if (!empty($resultarray)) {
+        $log->logInfo('de originele data', $resultarray);
         //print_r($resultarray);
         $aantal_set = $t_func->Herhalen($resultarray, array('set'));
         $res_set = $t_func->makeArray2($resultarray, $aantal_set, array('set'));
 
         foreach($res_set['set'] as $value) {
             if (!empty($value)) {
-                $value_new = str_replace(" ", "_", $value);
-                $value_new = str_replace(",", "", $value_new);
-                $value_new = str_replace(".", "", $value_new);
-                $value_new = str_replace("(", "", $value_new);
-                $value_new = str_replace(")", "", $value_new);
-                $value_new = str_replace("!", "", $value_new);
-                $value_new = str_replace("?", "", $value_new);
-                $value_new = str_replace(":", "", $value_new);
+                $value_temp = str_replace(" ", "_", $value);
+                $value_new = str_replace(array(',', '.', '(', ')', '!', '?', ':'), '', $value_temp);
                 $set[trim($value)] = $value_new;
             }
+            unset($value_temp);
+            unset($value_new);
         }
+        unset($aantal_set);
+        unset($res_set);
     }
 
     $reader->next();
@@ -83,7 +68,8 @@ $log->logInfo("EINDE AANMAAK SET-LIJST");
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ksort($set);
-print_r ($set);
+$log->logInfo("+++++++++++++++++++++SET LIJST+++++++++++++++++++++++", $set);
+$log->logInfo('=====================================================');
 
 foreach($set as $key => $value) {
     $t_set = new ca_sets();
@@ -136,7 +122,7 @@ $log->logInfo("EINDE AANMAAK SETS");
 //==============================================================================inlezen bestanden
 $teller2 = 0;
 $reader2 = new XMLReader();
-$reader2->open(__MY_DIR_2__."/cag_tools/data/objecten.xml");
+$reader2->open(__MY_DIR__."/cag_tools/data/objecten.xml");
 
 while ($reader2->read() && $reader2->name !== 'record');
 //==============================================================================begin van de loop
@@ -150,6 +136,7 @@ while ($reader2->name === 'record' ) {
     $log->logInfo( '=========='.$teller2.'========');
 
     if (!empty($resultarray)) {
+        $log->logInfo('de originele data', $resultarray);
         $idno = sprintf('%08d', $teller2);
 
         $t_object = new ca_objects_bis();
@@ -157,7 +144,7 @@ while ($reader2->name === 'record' ) {
         $va_left_keys = $t_object->getObjectIDsByIdno($idno);
 
         if ((sizeof($va_left_keys)) > 1 ) {
-            $log->logInfo("WARNING: PROBLEM: found more than one object -> take the first one !!!!!");
+            $log->logError("ERROR: PROBLEM: found more than one object -> take the first one !!!!!");
         }
         $vn_left_id = $va_left_keys[0];
         //$t_object->load($vn_left_id);
@@ -168,18 +155,10 @@ while ($reader2->name === 'record' ) {
         $res_set = $t_func->makeArray2($resultarray, $aantal_set, array('set'));
         //print_r ($res_set);
 
-        foreach($res_set['set'] as $value)
-        {
-            if (strlen(trim($value)) > 0 )
-            {
-                $value_new = str_replace(" ", "_", $value);
-                $value_new = str_replace(",", "", $value_new);
-                $value_new = str_replace(".", "", $value_new);
-                $value_new = str_replace("(", "", $value_new);
-                $value_new = str_replace(")", "", $value_new);
-                $value_new = str_replace("!", "", $value_new);
-                $value_new = str_replace("?", "", $value_new);
-                $value_new = str_replace(":", "", $value_new);
+        foreach($res_set['set'] as $value) {
+            if (strlen(trim($value)) > 0 ) {
+                $value_temp = str_replace(" ", "_", $value);
+                $value_new = str_replace(array(',', '.', '(', ')', '!', '?', ':'), '', $value_temp);
 
                 $t_set2 = new ca_sets();
                 $t_set2->load(array('set_code' => $value_new));
@@ -190,18 +169,20 @@ while ($reader2->name === 'record' ) {
                 $t_set2->update();
 
                 if ($t_set2->numErrors()) {
-                        $log->logInfo("ERROR UPDATING SET: ".$value_new." : ".join('; ', $t_set2->getErrors()));
-                        continue;
+                        $log->logError("ERROR UPDATING SET: ".$value_new." : ".join('; ', $t_set2->getErrors()));
+
                 } else {
                         print "update set succesvol\n";
                 }
             }
+            unset($value_temp);
+            unset($value_new);
         }
+        unset($aantal_set);
+        unset($res_set);
     }
 
     $reader2->next();
 }
-
-print "+++++++++++++++++The+End+++++++++++++++++++++++++++<br/>";
-
+$log->logInfo('EINDE VERWERKING');
 $reader2->close();

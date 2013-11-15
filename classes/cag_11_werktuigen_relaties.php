@@ -2,43 +2,29 @@
 /* Doel van dit programma:
  *
  */
-error_reporting(-1);
-set_time_limit(0);
-$type = "SERVER";
-
-if ($type == "LOCAL") {
-    define("__MY_DIR__", "c:/xampp/htdocs");
-    define("__MY_DIR_2__", "c:/xampp/htdocs/ca_cag");
-}
-if ($type == "SERVER") {
-    define("__MY_DIR__", "/www/libis/vol03/lias_html");
-    define("__MY_DIR_2__", "/www/libis/vol03/lias_html");
-}
 define("__PROG__","werktuigen_relaties");
-require_once(__MY_DIR__."/ca_cag/setup.php");
-require_once(__CA_LIB_DIR__."/core/Db.php");
-require_once(__CA_MODELS_DIR__."/ca_locales.php");
-require_once(__MY_DIR_2__.'/cag_tools/classes/ca_objects_bis.php');
-require_once(__CA_MODELS_DIR__.'/ca_occurrences.php');
-require_once("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/KLogger.php");
-//require_once(__CA_LIB_DIR__."/core/Logging/KLogger/KLogger.php");
 
-include __MY_DIR_2__."/cag_tools/classes/MyFunctions_new.php";
+include('header.php');
+
+require_once(__MY_DIR__."/cag_tools/classes/ca_objects_bis.php");
+require_once(__MY_DIR__.'/cag_tools/classes/ca_occurrences_bis.php');
+require_once(__MY_DIR__."/cag_tools/classes/Objects.php");
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
+
 $pn_occurrence_type_id = $t_list->getItemIDFromList('occurrence_types', 'references');
 $status = $t_list->getItemIDFromList('workflow_statuses', 'i2');
 
 $t_relatie = new ca_relationship_types();
 $vn_objects_x_objects_broader = $t_relatie->getRelationshipTypeID('ca_objects_x_objects', 'broaderRelatie');
-$vn_objects_x_objects_narrower = $t_relatie->getRelationshipTypeID('ca_objects_x_objects', 'narrowerRelatie');
+//$vn_objects_x_objects_narrower = $t_relatie->getRelationshipTypeID('ca_objects_x_objects', 'narrowerRelatie');
 $vn_objects_x_occurrences = $t_relatie->getRelationshipTypeID('ca_objects_x_occurrences', 'documentatieRelatie');
 
-$t_occur = new ca_occurrences();
+$t_occur = new ca_occurrences_bis();
 $t_object2 = new ca_objects_bis();
 //==============================================================================initialisaties
 $teller = 0;
@@ -49,7 +35,7 @@ $mappingarray = $t_func->ReadMappingcsv("cag_werktuigen_relaties_mapping.csv");
 
 //inlezen xml-bestand met XMLReader, node per node
 $reader = new XMLReader();
-$reader->open(__MY_DIR_2__."/cag_tools/data/Werktuigen.xml");
+$reader->open(__MY_DIR__."/cag_tools/data/Werktuigen.xml");
 
 while ($reader->read() && $reader->name !== 'record');
 //==============================================================================begin van de loop
@@ -62,10 +48,11 @@ while ($reader->name === 'record' ) {
 
     $teller = $teller + 1;
     $log->logInfo('=========='.$teller.'========');
+    $log->logInfo('de originele data', $resultarray);
     //------------------------------------------------------------------------------
     //de identificatie
     $idno = sprintf('%04d', $teller);
-    $idno = 'concept_'.$idno;
+    $idno = 'concept'.$idno;
     $log->logInfo("idno: ",$idno);
 
     $t_object = new ca_objects_bis();
@@ -73,7 +60,7 @@ while ($reader->name === 'record' ) {
     $va_left_keys = $t_object->getObjectIDsByIdno($idno);
 
     if ((sizeof($va_left_keys)) > 1 ) {
-        $log->logInfo("WARNING: PROBLEM: found more than one object -> take the first one !!!!!");
+        $log->logWarn("WARNING: PROBLEM: found more than one object -> take the first one !!!!!", $va_left_keys);
     }
 
     $vn_left_id = $va_left_keys[0];
@@ -90,6 +77,7 @@ while ($reader->name === 'record' ) {
     $result_broader = $t_func->makeArray2($resultarray, $aantal_broader, array('broader'));
 
     foreach(($result_broader['broader']) as $key => $value) {
+
         if (  (!is_array($result_broader['broader'][$key])) && (!empty($result_broader['broader'][$key])) ) {
             $vs_right_string = $value;
 
@@ -122,6 +110,8 @@ while ($reader->name === 'record' ) {
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // Narrower terms
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    /*
+     *
     $aantal_narrower = $t_func->Herhalen($resultarray, array('narrower'));
 
     $result_narrower = $t_func->makeArray2($resultarray, $aantal_narrower, array('narrower'));
@@ -155,6 +145,8 @@ while ($reader->name === 'record' ) {
     }
     unset($result_narrower);
     unset($aantal_narrower);
+     *
+     */
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // reference
