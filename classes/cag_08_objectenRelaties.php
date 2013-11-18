@@ -119,8 +119,8 @@ while ($reader->name === 'record' ) {
             if (trim($occur[$label_occur_2][$i]) !==  "") {
 
                 $vs_right_string = trim($occur[$label_occur_2][$i]);
-                $search_string = trim($occur[$label_occur_2][$i]);
-                //$search_string = $t_func->cleanUp(trim($occur[$label_occur_2][$i]));
+                //$search_string = trim($occur[$label_occur_2][$i]);
+                $search_string = $t_func->cleanUp(trim($occur[$label_occur_2][$i]));
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en  publicatie " . $vs_right_string);
                 $succes = $my_objects->createRelationship($vn_left_id, 'ca_occurrences', $search_string, $relationship);
             }
@@ -170,8 +170,8 @@ while ($reader->name === 'record' ) {
             if (trim($key) !==  "") {
 
                 $vs_right_string = $value;
-                $search_string = $value;
-                //$search_string = $t_func->cleanUp(trim($value));
+                //$search_string = $value;
+                $search_string = $t_func->cleanUp(trim($value));
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . "  en publicatie(objectnaamOpmerking)  " . $vs_right_string);
                 $succes = $my_objects->createRelationship($vn_left_id, 'ca_occurrences', $search_string, $relationship);
             }
@@ -325,6 +325,7 @@ while ($reader->name === 'record' ) {
                 //
                 if ( (!empty($vervaardigingDate_3)) && ($t_texp->parse($vervaardigingDate_3)) ) {
                     $vervaardigingDate = ($vervaardigingDate_3);
+                } elseif (empty($vervaardigingDate_3)) {
                 } else {
                     $log->logWarn('WARNING: problemen met datum:', $t_texp->getParseErrorMessage());
                 }
@@ -379,13 +380,15 @@ while ($reader->name === 'record' ) {
                 $temp = array();
 
                 $zoek = array('circa', 'jaren', 'vóór', 'voor');
-
+                /*
                 if ( (strstr($vervaardigingDate, 'circa')) || (strstr($vervaardigingDate, 'jaren')) ||
                      (strstr($vervaardigingDate, 'vóór'))  || (strstr($vervaardigingDate, 'voor')) ) {
                     $temp[] = $vervaardigingDate;
                     $vervaardigingDate_org = $vervaardigingDate;
                     $vervaardigingDate = trim(str_replace($zoek, '', $vervaardigingDate));
                 }
+                 *
+                 */
 
                 $vNotes = array($res_vervaardiger[$vNote_1][$i], $res_vervaardiger[$vNote_2][$i], $res_vervaardiger[$vNote_3][$i],
                     $res_vervaardiger[$vNote_a1][$i], $res_vervaardiger[$vNote_a2][$i], $res_vervaardiger[$vNote_a3][$i],
@@ -418,10 +421,11 @@ while ($reader->name === 'record' ) {
                                 'modelSerienummer'          =>	$serienummer);
 
                     $my_objects->addSomeObjectAttribute($vn_left_id, $container, $data);
-                    //nodig? JA (objectvervaardigingInfo: 277 / objectvervaardigingPlace = 284)
+                    //nodig? JA (objectvervaardigingInfo: 829 / objectvervaardigingPlace = 853)
                     if ($vervaardigingPlace !== null)  {
-                        $qry1 = "select attribute_id from ca_attributes where element_id = 277 and table_num = 57
-                                 and row_id = ".$vn_left_id;
+
+                        $qry1 = "select attribute_id from ca_attributes where element_id = 829 and table_num = 57
+                                 and row_id = $vn_left_id ";
 
                         $qr_attr_ids = $o_db->query($qry1);
 
@@ -429,17 +433,19 @@ while ($reader->name === 'record' ) {
                             $attribute_id = $qr_attr_ids->get('attribute_id');
 
                             $qry2 = "update ca_attribute_values
-                                     set value_integer1 = ".$vervaardigingPlace.
-                                    " where element_id = 285 and attribute_id = ".$attribute_id;
+                                     set value_integer1 = $vervaardigingPlace
+                                     where element_id = 853 and attribute_id = $attribute_id";
                             $o_db->query($qry2);
-
+                            /*
+                            //objectvervaardigingsDate 847)
                             if (isset($vervaardigingDate_org)) {
                                 $qry3 = "update ca_attribute_values
-                                        set value_longtext1 = ".$vervaardigingDate_org.
-                                        " where element_id = 283 and attribute_id = ".$attribute_id;
+                                        set value_longtext1 = $vervaardigingDate_org
+                                        where element_id = 847 and attribute_id = $attribute_id";
                                 $o_db->query($qry3);
                             }
-
+                             *
+                             */
                         }
                     }
                 }
@@ -451,7 +457,7 @@ while ($reader->name === 'record' ) {
                 unset($vervaardigingDate_2);
                 unset($vervaardigingDate_3);
                 unset($vervaardigingDate);
-                unset($vervaardigingDate_org);
+                //unset($vervaardigingDate_org);
                 unset($vervaardigingNote);
                 unset($vervaardigingPlace);
                 unset($vDate_5i);

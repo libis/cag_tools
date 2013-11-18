@@ -16,6 +16,7 @@ $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
 
+$pn_object_type_id = $t_list->getItemIDFromList('object_types', 'cagConceptVoorwerp_type');
 $pn_occurrence_type_id = $t_list->getItemIDFromList('occurrence_types', 'references');
 $status = $t_list->getItemIDFromList('workflow_statuses', 'i2');
 
@@ -83,7 +84,7 @@ while ($reader->name === 'record' ) {
 
             $log->logInfo('relatie leggen tussen ' . $vs_left_string . '  en   ' . $vs_right_string);
 
-            $va_right_keys = $t_object2->getObjectIDsByName($vs_right_string, null, 22);
+            $va_right_keys = $t_object2->getObjectIDsByName($vs_right_string, null, $pn_object_type_id);
 
             if (empty($va_right_keys) ) {
                 $log->logInfo("ERROR: PROBLEM: broader object ". ($vs_right_string) ." niet gevonden!!!!!");

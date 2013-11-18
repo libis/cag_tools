@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 set_time_limit(0);
 define("__MY_DIR__", $_SERVER['DOCUMENT_ROOT']);
 define("__MY_DATA__", "/cag_tools/data/");
-$_SERVER['HTTP_HOST'] = "import";
+//$_SERVER['HTTP_HOST'] = "import";
 
 require_once(__MY_DIR__."/ca_cag/setup.php");
 require_once(__CA_LIB_DIR__."/core/Db.php");

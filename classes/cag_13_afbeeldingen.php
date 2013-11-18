@@ -51,15 +51,15 @@ foreach($afbeeldingen as $beeld) {
         if ( ($key) === 'pid') {$pid = $value;}
         if ( ($key) === 'adlib') {$adlib = $value;}
 
-        if ( (isset($pid)) && (isset($value)) ) {
+        if ( (isset($pid)) && (isset($adlib)) ) {
             $va_object_ids = $t_object->getObjectIDsByElementID($adlib, 'adlibObjectNummer');
 
             if (!empty($va_object_ids)) {
 
                 if (sizeof($va_object_ids) > 1 ){
 
-                    $log->logInfo("WARNING: meerdere objecten voor adlibObjectNummer ".$adlib." gevonden");
-                    $log->logInfo("nemen het eerste object.");
+                    $log->logWarn("WARNING: meerdere objecten voor adlibObjectNummer ".$adlib." gevonden");
+                    $log->logWarn("nemen het eerste object.");
                 }
 
                 $vn_object_id = $va_object_ids[0];

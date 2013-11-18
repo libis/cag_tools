@@ -130,7 +130,7 @@ $t_rel_types = new ca_relationship_types();
 $vn_list_item_relation_type_id_related = 	$t_rel_types->getRelationshipTypeID('ca_list_items_x_list_items', 'related');
 
 // create log file
-$logFile = fopen("/www/libis/vol03/lias_html/cag_tools-staging/shared/log/am_move_output.log", 'w') or die("can't open file");
+$logFile = fopen(__MY_DIR__."/cag_tools-staging/shared/log/am_move_output.log", 'w') or die("can't open file");
 
 // load voc_terms
 $o_xml = new XMLReader();

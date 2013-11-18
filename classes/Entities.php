@@ -216,7 +216,7 @@ class Entities {
             $log->logInfo("INSERT ENTITY gelukt: ", $Identificatie);
             //----------
             $t_entity->addLabel(array(
-                'surname'     => substr($Identificatie, 0, 511),
+                'surname'     => substr($Identificatie, 0, 99),
                 'displayname' => substr($Identificatie, 0, 511)
                 ),$pn_locale_id, null, true );
 

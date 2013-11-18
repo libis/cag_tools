@@ -31,7 +31,7 @@ class MyFunctions_new
         //        de boerenbond -> boerenbond, de
         //$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
         //$value = preg_replace("%[^-/+|\w ]%", ' ', $value);
-        $search = array("'", '"', '-', '_', '+', '|', '^', '[', ']', '/', '%', '%', '.', ',', '(', ')');
+        $search = array("'", '"', '-', '_', '+', '|', '^', '[', ']', '/', '%', '.', ',', '(', ')', '&');
         $replace = ' ';
         $value = str_replace($search, $replace, $value);
         $value = strtoupper(trim($value));
