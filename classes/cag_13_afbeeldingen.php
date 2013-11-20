@@ -41,47 +41,51 @@ while($o_tab_parser->nextRow() && $vn_c) {
 	$afbeeldingen[] = array('pid' => $pid, 'adlib' => $adlib);
         $vn_c++;
 }
-	// label en idno moeten nog gematcht worden
-	// kunstvoorwerp_idno loop vervangen door opzoeken van label
+unset($pid);
+unset($adlib);
+
 $t_object = new ca_objects_bis();
 $t_object->setMode(ACCESS_WRITE);
 
+$log->logInfo('afbeeldingen', $afbeeldingen);
+
 foreach($afbeeldingen as $beeld) {
-    foreach($beeld as $key => $value) {
-        if ( ($key) === 'pid') {$pid = $value;}
-        if ( ($key) === 'adlib') {$adlib = $value;}
+    $pid = $beeld['pid'];
+    $adlib = $beeld['adlib'];
 
-        if ( (isset($pid)) && (isset($adlib)) ) {
-            $va_object_ids = $t_object->getObjectIDsByElementID($adlib, 'adlibObjectNummer');
+    $log->logInfo('pid', $pid);
+    $log->logInfo('adlib', $adlib);
+    
+    if ( (isset($pid)) && (isset($adlib)) ) {
+        $va_object_ids = $t_object->getObjectIDsByElementID($adlib, 'adlibObjectNummer');
 
-            if (!empty($va_object_ids)) {
+        if (!empty($va_object_ids)) {
 
-                if (sizeof($va_object_ids) > 1 ){
+            if (sizeof($va_object_ids) > 1 ){
 
-                    $log->logWarn("WARNING: meerdere objecten voor adlibObjectNummer ".$adlib." gevonden");
-                    $log->logWarn("nemen het eerste object.");
-                }
-
-                $vn_object_id = $va_object_ids[0];
-
-                $url =
-                    $pid."_,_http://resolver.lias.be/get_pid?stream&usagetype=THUMBNAIL&pid=".
-                    $pid."_,_http://resolver.lias.be/get_pid?view&usagetype=VIEW_MAIN,VIEW&pid=".
-                    $pid;
-
-                $container = 'digitoolUrl';
-                $data = array('locale_id'   =>	$pn_locale_id,
-                            'digitoolUrl'   =>	$url);
-
-                $my_objects->addSomeObjectAttribute($vn_object_id, $container, $data);
+                $log->logWarn("WARNING: meerdere objecten voor adlibObjectNummer ".$adlib." gevonden");
+                $log->logWarn("nemen het eerste object.");
             }
-            unset($url);
-            unset($data);
-            unset($va_object_ids);
-            unset($vn_object_id);
-            unset($pid);
-            unset($adlib);
+
+            $vn_object_id = $va_object_ids[0];
+
+            $url =
+                $pid."_,_http://resolver.lias.be/get_pid?stream&usagetype=THUMBNAIL&pid=".
+                $pid."_,_http://resolver.lias.be/get_pid?view&usagetype=VIEW_MAIN,VIEW&pid=".
+                $pid;
+
+            $container = 'digitoolUrl';
+            $data = array('locale_id'   =>	$pn_locale_id,
+                        'digitoolUrl'   =>	$url);
+
+            $my_objects->addSomeObjectAttribute($vn_object_id, $container, $data);
         }
+        unset($url);
+        unset($data);
+        unset($va_object_ids);
+        unset($vn_object_id);
+        unset($pid);
+        unset($adlib);
     }
 }
 

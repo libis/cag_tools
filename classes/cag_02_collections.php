@@ -38,8 +38,8 @@ while ($reader->name === 'record' )
 
     $resultarray = $t_func->XMLArraytoResultArray($xmlarray,$mappingarray);
 
-    $t_local->createCollectionArray($resultarray['collectieBeschrijving_1'], $collectie);
-    $t_local->createCollectionArray($resultarray['collectieBeschrijving_2'], $collectie);
+    $t_local->createCollectionArray($resultarray['collectieBeschrijving_1'], $collectie, $pn_locale_id);
+    $t_local->createCollectionArray($resultarray['collectieBeschrijving_2'], $collectie, $pn_locale_id);
 
     $reader->next();
 }

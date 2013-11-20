@@ -55,9 +55,9 @@ foreach ($xml as $bestand) {
 
         $resultarray = $t_func->XMLArraytoResultArray($xmlarray,$mappingarray);
 
-        $my_entuitobj->createEntitiesArray($resultarray, $fields, $entities);
+        $my_entuitobj->createEntitiesArray($resultarray, $fields, $entities, $pn_locale_id);
 
-        $my_entuitobj->createEntitiesArray($resultarray, $fields2, $entities2);
+        $my_entuitobj->createEntitiesArray($resultarray, $fields2, $entities2, $pn_locale_id);
 
         $reader->next();
     }

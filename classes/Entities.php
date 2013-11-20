@@ -5,8 +5,17 @@
  * @author AnitaR
  */
 class Entities {
+     # --------------------------------------------------------------------------------
+    /**
+     * Functie om te bepalen of we INSERT of UPDATE hebben
+     *
+     * @param array &$resultarray input-array - passed by
+     * @param array &$pref
+     * @param int $locale taal_code
+     * @return string $action INSERT of UPDATE
+     */
 
-    public function actionToTake(&$resultarray, &$pref)
+    public function actionToTake(&$resultarray, &$pref, $locale)
     {
         global $t_func;
 
@@ -23,7 +32,7 @@ class Entities {
         //controleren of er use of used_for vermelding is
         if ( (isset($use['use'][0])) && (!empty($use['use'][0])) ) {
             //opzoeken of een record met deze 'use' al bestaat
-            $search_string = $t_func->cleanUp(trim($use['use'][0]));
+            $search_string = $t_func->generateSortValue(trim($use['use'][0]), $locale);
             $va_left_keys = ($t_entity->getEntityIDsByUpperNameSort($search_string));
             if (!empty($va_left_keys)) {
                 //record met deze label bestaat reeds -> gegevens toevoegen -> UPDATE
@@ -51,7 +60,7 @@ class Entities {
         if ( (isset($used_for['used_for'][0])) && (!empty($used_for['used_for'][0])) ) {
             //'used_for' zijn gewoon alternatieve benamingen voor 'preferred_label'
             // controleren of de 'preferred_label' ondertussen al bestaat
-            $search_string = $t_func->cleanUp(trim($pref['preferred_label'][0]));
+            $search_string = $t_func->generateSortValue(trim($pref['preferred_label'][0]), $locale);
             $va_left_keys = $t_entity->getEntityIDsByUpperNameSort($search_string);
             if (empty($va_left_keys)) {
                 //record bestaat nog niet -> INSERT
@@ -70,7 +79,7 @@ class Entities {
         //en daarnaast bestaan nog 'non_preferred_labels'
         if ( (!isset($use['use'][0])) && (!isset($used_for['used_for'][0])) ) {
             //ook best even controleren of entity met gegeven 'preferred_label niet al bestaat
-            $search_string = $t_func->cleanUp(trim($pref['preferred_label'][0]));
+            $search_string = $t_func->generateSortValue(trim($pref['preferred_label'][0]), $locale);
             $va_left_keys = $t_entity->getEntityIDsByUpperNameSort($search_string);
             if (!empty($va_left_keys)) {
                 $action = "UPDATE";
@@ -98,59 +107,75 @@ class Entities {
 
         $pn_entity_type_id = 0;
 
-        $aantal = count($resultarray['entity_types']);
-
-        if ($aantal === 1) {
-            if (in_array(($resultarray['entity_types']), $individual)) {
+#77
+        if ( (isset($resultarray['entity_type'])) && (!empty($resultarray['entity_type'])) &&
+             ($resultarray['entity_type'] === 'ai') ) {
+                $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
+        } elseif ( (isset($resultarray['entity_type'])) && (!empty($resultarray['entity_type'])) &&
+                 ($resultarray['entity_type'] === 'ap') ) {
                 $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
-            }
-
-            if (in_array(($resultarray['entity_types']), $hist_persoon)) {
+        } elseif ( (isset($resultarray['entity_type'])) && (!empty($resultarray['entity_type'])) &&
+                 ($resultarray['entity_type'] === 'hi') ) {
+                $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischeOrganisatie');
+        } elseif ( (isset($resultarray['entity_type'])) && (!empty($resultarray['entity_type'])) &&
+                 ($resultarray['entity_type'] === 'hp') ) {
                 $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischePersoon');
-            }
+        } else {
 
-            if (in_array(($resultarray['entity_types']), $organization)) {
-                $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
-            }
+            $aantal = count($resultarray['entity_types']);
 
-            if (trim($resultarray['entity_types']) === 'verwervingsbron') {
-#62 #48
-                if ($t_func->value_in_array($termen, strtolower($resultarray['preferred_label']))) {
-                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
-                } else {
+            if ($aantal === 1) {
+                if (in_array(($resultarray['entity_types']), $individual)) {
                     $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
                 }
-            }
-        }elseif ($aantal > 1) {
-            //baseren ons op de eerste waarde
-            if ($t_func->value_in_array($individual, ($resultarray['entity_types'][0]))) {
-                $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
-            }
 
-            if ($t_func->value_in_array($organization, ($resultarray['entity_types'][0]))) {
-                $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
-            }
-
-            if (trim($resultarray['entity_types'][0]) === 'verwervingsbron') {
-#62 #48
-                if ($t_func->value_in_array($termen, strtolower($resultarray['preferred_label'][0]))) {
-                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
-                } else {
-                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
-                }
-            }
-
-            if (trim($resultarray['entity_types'][0]) === 'vervaardiger') {
-                if ($t_func->value_in_array($individual, ($resultarray['entity_types'][1]))) {
+                if (in_array(($resultarray['entity_types']), $hist_persoon)) {
                     $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischePersoon');
                 }
 
-                if ($t_func->value_in_array($organization, ($resultarray['entity_types'][1]))) {
-                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischeOrganisatie');
+                if (in_array(($resultarray['entity_types']), $organization)) {
+                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
                 }
 
-                if (trim($resultarray['entity_types'][1]) === 'verwervingsbron') {
-                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischePersoon');
+                if (trim($resultarray['entity_types']) === 'verwervingsbron') {
+    #62 #48
+                    if ($t_func->value_in_array($termen, strtolower($resultarray['preferred_label']))) {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
+                    } else {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
+                    }
+                }
+            }elseif ($aantal > 1) {
+                //baseren ons op de eerste waarde
+                if ($t_func->value_in_array($individual, ($resultarray['entity_types'][0]))) {
+                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
+                }
+
+                if ($t_func->value_in_array($organization, ($resultarray['entity_types'][0]))) {
+                    $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
+                }
+
+                if (trim($resultarray['entity_types'][0]) === 'verwervingsbron') {
+    #62 #48
+                    if ($t_func->value_in_array($termen, strtolower($resultarray['preferred_label'][0]))) {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'organization');
+                    } else {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'individual');
+                    }
+                }
+
+                if (trim($resultarray['entity_types'][0]) === 'vervaardiger') {
+                    if ($t_func->value_in_array($individual, ($resultarray['entity_types'][1]))) {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischePersoon');
+                    }
+
+                    if ($t_func->value_in_array($organization, ($resultarray['entity_types'][1]))) {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischeOrganisatie');
+                    }
+
+                    if (trim($resultarray['entity_types'][1]) === 'verwervingsbron') {
+                        $pn_entity_type_id = $t_list->getItemIDFromList('entity_types', 'historischePersoon');
+                    }
                 }
             }
         }
@@ -281,7 +306,7 @@ class Entities {
         $t_entity->load($entity_id);
         $t_entity->getPrimaryKey();
 
-        $search_string = $t_func->cleanUp(trim($Identificatie));
+        $search_string = $t_func->generateSortValue(trim($Identificatie), $pn_locale_id);
         $va_left_keys = ($t_entity->getEntityIDsByUpperNameSort($search_string));
 
         if (empty($va_left_keys)) {

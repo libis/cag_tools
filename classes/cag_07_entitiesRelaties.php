@@ -73,7 +73,7 @@ while ($reader->name === 'record' ) {
         $Identificatie = $my_entity->defineIdentificatie($resultarray, $pref);
         $log->logInfo("Identificatie: ", $Identificatie);
 
-        $search_string = $t_func->cleanUp(trim($Identificatie));
+        $search_string = $t_func->generateSortValue(trim($Identificatie), $pn_locale_id);
         $va_left_keys = $t_entity_left->getEntityIDsByUpperNameSort($search_string);
         $aantal_left = sizeof($va_left_keys);
 
@@ -94,7 +94,7 @@ while ($reader->name === 'record' ) {
 
                 if (!empty($contacts['c_contact'][$i])) {
                     //relatie leggen met de contact
-                    $vs_right_string = $t_func->cleanUp(trim($contacts['c_contact'][$i]));
+                    $vs_right_string = $t_func->generateSortValue(trim($contacts['c_contact'][$i]), $pn_locale_id);
 
                     $log->logInfo('relatie tussen '.$search_string.' en '.$vs_right_string);
 

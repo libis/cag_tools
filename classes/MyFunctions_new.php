@@ -25,6 +25,7 @@ class MyFunctions_new
         return $log;
     }
 
+    /*
     function cleanUp($value) {
 //***
         //todo: als woord begint met de of een -> moet met komma blanco achterraan komen
@@ -44,7 +45,41 @@ class MyFunctions_new
         }
         return $value;
     }
+     *
+     */
 
+    # --------------------------------------------------------------------------------
+    /**
+     * Genereren Sort_name van een waarde(label), rekening houdend met de taal
+     *
+     * @param string $value tekst die herleid moet worden tot zijn sort-waarde
+     * @param int $locale taal_code
+     * @return string $vs_display_value de sort_name van een waarde(label), rekening houdend met de taal
+     */
+    function generateSortValue($value, $locale) {
+        require_once(__CA_LIB_DIR__.'/core/Parsers/TimeExpressionParser.php');
+
+        $o_tep = new TimeExpressionParser();
+        $o_tep->setLanguage($locale);
+        $o_lang_settings = $o_tep->getLanguageSettings();
+        $vs_display_value = trim(preg_replace('![^\p{L}0-9 ]+!u', ' ', $value));
+
+        $va_definite_articles = $o_lang_settings->get('definiteArticles');
+        $va_indefinite_articles = $o_lang_settings->get('indefiniteArticles');
+        $matches = array();
+        foreach(array($va_definite_articles, $va_indefinite_articles) as $va_articles) {
+                if (is_array($va_articles)) {
+                        foreach($va_articles as $vs_article) {
+                                if (preg_match('!^('.$vs_article.')[ ]+!i', $vs_display_value, $matches)) {
+                                        $vs_display_value = trim(str_replace($matches[1], '', $vs_display_value).', '.$matches[1]);
+                                        break(2);
+                                }
+                        }
+                }
+        }
+
+        return $vs_display_value;
+    }
     //inlezen configuratiebestand naar array
     function ReadMappingcsv($bestand) {
 //***

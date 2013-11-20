@@ -63,10 +63,10 @@ while ($reader->name === 'record' )
                 $log->logError('ERROR: Record zonder documentation.title (preferred_label_occur_2)', $resultarray);
     } else {
 
-        $my_occurrence->createOccurrencesArray($resultarray, $fields, $occur);
+        $my_occurrence->createOccurrencesArray($resultarray, $fields, $occur, $pn_locale_id);
     }
 
-    $my_entuitobj->createEntitiesArray($resultarray, $fields3, $occur2);
+    $my_entuitobj->createEntitiesArray($resultarray, $fields3, $occur2, $pn_locale_id);
 
     $teller = $teller + 1;
     $reader->next();
@@ -121,7 +121,7 @@ foreach ($occur as $key => $value) {
                     $log->logInfo("refAuteur: ", $value[$veld]);
 
                     $relationship = $t_rel_types->getRelationshipTypeID('ca_entities_x_occurrences', 'auteurRelatie');
-                    $search_string = $t_func->cleanUp(trim($value[$veld]));
+                    $search_string = $t_func->generateSortValue(trim($value[$veld]), $pn_locale_id);
                     $va_left_keys = $t_entity->getEntityIDsByUpperNameSort($search_string);
 
                     if ( (sizeof($va_left_keys)) === 0 ) {

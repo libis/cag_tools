@@ -12,7 +12,7 @@
  */
 class EntitiesUitObjecten {
 
-    public function createEntitiesArray($resultarray, $fields, &$array)
+    public function createEntitiesArray($resultarray, $fields, &$array, $locale)
     {
         global $t_func;
         global $log;
@@ -26,7 +26,8 @@ class EntitiesUitObjecten {
                 foreach ($veld as $value) {
                     if (!is_array($value)) {
                         if ( (isset($value)) && (!empty($value)) ) {
-                            $sleutel = $t_func->cleanUp($value);
+                            //$sleutel = $t_func->cleanUp($value);
+                            $sleutel = $t_func->generateSortValue($value, $locale);
                             $array[$sleutel] = $value;
                         }
                     } else {

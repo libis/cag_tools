@@ -6,7 +6,7 @@
  */
 class Collections {
 
-    public function createCollectionArray($value, &$collectie) {
+    public function createCollectionArray($value, &$collectie, $locale) {
 
         global $t_func;
         global $log;
@@ -14,7 +14,8 @@ class Collections {
         $sleutel = "";
         if (!is_array($value)) {
             if ( (isset($value)) && (!empty($value)) ) {
-                $sleutel = $t_func->cleanUp($value);
+                //$sleutel = $t_func->cleanUp($value);
+                $sleutel = $t_func->generateSortValue($value, $locale);
                 $collectie[$sleutel] =  $value;
             }
         } else {
@@ -56,4 +57,3 @@ class Collections {
         return $vn_rc;
     }
 }
-

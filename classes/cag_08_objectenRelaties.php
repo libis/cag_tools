@@ -119,10 +119,8 @@ while ($reader->name === 'record' ) {
             if (trim($occur[$label_occur_2][$i]) !==  "") {
 
                 $vs_right_string = trim($occur[$label_occur_2][$i]);
-                //$search_string = trim($occur[$label_occur_2][$i]);
-                $search_string = $t_func->cleanUp(trim($occur[$label_occur_2][$i]));
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en  publicatie " . $vs_right_string);
-                $succes = $my_objects->createRelationship($vn_left_id, 'ca_occurrences', $search_string, $relationship);
+                $succes = $my_objects->processVariable($vn_left_id, 'ca_occurrences', $vs_right_string, $relationship, $pn_locale_id);
             }
             $log->logInfo('succes', $succes);
 
@@ -145,7 +143,6 @@ while ($reader->name === 'record' ) {
                 }
             }
             unset($vs_right_string);
-            unset($search_string);
             unset($succes);
         }
         unset($aantal);
@@ -162,7 +159,7 @@ while ($reader->name === 'record' ) {
         $fields3 = array('objectnaamOpmerkingen_3');
         $occur2 = array();
 
-        $my_entuitobj->createEntitiesArray($resultarray, $fields3, $occur2);
+        $my_entuitobj->createEntitiesArray($resultarray, $fields3, $occur2, $pn_locale_id);
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_occurrences', 'documentatieRelatie');
 
@@ -170,15 +167,12 @@ while ($reader->name === 'record' ) {
             if (trim($key) !==  "") {
 
                 $vs_right_string = $value;
-                //$search_string = $value;
-                $search_string = $t_func->cleanUp(trim($value));
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . "  en publicatie(objectnaamOpmerking)  " . $vs_right_string);
-                $succes = $my_objects->createRelationship($vn_left_id, 'ca_occurrences', $search_string, $relationship);
+                $succes = $my_objects->processVariable($vn_left_id, 'ca_occurrences', $vs_right_string, $relationship, $pn_locale_id);
             }
             $log->logInfo('succes', $succes);
 
             unset($vs_right_string);
-            unset($search_string);
             unset($succes);
         }
         unset($occur2);
@@ -284,8 +278,9 @@ while ($reader->name === 'record' ) {
             $i = 0;
             for ($i=0; $i <= ($aantal) ; $i++) {
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en vervaardiger " . $res_vervaardiger[$vervaardiger][$i]);
-                $succes = $my_objects->processVariable($vn_left_id, 'ca_entities', $res_vervaardiger[$vervaardiger][$i], $relationship);
+                $succes = $my_objects->processVariable($vn_left_id, 'ca_entities', $res_vervaardiger[$vervaardiger][$i], $relationship, $pn_locale_id);
                 //$log->logInfo('succes', $succes);
+                $temp = array();
 
                 //vervaardiger - ok
                 $vs_vervaardiger = '';
@@ -321,16 +316,17 @@ while ($reader->name === 'record' ) {
 
                 $log->logInfo('originele datum ', $vervaardigingDate_3);
 
-                //werkt dit wel ????
-                //
                 if ( (!empty($vervaardigingDate_3)) && ($t_texp->parse($vervaardigingDate_3)) ) {
                     $vervaardigingDate = ($vervaardigingDate_3);
                 } elseif (empty($vervaardigingDate_3)) {
+                    $vervaardigingDate = null;
                 } else {
                     $log->logWarn('WARNING: problemen met datum:', $t_texp->getParseErrorMessage());
+                    $vervaardigingDate = null;
+                    $temp[] = "Vervaardigingsdatum: ".$vervaardigingDate_3;
                 }
 
-                $vervaardigingDate = ($vervaardigingDate_3);
+                //$vervaardigingDate = ($vervaardigingDate_3);
 
                 //vervaardigingPlace
                 $vervaardigingPlace = '';
@@ -377,9 +373,6 @@ while ($reader->name === 'record' ) {
 
                 //vervaardigingNote
                 $vervaardigingNote = '';
-                $temp = array();
-
-                $zoek = array('circa', 'jaren', 'vóór', 'voor');
                 /*
                 if ( (strstr($vervaardigingDate, 'circa')) || (strstr($vervaardigingDate, 'jaren')) ||
                      (strstr($vervaardigingDate, 'vóór'))  || (strstr($vervaardigingDate, 'voor')) ) {
@@ -519,15 +512,12 @@ while ($reader->name === 'record' ) {
             if ( (!is_array($trefwoord[$key])) && (!empty($trefwoord[$key])) ) {
 
                 $vs_right_string = $value;
-                $search_string = $vs_right_string;
+
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en cag_trefwoord  " . $vs_right_string);
-
-                $succes = $my_objects->createRelationship($vn_left_id, "ca_list_items", $search_string, $relationship);
-
+                $succes = $my_objects->processVariable($vn_left_id, "ca_list_items", $vs_right_string, $relationship, $pn_locale_id);
                 $log->logInfo('succes', $succes);
 
                 unset($vs_right_string);
-                unset($search_string);
             }
         }
         unset($temp);
@@ -555,7 +545,7 @@ while ($reader->name === 'record' ) {
 
             $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_collections', 'part_of');
             $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en collectie " . $resultarray[$collectie]);
-            $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$collectie], $relationship);
+            $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$collectie], $relationship, $pn_locale_id);
             unset($relationship);
         }
     }
@@ -565,7 +555,7 @@ while ($reader->name === 'record' ) {
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_collections', 'part_of');
         $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en collectie " . $resultarray[$col_1]);
-        $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$col_1], $relationship);
+        $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$col_1], $relationship, $pn_locale_id);
         unset($relationship);
     }
 
@@ -573,7 +563,7 @@ while ($reader->name === 'record' ) {
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_collections', 'part_of');
         $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en collectie " . $resultarray[$col_2]);
-        $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$col_2], $relationship);
+        $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$col_2], $relationship, $pn_locale_id);
         unset($relationship);
     }
      *
@@ -593,7 +583,7 @@ while ($reader->name === 'record' ) {
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_entities', 'eigenaarRelatie');
         $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en entiteit(eigenaar_van) " . $resultarray[$eigenaar]);
-        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$eigenaar], $relationship);
+        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$eigenaar], $relationship, $pn_locale_id);
         unset($relationship);
     }
 
@@ -603,7 +593,7 @@ while ($reader->name === 'record' ) {
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_entities', 'bewaarinstelling');
         $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en entiteit(bewaarinstelling) " . $resultarray[$bewaar]);
-        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$bewaar], $relationship);
+        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$bewaar], $relationship, $pn_locale_id);
         unset($relationship);
     }
 
@@ -639,7 +629,7 @@ while ($reader->name === 'record' ) {
                 if ( (isset($res_inst[$bewaar_van][$i]) && !empty($res_inst[$bewaar_van][$i])) ) {
 
                     $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en entiteit(bewaarinstelling_van) " . $res_inst[$bewaar_van][$i]);
-                    $succes = $my_objects->processVariable($vn_left_id, 'ca_entities', $res_inst[$bewaar_van][$i], $relationship);
+                    $succes = $my_objects->processVariable($vn_left_id, 'ca_entities', $res_inst[$bewaar_van][$i], $relationship, $pn_locale_id);
                 }
 
                 /* door #69 niet meer nodig
@@ -703,7 +693,7 @@ while ($reader->name === 'record' ) {
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_entities', 'vorigeeigenaar');
         $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en entiteit(acquisitionSource) " . $resultarray[$verworven]);
-        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$verworven], $relationship);
+        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$verworven], $relationship, $pn_locale_id);
         unset($relationship);
     }
 
@@ -736,7 +726,7 @@ while ($reader->name === 'record' ) {
             for ($i=0; $i <= ($aantal) ; $i++) {
 
                 $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en object(related) " . $res_objecten[$related][$i]);
-                $succes = $my_objects->processVariable($vn_left_id, 'ca_objects', $res_objecten[$related][$i], $relationship);
+                $succes = $my_objects->processVariable($vn_left_id, 'ca_objects', $res_objecten[$related][$i], $relationship, $pn_locale_id);
 
                 // de bijkomende info registreren
                 $notes = "";

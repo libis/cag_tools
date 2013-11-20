@@ -142,6 +142,17 @@ class Objects {
         unset($t_object);
     }
 
+    # --------------------------------------------------------------------------------
+    /**
+     * Relatie leggen tussen een object en een item uit een andere ca_tabel
+     *
+     * @param int $object_id id van object uit ca_objects
+     * @param string $right naam van de tabel waarmee relatie gelegd moet worden
+     * @param string $vs_right_string waarde(label) waarmee gelinkt moet worden
+     * @param int $relationship type_id uit ca_relationship_types
+     * @return array $verder array met bij succes  [0] = 1  en [1] = int = id van gerelateerde occurrence/entiteit/collection/object/....
+     *                                 bij failure [0] = 0  en [1] = 0)
+     */
     function createRelationship($object_id, $right, $vs_right_string, $relationship) {
 
         global $log;
@@ -214,15 +225,30 @@ class Objects {
         return $verder;
     }
 
-    public function processVariable($vn_left_id, $right, $vs_right_string, $relationship) {
+    # --------------------------------------------------------------------------------
+    /**
+     * Voorbereiden (herleiden tot sort_name) van een string voor het leggen van een relatie
+     * sort_name wordt gebruikt bij occurrences en entiteiten
+     *
+     * @param int $n_left_id id van object uit ca_objects
+     * @param string $right naam van de tabel waarmee relatie gelegd moet worden
+     * @param string $vs_right_string waarde(label) waarmee gelinkt moet worden
+     * @param int $relationship type_id uit ca_relationship_types
+     * @return array $succes array met bij succes  [0] = 1  en [1] = int = id van gerelateerde occurrence/entiteit/collection/object/....
+     *                                 bij failure [0] = 0  en [1] = 0)
+     */
+
+    public function processVariable($vn_left_id, $right, $vs_right_string, $relationship, $locale) {
 
         global $log;
         global $t_func;
 
+        $succes = array(0, 0);
+
         if ( (isset($vs_right_string)) && (!empty($vs_right_string)) ) {
 
-            if ($right === 'ca_entities') {
-                $search_string = $t_func->cleanUp(trim($vs_right_string));
+            if ( ($right === 'ca_entities') || ($right === 'ca_occurrences') ) {
+                $search_string = $t_func->generateSortValue(trim($vs_right_string), $locale);
             } else {
                 $search_string = trim($vs_right_string);
             }

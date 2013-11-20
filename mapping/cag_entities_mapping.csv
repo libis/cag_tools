@@ -13,6 +13,7 @@ contact.name;c_contact;ca_entities_x_entities;;;xll
 contact.phone;c_adresTelefoon;;;;xll
 contact.place;c_adres_city;;;;xll
 contact.postal_code;c_adres_postalcode;;;;xll
+contact.instittype;entity_type;;;;xll
 email;adresEmail;;;;xll
 equivalent_name;non_preferred_label;idno_alt;;;xll
 name;preferred_label;idno;;;xll

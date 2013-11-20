@@ -34,7 +34,9 @@ class ca_entities_bis extends ca_entities
 
         global $log;
 
-        $ps_surname = trim(substr(strtoupper($ps_surname), 0, 99));
+        //sort_name is niet beperkt tot 100 karakters
+        //$ps_surname = trim(substr(strtoupper($ps_surname), 0, 99));
+        $ps_surname = trim(strtoupper($ps_surname));
         $log->logInfo('aangepaste zoekterm', $ps_surname);
 
         $o_db = $this->getDb();

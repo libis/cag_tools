@@ -16,6 +16,11 @@ class ca_occurrences_bis extends ca_occurrences
 
     public function getOccurrenceIDsByUpperNameSort($ps_name) {
 
+        global $log;
+
+        $ps_name = trim(strtoupper($ps_name));
+        $log->logInfo('aangepaste zoekterm', $ps_name);
+        
         $o_db = $this->getDb();
         $qr_res = $o_db->query("
             SELECT DISTINCT cap.occurrence_id

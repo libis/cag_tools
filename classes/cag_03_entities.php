@@ -50,7 +50,7 @@ while ($reader->name === 'record' ) {
     $log->logInfo("==================".($teller)."==================");
     $log->logInfo('de originele data', $resultarray);
 
-    $action = $my_entity ->actionToTake($resultarray, $pref);
+    $action = $my_entity ->actionToTake($resultarray, $pref, $pn_locale_id);
 
     $log->logInfo("actie (INSERT of UPDATE)? ", $action);
     $log->logInfo('de gewijzigde data', $resultarray);

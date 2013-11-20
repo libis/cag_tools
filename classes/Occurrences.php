@@ -7,7 +7,7 @@
 
 class Occurrences {
 
-    public function createOccurrencesArray($resultarray, $fields, &$array)
+    public function createOccurrencesArray($resultarray, $fields, &$array, $locale)
     {
         global $t_func;
         global $log;
@@ -55,7 +55,8 @@ class Occurrences {
                 $refAuteur = trim($refAuteur);
 
                 $result = trim($value1.' '.$value2);
-                $sleutel = $t_func->cleanUp($result);
+                //$sleutel = $t_func->cleanUp($result);
+                $sleutel = $t_func->generateSortValue($result, $locale);
                 $array[$sleutel]['label'] = $result;
                 if ( (!empty($refNote)) && (strpos($array[$sleutel]['refNote'], $refNote) === false) ) {
                     $array[$sleutel]['refNote'] = trim($refNote.' '.$array[$sleutel]['refNote']);
