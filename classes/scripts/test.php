@@ -2,7 +2,7 @@
 <?php
 define("__PROG__","test");
 
-include('header.php');
+include('../header.php');
 
 require_once(__MY_DIR__."/cag_tools/classes/ca_entities_bis.php");
 require_once(__MY_DIR__."/cag_tools/classes/Lists.php");
@@ -10,6 +10,13 @@ require_once(__MY_DIR__."/cag_tools/classes/Lists.php");
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
+
+$t_meta = new ca_metadata_elements();
+$info = $t_meta->_getElementID('objectvervaardigingInfo');
+$log->logInfo('objectvervaardigingInfo', $info);
+$place = $t_meta->_getElementID('objectvervaardigingInfo');
+$log->logInfo('objectvervaardigingPlace', $place);
+exit;
 
 $t_entity = new ca_entities_bis();
 $t_entity->setMode(ACCESS_WRITE);

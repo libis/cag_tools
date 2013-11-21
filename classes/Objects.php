@@ -6,6 +6,13 @@
  */
 class Objects {
 
+     # --------------------------------------------------------------------------------
+    /**
+     * Insert of update ???
+     *
+     * @param string $idno unieke identificatie van het object
+     * @return int $vn_left_id de object_id van het gezochte object of waarde NULL
+     */
     public function actionToTake($idno)
     {
         global $log;

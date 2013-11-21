@@ -4,12 +4,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-include('header.php');
-
-require_once(__MY_DIR__."/cag_tools/classes/My_CAG.php");
-
-define("__PROG__","objects_relaties");
-
 require_once(__CA_MODELS_DIR__."/ca_collections.php");
 require_once(__MY_DIR__.'/cag_tools/classes/ca_entities_bis.php');
 require_once(__MY_DIR__.'/cag_tools/classes/ca_occurrences_bis.php');
@@ -417,7 +411,11 @@ while ($reader->name === 'record' ) {
                     //nodig? JA (objectvervaardigingInfo: 829 / objectvervaardigingPlace = 853)
                     if ($vervaardigingPlace !== null)  {
 
-                        $qry1 = "select attribute_id from ca_attributes where element_id = 829 and table_num = 57
+                        $t_meta = new ca_metadata_elements();
+                        $info = $t_meta->_getElementID('objectvervaardigingInfo');
+                        $place = $t_meta->_getElementID('objectvervaardigingPlace');
+
+                        $qry1 = "select attribute_id from ca_attributes where element_id = $info and table_num = 57
                                  and row_id = $vn_left_id ";
 
                         $qr_attr_ids = $o_db->query($qry1);
@@ -426,7 +424,7 @@ while ($reader->name === 'record' ) {
                             $attribute_id = $qr_attr_ids->get('attribute_id');
 
                             $qry2 = "update ca_attribute_values
-                                     set value_integer1 = $vervaardigingPlace
+                                     set value_integer1 = $place
                                      where element_id = 853 and attribute_id = $attribute_id";
                             $o_db->query($qry2);
                             /*
@@ -440,6 +438,9 @@ while ($reader->name === 'record' ) {
                              *
                              */
                         }
+                        unset($info);
+                        unset($place);
+                        unset($t_meta);
                     }
                 }
                 unset($vn_right_id);

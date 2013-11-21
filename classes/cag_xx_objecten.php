@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 
-define("__PROG__","objects_");
-
-include('header.php');
-
-include("My_CAG.php");
 
 require_once(__MY_DIR__."/cag_tools/classes/ca_objects_bis.php");
 require_once(__MY_DIR__."/cag_tools/classes/Lists.php");
@@ -19,6 +14,9 @@ $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
+
+$t_texp = new TimeExpressionParser(null, null, true);
+$t_texp->setLanguage('nl_NL');
 
 $pn_object_type_id = $t_list->getItemIDFromList('object_types', 'cagObject_type');
 
@@ -983,11 +981,17 @@ while ($reader->name === 'record') {
                         }
                     }
                 }
+
+                $acquisition = array();
                 //if (!$t_func->is_valid_date($acquisitionDate)) { $acquisitionDate = ""; }
+                if (!($t_texp->parse($acquisitionDate)) ) {
+                    $log->logWarn('WARNING: problemen met datum - naar Note-veld:', $t_texp->getParseErrorMessage());
+                    $acquisition[] = "Acquisitiondatum: ".$acquisitionDate;
+                    $acquisitionDate = null;
+                }
 
                 //Methode
 
-                $acquisition = array();
                 $acquisitionNote = '';
                 $acq_array = array($acq_note_1 => 'Opm.1: ', $acq_note_4 => 'Door: ', $acq_note_5 => 'Van: ',
                                     $acq_note_6 => 'Prijs: ', $acq_note_7 => 'Opm.2: ');

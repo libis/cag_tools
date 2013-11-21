@@ -1,8 +1,8 @@
 <?php
 # CREATE or UPDATE or RELATION
-define("__TYPE__", "RELATION");
+#define("__TYPE__", "RELATION");
 # blank of ST of TEST
-define("__PART__", "ST");
+#define("__PART__", "ST");
 
 # 1.2. adlibObjectNummer     -> singlefield: adlibObjectNummer,
 # 1.3. CAG objectnaam        -> container: objectNaam,

@@ -60,7 +60,7 @@ while ($reader->name === 'record' )
     $log->logInfo('de data', $resultarray);
 
     if ( (!isset($resultarray['preferred_label_occur_2']))) {
-                $log->logError('ERROR: Record zonder documentation.title (preferred_label_occur_2)', $resultarray);
+                $log->logWarn('WARNING: Record zonder documentation.title (preferred_label_occur_2)', $resultarray);
     } else {
 
         $my_occurrence->createOccurrencesArray($resultarray, $fields, $occur, $pn_locale_id);
