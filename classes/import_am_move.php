@@ -81,6 +81,9 @@ $o_config = Configuration::load();
 $qr = "delete from  ca_list_items_x_list_items";
 $qr_del_labels = $o_db->query($qr);
 $qr = "delete from ca_list_item_labels WHERE item_id IN( select item_id from ca_list_items where list_id=$vn_list_id)";
+ * ??update ca_list_items set parent_id = 300 where list_id = 106 and parent_id = NULL;
+ * update ca_list_items set parent_id = 382 where list_id = 106 and item_id != 382
+ * delete from  ca_list_items where parent_id=382
 $qr_del_labels = $o_db->query($qr);
 $qr = "delete from ca_objects_x_vocabulary_terms WHERE item_id IN( select item_id from ca_list_items where list_id=$vn_list_id)";
 $qr_voc_terms = $o_db->query($qr);

@@ -29,7 +29,7 @@ installationProfile/login.xml
 
 # PDT-specific
 .buildpath
-.htaccess
+#.htaccess
 
 #################
 ## Visual Studio

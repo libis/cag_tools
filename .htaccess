@@ -1,0 +1,10 @@
+#Toegevoegd, zo kan er geen directory listing opgevraagd worden. Ook eindslashes worden toegevoegd
+Options -Indexes
+
+#Bestanden van het type csv,xml,log worden afgeschermd.
+<FilesMatch "\.(csv|xml|ini|log|txt)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+php_value memory_limit 1024M
+php_value max_execution_time 0
