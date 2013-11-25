@@ -4795,11 +4795,11 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="drukker" enabled="1" default="0">
+                                <item idno="drukkerij" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
-                                                        <name_singular>drukker</name_singular>
-                                                        <name_plural>drukker</name_plural>
+                                                        <name_singular>drukkerij</name_singular>
+                                                        <name_plural>drukkerij</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -5615,32 +5615,32 @@
                                 <item idno="organization" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
-												  <name_singular>actuele instelling</name_singular>
-												  <name_plural>actuele instellingen</name_plural>
-												</label>
-											  </labels>
-											</item>
-											<item idno="individual" enabled="1" default="0">
-											  <labels>
-												<label locale="nl_NL" preferred="1">
-												  <name_singular>actuele persoon</name_singular>
-												  <name_plural>actuele personen</name_plural>
-												</label>
-											  </labels>
-											</item>
-											<item idno="historischePersoon" enabled="1" default="0">
-											  <labels>
-												<label locale="nl_NL" preferred="1">
-												  <name_singular>historische persoon</name_singular>
-												  <name_plural>historische personen</name_plural>
-												</label>
-											  </labels>
-											</item>
-											<item idno="historischeOrganisatie" enabled="1" default="0">
-											  <labels>
-												<label locale="nl_NL" preferred="1">
-												  <name_singular>historische instelling</name_singular>
-												  <name_plural>historische instellingen</name_plural>
+						  <name_singular>actuele instelling</name_singular>
+						  <name_plural>actuele instellingen</name_plural>
+						</label>
+					  </labels>
+					</item>
+					<item idno="individual" enabled="1" default="0">
+					  <labels>
+						<label locale="nl_NL" preferred="1">
+						  <name_singular>actuele persoon</name_singular>
+						  <name_plural>actuele personen</name_plural>
+						</label>
+					  </labels>
+					</item>
+					<item idno="historischePersoon" enabled="1" default="0">
+					  <labels>
+						<label locale="nl_NL" preferred="1">
+						  <name_singular>historische persoon</name_singular>
+						  <name_plural>historische personen</name_plural>
+						</label>
+					  </labels>
+					</item>
+					<item idno="historischeOrganisatie" enabled="1" default="0">
+					  <labels>
+						<label locale="nl_NL" preferred="1">
+						  <name_singular>historische instelling</name_singular>
+						  <name_plural>historische instellingen</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -5717,7 +5717,7 @@
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>productie maatschappij</name_singular>
-														<name_plural>productie maatschappij</name_plural>
+							<name_plural>productie maatschappij</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
