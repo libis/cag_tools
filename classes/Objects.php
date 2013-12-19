@@ -6,6 +6,12 @@
  */
 class Objects {
 
+    protected $log;
+
+    function __construct($alog = null) {
+        $this->log = $alog;
+    }
+
      # --------------------------------------------------------------------------------
     /**
      * Insert of update ???
@@ -15,7 +21,7 @@ class Objects {
      */
     public function actionToTake($idno)
     {
-        global $log;
+        //global $log;
 
         $t_object = new ca_objects_bis();
         # controleren of objecten al gemaakt zijn
@@ -25,23 +31,25 @@ class Objects {
 
         if (($gevonden) === 0 ) {
             //actie blijft bij insert
-            $log->logInfo('ACTION to take: CREATE');
+            $this->log->logInfo('ACTION to take: CREATE');
             $vn_left_id = NULL;
         } elseif ($gevonden >= 1) {
             $vn_left_id = $va_left_keys[0];
-            $log->logInfo('ACTION to take: UPDATE record', $vn_left_id);
+            $this->log->logInfo('ACTION to take: UPDATE record', $vn_left_id);
             if ($gevonden === 1) {
-                $log->logInfo('slechts één record gevonden', $va_left_keys[0]);
+                $this->log->logInfo('slechts één record gevonden', $va_left_keys[0]);
             } elseif ($gevonden > 1 ) {
-                $log->logWarn('WARNING: meerdere records gevonden, we nemen het eerste', $va_left_keys);
+                $this->log->logWarn('WARNING: meerdere records gevonden, we nemen het eerste', $va_left_keys);
             }
+        } else {
+            throw new Exception("Objects.php->actionToTake: unexpected error");
         }
         return $vn_left_id;
     }
 
     public function defineIdentificatie($resultarray, $idno)
     {
-        global $log;
+        //global $log;
 
         $vs_Identificatie = "=====".$idno." geen identificatie =====";
         if ( (isset($resultarray['preferred_label'])) && (!empty($resultarray['preferred_label'])) ) {
@@ -66,7 +74,13 @@ class Objects {
         $log->logInfo("Identificatie => {$vs_Identificatie}");
         return $vs_Identificatie;
     }
-
+    # --------------------------------------------------------------------------------
+    /**
+     * Status te creëren object bepalen
+     *
+     * @param array $resultarray data-array op te laden record
+     * @return int $status status op te laden record (0, 1, of 2 zie ca_objects.php)
+     */
     public function defineStatus($resultarray)
     {
 
@@ -84,7 +98,7 @@ class Objects {
 
     public function insertObject($vs_Identificatie, $idno, $status, $pn_object_type_id, $pn_locale_id)
     {
-        global $log;
+        //global $log;
 
         $t_object = new ca_objects();
         $t_object->setMode(ACCESS_WRITE);
@@ -125,7 +139,7 @@ class Objects {
 
     public function addSomeObjectAttribute($object_id, $container, $data)
     {
-        global $log;
+        //global $log;
 
         $t_object = new ca_objects();
         $t_object->setMode(ACCESS_WRITE);
@@ -162,7 +176,7 @@ class Objects {
      */
     function createRelationship($object_id, $right, $vs_right_string, $relationship) {
 
-        global $log;
+        //global $log;
 
         $verder = array();
         # 1.8.
@@ -247,7 +261,7 @@ class Objects {
 
     public function processVariable($vn_left_id, $right, $vs_right_string, $relationship, $locale) {
 
-        global $log;
+        //global $log;
         global $t_func;
 
         $succes = array(0, 0);

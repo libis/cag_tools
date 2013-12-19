@@ -4,14 +4,13 @@
  * and open the template in the editor.
  */
 
-
 require_once(__MY_DIR__."/cag_tools/classes/ca_objects_bis.php");
 require_once(__MY_DIR__."/cag_tools/classes/Lists.php");
 require_once(__MY_DIR__."/cag_tools/classes/Objects.php");
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
-$log = $t_func->setLogging();
+$log = new KLogger(__LOG_DIR__, KLogger::DEBUG);
 
 $t_list = new ca_lists();
 
@@ -20,7 +19,7 @@ $t_texp->setLanguage('nl_NL');
 
 $pn_object_type_id = $t_list->getItemIDFromList('object_types', 'cagObject_type');
 
-$my_objects = new Objects();
+$my_objects = new Objects($log);
 
 //==============================================================================initialisaties
 $teller = 1;
@@ -984,8 +983,8 @@ while ($reader->name === 'record') {
 
                 $acquisition = array();
                 //if (!$t_func->is_valid_date($acquisitionDate)) { $acquisitionDate = ""; }
-                if (!($t_texp->parse($acquisitionDate)) ) {
-                    $log->logWarn('WARNING: problemen met datum - naar Note-veld:', $t_texp->getParseErrorMessage());
+                if ( ($acquisitionDate !== '') || (!($t_texp->parse($acquisitionDate))) ) {
+                    $log->logWarn('WARNING: '.$idno.' '.$resultarray[$adlib].' problemen met datum - naar Note-veld:', $t_texp->getParseErrorMessage());
                     $acquisition[] = "Acquisitiondatum: ".$acquisitionDate;
                     $acquisitionDate = null;
                 }
