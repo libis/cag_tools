@@ -4795,11 +4795,11 @@
                                                 </label>
                                         </labels>
                                 </item>
-                                <item idno="drukker" enabled="1" default="0">
+                                <item idno="drukkerij" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
-                                                        <name_singular>drukker</name_singular>
-                                                        <name_plural>drukker</name_plural>
+                                                        <name_singular>drukkerij</name_singular>
+                                                        <name_plural>drukkerij</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -4997,11 +4997,35 @@
                                 </item>
                         </items>
                 </list>
+                <list code="acquisitionMethode_lijst" hierarchical="0" system="1" vocabulary="0">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Verwervingsmethode lijst</name>
+                                </label>
+                        </labels>
+                        <items></items>
+                </list>
     <!-- deze lijst moet nog aangevuld worden door aangeleverde info -->
                 <list code="persoonFunctie_lijst" hierarchical="0" system="1" vocabulary="0">
                         <labels>
                                 <label locale="nl_NL">
                                         <name>Persoon - Functie lijst</name>
+                                </label>
+                        </labels>
+                        <items></items>
+                </list>
+                <list code="beroepOrg_lijst" hierarchical="0" system="1" vocabulary="0">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Beroepen organisatie lijst</name>
+                                </label>
+                        </labels>
+                        <items></items>
+                </list>
+                <list code="beroepPersoon_lijst" hierarchical="0" system="1" vocabulary="0">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Beroepen persoon lijst</name>
                                 </label>
                         </labels>
                         <items></items>
@@ -5615,32 +5639,32 @@
                                 <item idno="organization" enabled="1" default="0">
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
-												  <name_singular>actuele instelling</name_singular>
-												  <name_plural>actuele instellingen</name_plural>
-												</label>
-											  </labels>
-											</item>
-											<item idno="individual" enabled="1" default="0">
-											  <labels>
-												<label locale="nl_NL" preferred="1">
-												  <name_singular>actuele persoon</name_singular>
-												  <name_plural>actuele personen</name_plural>
-												</label>
-											  </labels>
-											</item>
-											<item idno="historischePersoon" enabled="1" default="0">
-											  <labels>
-												<label locale="nl_NL" preferred="1">
-												  <name_singular>historische persoon</name_singular>
-												  <name_plural>historische personen</name_plural>
-												</label>
-											  </labels>
-											</item>
-											<item idno="historischeOrganisatie" enabled="1" default="0">
-											  <labels>
-												<label locale="nl_NL" preferred="1">
-												  <name_singular>historische instelling</name_singular>
-												  <name_plural>historische instellingen</name_plural>
+						  <name_singular>actuele instelling</name_singular>
+						  <name_plural>actuele instellingen</name_plural>
+						</label>
+					  </labels>
+					</item>
+					<item idno="individual" enabled="1" default="0">
+					  <labels>
+						<label locale="nl_NL" preferred="1">
+						  <name_singular>actuele persoon</name_singular>
+						  <name_plural>actuele personen</name_plural>
+						</label>
+					  </labels>
+					</item>
+					<item idno="historischePersoon" enabled="1" default="0">
+					  <labels>
+						<label locale="nl_NL" preferred="1">
+						  <name_singular>historische persoon</name_singular>
+						  <name_plural>historische personen</name_plural>
+						</label>
+					  </labels>
+					</item>
+					<item idno="historischeOrganisatie" enabled="1" default="0">
+					  <labels>
+						<label locale="nl_NL" preferred="1">
+						  <name_singular>historische instelling</name_singular>
+						  <name_plural>historische instellingen</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -5717,7 +5741,7 @@
                                         <labels>
                                                 <label locale="nl_NL" preferred="1">
                                                         <name_singular>productie maatschappij</name_singular>
-														<name_plural>productie maatschappij</name_plural>
+							<name_plural>productie maatschappij</name_plural>
                                                 </label>
                                         </labels>
                                 </item>
@@ -8815,7 +8839,7 @@
 						  <settings>
 							<setting name="minChars">0</setting>
 							<setting name="maxChars">65535</setting>
-							<setting name="fieldWidth">90</setting>
+							<setting name="fieldWidth">30</setting>
 							<setting name="fieldHeight">1</setting>
 						  </settings>
 						</metadataElement>
@@ -8828,7 +8852,7 @@
 						  <settings>
 							<setting name="minChars">0</setting>
 							<setting name="maxChars">65535</setting>
-							<setting name="fieldWidth">90</setting>
+							<setting name="fieldWidth">60</setting>
 							<setting name="fieldHeight">1</setting>
 							<setting name="suggestExistingValues">1</setting>
 						  </settings>
@@ -9884,7 +9908,7 @@
                                         </labels>
                                         <settings/>
                                         <elements>
-                                                <metadataElement code="acquisitionMethode" datatype="Text">
+                                                <metadataElement code="acquisitionMethode" datatype="List" list="acquisitionMethode_lijst">
                                                         <labels>
                                                                 <label locale="nl_NL">
                                                                         <name>Verwerving - Methode</name>
@@ -11747,6 +11771,50 @@
                                 </restriction>
                         </typeRestrictions>
                 </metadataElement>
+                <metadataElement code="beroepPersoon" datatype="List" list="beroepPersoon_lijst">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Beroep</name>
+                                        <description>occupation</description>
+                                </label>
+                        </labels>
+                        <settings>
+                                <setting name="fieldWidth">80</setting>
+                                <setting name="fieldHeight">1</setting>
+                        </settings>
+                        <typeRestrictions>
+                                <restriction code="r1">
+                                        <table>ca_entities</table>
+                                        <settings>
+                                                <setting name="minAttributesPerRow">0</setting>
+                                                <setting name="maxAttributesPerRow">10</setting>
+                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
+                                        </settings>
+                                </restriction>
+                        </typeRestrictions>
+                </metadataElement>
+                <metadataElement code="beroepOrg" datatype="List" list="beroepOrg_lijst">
+                        <labels>
+                                <label locale="nl_NL">
+                                        <name>Beroep</name>
+                                        <description>occupation</description>
+                                </label>
+                        </labels>
+                        <settings>
+                                <setting name="fieldWidth">80</setting>
+                                <setting name="fieldHeight">1</setting>
+                        </settings>
+                        <typeRestrictions>
+                                <restriction code="r1">
+                                        <table>ca_entities</table>
+                                        <settings>
+                                                <setting name="minAttributesPerRow">0</setting>
+                                                <setting name="maxAttributesPerRow">10</setting>
+                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
+                                        </settings>
+                                </restriction>
+                        </typeRestrictions>
+                </metadataElement>
                 <metadataElement code="organisatieType" datatype="List" list="organisatieType_lijst">
                         <labels>
                                 <label locale="nl_NL">
@@ -11988,6 +12056,14 @@
                         <typeRestrictions>
                                 <restriction code="r1">
                                         <table>ca_objects</table>
+                                        <settings>
+                                                <setting name="minAttributesPerRow">0</setting>
+                                                <setting name="maxAttributesPerRow">100</setting>
+                                                <setting name="minimumAttributeBundlesToDisplay">0</setting>
+                                        </settings>
+                                </restriction>
+                                <restriction code="r2">
+                                        <table>ca_entities</table>
                                         <settings>
                                                 <setting name="minAttributesPerRow">0</setting>
                                                 <setting name="maxAttributesPerRow">100</setting>
@@ -12443,9 +12519,6 @@
                                                                 <setting name="label" locale="nl_NL">Verworven van</setting>
                                                                 <setting name="add_label" locale="nl_NL">Voeg verwerver toe</setting>
                                                                 <setting name="restrict_to_relationship_types" locale="nl_NL">vorigeeigenaar</setting>
-                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">donor</setting>
-                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">legaat</setting>
-                                                                <setting name="restrict_to_relationship_types" locale="nl_NL">purchase</setting>
                                                         </settings>
                                                 </placement>
                                                 <placement code="ca_attribute_acquisitionInfo">
@@ -13018,6 +13091,9 @@
                                                 <placement code="ca_attribute_persoonFunctie">
                                                         <bundle>ca_attribute_persoonFunctie</bundle>
                                                 </placement>
+                                                <placement code="ca_attribute_beroepPersoon">
+                                                        <bundle>ca_attribute_beroepPersoon</bundle>
+                                                </placement>
                                                 <placement code="ca_attribute_categoriePersOrg">
                                                         <bundle>ca_attribute_categoriePersOrg</bundle>
                                                 </placement>
@@ -13093,6 +13169,9 @@
                                                 </placement>
                                                 <placement code="ca_attribute_organisatieType">
                                                         <bundle>ca_attribute_organisatieType</bundle>
+                                                </placement>
+                                                <placement code="ca_attribute_beroepOrg">
+                                                        <bundle>ca_attribute_beroepOrg</bundle>
                                                 </placement>
                                                 <placement code="ca_attribute_opmerkingEntities">
                                                         <bundle>ca_attribute_opmerkingEntities</bundle>
@@ -13299,6 +13378,18 @@
                                                 </placement>
                                                 <placement code="ca_attribute_bronUitgaven">
                                                         <bundle>ca_attribute_bronUitgaven</bundle>
+                                                </placement>
+                                        </bundlePlacements>
+                                </screen>
+                                <screen idno="media" default="0">
+                                        <labels>
+                                                <label locale="nl_NL">
+                                                        <name>Media</name>
+                                                </label>
+                                        </labels>
+                                        <bundlePlacements>
+                                                <placement code="ca_attribute_digitoolUrl">
+                                                        <bundle>ca_attribute_digitoolUrl</bundle>
                                                 </placement>
                                         </bundlePlacements>
                                 </screen>
