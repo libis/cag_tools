@@ -6,6 +6,9 @@ env:
   - DB=mysql
 before_script:
   - composer self-update
+  - pear config-set preferred_state beta
+  - printf "\n" | pecl install imagick
+  - echo "extension=imagick.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - pear config-set preferred_state stable
   - pear install pear/PHP_CodeSniffer
   - pear channel-discover components.ez.no
