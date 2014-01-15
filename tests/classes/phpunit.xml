@@ -6,6 +6,7 @@
     <file>EntitiesUitObjectenTest.php</file>
     <file>ListsTest.php</file>
     <file>MyFunctions_newTest.php</file>
-    <file>ObjectsTest.php</file>
+    <!-- ObjectTests excluded from tests until collectiveaccess is installed on travis-->
+    <!--<file>ObjectsTest.php</file>-->
   </testsuite>
 </phpunit>
