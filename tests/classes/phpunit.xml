@@ -1,0 +1,12 @@
+<phpunit bootstrap="bootstrap.php" convertErrorsToExceptions="true"
+         convertWarningsToExceptions="true">    
+  <testsuite name="CAG Tools tests">
+    <directory>tests/classes/</directory>
+    <file>CollectionsTest.php</file>
+    <file>EntitiesUitObjectenTest.php</file>
+    <file>ListsTest.php</file>
+    <file>MyFunctions_newTest.php</file>
+    <!-- ObjectTests excluded from tests until collectiveaccess is installed on travis-->
+    <!--<file>ObjectsTest.php</file>-->
+  </testsuite>
+</phpunit>
