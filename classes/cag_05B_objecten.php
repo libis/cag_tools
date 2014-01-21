@@ -4,7 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-define("__PROG__","objecten_st");
+define("__PROG__", "objecten_st");
 
 include('header.php');
 

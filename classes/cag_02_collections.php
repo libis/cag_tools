@@ -16,7 +16,7 @@ $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
 
 $t_local = new Collections();
-
+$t_col = new ca_collections();
 //==============================================================================initialisaties
 $collectie = array();
 //==============================================================================inlezen bestanden
@@ -38,8 +38,8 @@ while ($reader->name === 'record' )
 
     $resultarray = $t_func->XMLArraytoResultArray($xmlarray,$mappingarray);
 
-    $t_local->createCollectionArray($resultarray['collectieBeschrijving_1'], $collectie, $pn_locale_id);
-    $t_local->createCollectionArray($resultarray['collectieBeschrijving_2'], $collectie, $pn_locale_id);
+    $t_local->createCollectionArray($resultarray, array('collectieBeschrijving_1'), $collectie, $pn_locale_id);
+    $t_local->createCollectionArray($resultarray, array('collectieBeschrijving_2'), $collectie, $pn_locale_id);
 
     $reader->next();
 }
@@ -64,7 +64,11 @@ foreach ($collectie as $value)
         $idno = sprintf('%08d', $teller);
         $log->logInfo("inserting collection idno: ", $idno);
 
-        $t_local->insertCollection($pn_collection_type_id, $idno, $status, 1, $pn_locale_id, $value);
+        if ($t_col->getCollectionIDsByName($value)) {
+            $log->logWarn('WARNING: Collectie met deze naam bestaat reeds', $value);
+        } else {
+            $t_local->insertCollection($pn_collection_type_id, $idno, $status, 1, $pn_locale_id, $value);
+        }
 
     }
     $teller = $teller + 1;

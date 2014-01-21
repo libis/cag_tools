@@ -15,7 +15,7 @@ $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
 $log = $t_func->setLogging();
 
-$my_objects = new Objects();
+$my_objects = new Objects($log);
 
 //inlezen csv-bestand met object_ids en pids
 $afbeeldingen = array();
@@ -55,7 +55,7 @@ foreach($afbeeldingen as $beeld) {
 
     $log->logInfo('pid', $pid);
     $log->logInfo('adlib', $adlib);
-    
+
     if ( (isset($pid)) && (isset($adlib)) ) {
         $va_object_ids = $t_object->getObjectIDsByElementID($adlib, 'adlibObjectNummer');
 

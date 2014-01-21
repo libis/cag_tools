@@ -30,6 +30,7 @@ $data[] = array('objecten.xml', 'trefwoord_1', 'cag_trefwoorden');
 $data[] = array('objecten.xml', 'trefwoord_2', 'cag_trefwoorden');
 $data[] = array('objecten.xml', 'trefwoord_3', 'cag_trefwoorden');
 $data[] = array('objecten.xml', 'trefwoord_4', 'cag_trefwoorden');
+$data[] = array('objecten.xml', 'acquisitionMethode', 'acquisitionMethode_lijst');
 
 $count = sizeof($data) - 1;
 

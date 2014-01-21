@@ -15,7 +15,7 @@ $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
 $t_object = new ca_objects_bis();
-$my_objects = new Objects();
+$my_objects = new Objects($log);
 
 $pn_object_type_id = $t_list->getItemIDFromList('object_types', 'cagConceptVoorwerp_type');
 $preferred_use = $t_list->getItemIDFromList('object_label_types', 'uf');
@@ -33,6 +33,7 @@ $reader->open(__MY_DIR__."/cag_tools/data/Werktuigen.xml");
 while ($reader->read() && $reader->name !== 'record');
 //==============================================================================begin van de loop
 while ($reader->name === 'record' ) {
+
     $singlefield = array();
 
     //node omvormen tot associatieve array

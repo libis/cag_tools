@@ -11,6 +11,7 @@ require_once(__MY_DIR__.'/cag_tools/classes/ca_objects_bis.php');
 require_once(__MY_DIR__.'/cag_tools/classes/ca_places_bis.php');
 require_once(__MY_DIR__.'/cag_tools/classes/Occurrences.php');
 require_once(__MY_DIR__.'/cag_tools/classes/Objects.php');
+require_once(__MY_DIR__.'/cag_tools/classes/Lists.php');
 require_once(__MY_DIR__."/cag_tools/classes/EntitiesUitObjecten.php");
 
 $t_func = new MyFunctions_new();
@@ -29,8 +30,9 @@ $t_texp->setLanguage('nl_NL');
 $t_entity = new ca_entities_bis();
 $t_object = new ca_objects_bis();
 
-$my_objects = new Objects();
+$my_objects = new Objects($log);
 $my_entuitobj =new EntitiesUitObjecten();
+$my_list = new Lists();
 //==============================================================================initialisaties
 $teller = 1;
 //==============================================================================inlezen bestanden
@@ -292,6 +294,7 @@ while ($reader->name === 'record' ) {
                     $vervaardigerRol = $t_list->getItemIDFromListByLabel('vervaardiger_rol', $res_vervaardiger[$vRol][$i]);
                     if (!$vervaardigerRol) {
                         $log->logWarn ("WARNING: fout in vervaardigerRol", $res_vervaardiger[$vRol][$i]);
+                        $vervaardigerRol = $my_list->createListItem('vervaardiger_rol', $res_vervaardiger[$vRol][$i], $pn_locale_id);
                     }
                 }
                 //vervaardigingDate
@@ -321,52 +324,6 @@ while ($reader->name === 'record' ) {
                 }
 
                 //$vervaardigingDate = ($vervaardigingDate_3);
-
-                //vervaardigingPlace
-                $vervaardigingPlace = '';
-                if (isset($res_vervaardiger[$vPlace][$i]) && (!empty($res_vervaardiger[$vPlace][$i])) ) {
-                    $vs_gemeente = $res_vervaardiger[$vPlace][$i];
-                    //$vs_right_string =  '%'.$vs_gemeente.'%';
-                    $vs_right_string =  $vs_gemeente.' - %';
-                    $va_right_keys = $t_place->getPlaceIDsByNamePart($vs_right_string);
-
-                    if (empty($va_right_keys)) {
-                        $vs_right_string2 = $vs_gemeente.'%';
-                        $va_right_keys2 = $t_place->getPlaceIDsByNamePart($vs_right_string2);
-
-                        if (empty($va_right_keys2)) {
-
-                            $log->logInfo("creating term ".$vs_gemeente." and adding labels for term");
-
-                            $va_root = $t_place->getPlaceIDsByName('DIVERSEN');
-                            $vn_root = $va_root[0];
-                            $vn_place_id = $t_list->getItemIDFromList('place_types', 'city');
-                            $vn_hierarchy_id = $t_list->getItemIDFromList('place_hierarchies', 'i1');
-                            $vervaardigingPlace = $t_func->createPlace($vs_gemeente, $vn_root, $vn_place_id, $vn_hierarchy_id, $pn_locale_id, $log);
-                            $log->logInfo($vervaardigingPlace." aangemaakt");
-                        } else {
-                            if ((sizeof($va_right_keys2)) > 1 ) {
-                                $log->logWarn("WARNING: problems with place", $vs_right_string2);
-                                $log->logWarn('Meerdere kandidaten gevonden', $va_right_keys2);
-                                $log->logWarn('We nemen de eerste place_id', $va_right_keys2[0]);
-                            }
-                            $vervaardigingPlace = $va_right_keys2[0];
-                        }
-
-                    }else{
-                        if ((sizeof($va_right_keys)) > 1 ) {
-                            $log->logWarn("WARNING: problems with place", $vs_right_string);
-                            $log->logWarn('Meerdere kandidaten gevonden', $va_right_keys);
-                            $log->logWarn('We nemen de eerste place_id', $va_right_keys[0]);
-                        }
-                        $vervaardigingPlace = $va_right_keys[0];
-                    }
-                } else {
-                    $vervaardigingPlace = null;
-                }
-
-                //vervaardigingNote
-                $vervaardigingNote = '';
                 /*
                 if ( (strstr($vervaardigingDate, 'circa')) || (strstr($vervaardigingDate, 'jaren')) ||
                      (strstr($vervaardigingDate, 'vóór'))  || (strstr($vervaardigingDate, 'voor')) ) {
@@ -376,6 +333,12 @@ while ($reader->name === 'record' ) {
                 }
                  *
                  */
+
+                //vervaardigingPlace
+                $vervaardigingPlace = $t_func->processPlace($resultarray['adlibObjectNummer'],$t_place, $t_list, $log, $res_vervaardiger[$vPlace][$i], $pn_locale_id);
+
+                //vervaardigingNote
+                $vervaardigingNote = '';
 
                 $vNotes = array($res_vervaardiger[$vNote_1][$i], $res_vervaardiger[$vNote_2][$i], $res_vervaardiger[$vNote_3][$i],
                     $res_vervaardiger[$vNote_a1][$i], $res_vervaardiger[$vNote_a2][$i], $res_vervaardiger[$vNote_a3][$i],
@@ -412,8 +375,8 @@ while ($reader->name === 'record' ) {
                     if ($vervaardigingPlace !== null)  {
 
                         $t_meta = new ca_metadata_elements();
-                        $info = $t_meta->_getElementID('objectvervaardigingInfo');
-                        $place = $t_meta->_getElementID('objectvervaardigingPlace');
+                        $info = $t_meta->_getElementID('objectVervaardigingInfo');
+                        $place = $t_meta->_getElementID('objectVervaardigingPlace');
 
                         $qry1 = "select attribute_id from ca_attributes where element_id = $info and table_num = 57
                                  and row_id = $vn_left_id ";
@@ -424,19 +387,9 @@ while ($reader->name === 'record' ) {
                             $attribute_id = $qr_attr_ids->get('attribute_id');
 
                             $qry2 = "update ca_attribute_values
-                                     set value_integer1 = $place
-                                     where element_id = 853 and attribute_id = $attribute_id";
+                                     set value_integer1 = $vervaardigingPlace
+                                     where element_id = $place and attribute_id = $attribute_id";
                             $o_db->query($qry2);
-                            /*
-                            //objectvervaardigingsDate 847)
-                            if (isset($vervaardigingDate_org)) {
-                                $qry3 = "update ca_attribute_values
-                                        set value_longtext1 = $vervaardigingDate_org
-                                        where element_id = 847 and attribute_id = $attribute_id";
-                                $o_db->query($qry3);
-                            }
-                             *
-                             */
                         }
                         unset($info);
                         unset($place);
@@ -542,11 +495,19 @@ while ($reader->name === 'record' ) {
     $col = array($col_1, $col_2);
 
     foreach ($col as $collectie) {
-        if ( (isset($resultarray[$collectie])) && (!empty($resultarray[$collectie])) ) {
 
+        if ( (isset($resultarray[$collectie])) && (!empty($resultarray[$collectie])) ) {
             $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_collections', 'part_of');
-            $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en collectie " . $resultarray[$collectie]);
-            $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$collectie], $relationship, $pn_locale_id);
+            if (is_array($resultarray[$collectie])) {
+                $i = 0;
+                for($i=0; $i <= (sizeof($resultarray[$collectie]) - 1); $i++) {
+                    $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en collectie " . $resultarray[$collectie][$i]);
+                    $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$collectie][$i], $relationship, $pn_locale_id);
+                }
+            } else {
+                $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en collectie " . $resultarray[$collectie]);
+                $my_objects->processVariable($vn_left_id, 'ca_collections', $resultarray[$collectie], $relationship, $pn_locale_id);
+            }
             unset($relationship);
         }
     }
@@ -595,6 +556,17 @@ while ($reader->name === 'record' ) {
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_entities', 'bewaarinstelling');
         $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en entiteit(bewaarinstelling) " . $resultarray[$bewaar]);
         $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$bewaar], $relationship, $pn_locale_id);
+        unset($relationship);
+    }
+
+    #86
+    $afgebeeld = 'afgebeeld';
+
+    if ( (isset($resultarray[$afgebeeld])) && (!empty($resultarray[$afgebeeld])) ) {
+
+        $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_entities', 'afgebeeldRelatie');
+        $log->logInfo("relatie leggen tussen object " . $vn_left_id . " en entiteit(afgebeeld) " . $resultarray[$afgebeeld]);
+        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$afgebeeld], $relationship, $pn_locale_id);
         unset($relationship);
     }
 

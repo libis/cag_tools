@@ -1,11 +1,11 @@
 <?php
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-class Occurrences {
+class Occurrences
+{
 
     public function createOccurrencesArray($resultarray, $fields, &$array, $locale)
     {
@@ -70,7 +70,8 @@ class Occurrences {
         }
     }
 
-    public function insertOccurrence($label, $type, $idno, $status, $locale) {
+    public function insertOccurrence($label, $type, $idno, $status, $locale)
+    {
 
         global $log;
 
@@ -88,16 +89,16 @@ class Occurrences {
         if ($t_occur->numErrors()) {
             $log->logError("ERROR INSERTING occurrence ".$label." - ".join('; ', $t_occur->getErrors()));
             $occurrence_id = false;
-        }else{
+        } else {
             $log->logInfo("insert occurrence ".$label." gelukt");
             //----------
             $t_occur->addLabel(array(
                 'name'      => $label
-            ),$locale, null, true );
+            ), $locale, null, true);
 
             if ($t_occur->numErrors()) {
                 $log->logError("ERROR: ADDING LABEL TO occurrence ".$label." - ".join('; ', $t_occur->getErrors()));
-            }else{
+            } else {
                 $log->logInfo("addlabel occurrence ".$label." gelukt ");
             }
         }
@@ -123,17 +124,18 @@ class Occurrences {
 
         if ($t_occur->numErrors()) {
             $log->logError("ERROR ADDING ATTRIBUTE-CONTAINER: ", $container);
-            $log->logError("ERROR message(s) ", join('; ', $t_occur->getErrors()) );
+            $log->logError("ERROR message(s) ", join('; ', $t_occur->getErrors()));
             $log->logError("ERROR de data: ", $data);
             //continue;
-        }else{
+        } else {
             $log->logInfo("ADDATTRIBUTE ENTITY gelukt voor: ", $container);
             $log->logInfo("ADDATTRIBUTE ENTITY gelukt voor: ", $data);
         }
         unset($t_occur);
     }
 
-    function createOccurrenceRelationship($object_id, $right, $vs_right_string, $relationship) {
+    function createOccurrenceRelationship($object_id, $right, $vs_right_string, $relationship)
+    {
 
         global $log;
 
@@ -144,7 +146,7 @@ class Occurrences {
             $va_right_keys = $occurrence->getOccurrenceIDsByUpperNameSort($vs_right_string);
         }
         # 2.3.
-        if ($right == "ca_entities"){
+        if ($right == "ca_entities") {
             $entity = new ca_entities_bis();
             //$va_right_keys = $t_entity->getEntityIDsByName('', $vs_right_string);
             $va_right_keys = $entity->getEntityIDsByUpperNameSort($vs_right_string);
@@ -171,7 +173,7 @@ class Occurrences {
             $log->logError('GEEN kandidaten gevonden', $va_right_keys);
             $verder = array(0, 0);
             #object aanmaken ?
-        } elseif ((sizeof($va_right_keys)) >= 1 ){
+        } elseif ((sizeof($va_right_keys)) >= 1 ) {
 
             if ((sizeof($va_right_keys)) > 1 ) {
                 $log->logWarn("WARNING: problems with right-entity", $vs_right_string);
@@ -190,10 +192,10 @@ class Occurrences {
 
             if ($t_object->numErrors()) {
                 $log->logError("ERROR LINKING entities: ");
-                $log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
+                $log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()));
                 $verder = array(0, 0);
 
-            }else{
+            } else {
                 $log->logInfo("SUCCESS: relation with {$right}/{$vn_right_id} succesfull");
                 $verder = array(1, $vn_right_id);
             }
@@ -203,5 +205,3 @@ class Occurrences {
         return $verder;
     }
 }
-
-

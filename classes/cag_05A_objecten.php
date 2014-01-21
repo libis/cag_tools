@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-define("__PROG__","objecten");
+define("__PROG__", "objecten5A");
 
 include('header.php');
 

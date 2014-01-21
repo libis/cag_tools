@@ -55,13 +55,13 @@ class Objects {
         if ( (isset($resultarray['preferred_label'])) && (!empty($resultarray['preferred_label'])) ) {
             if (is_array($resultarray['preferred_label'])) {
                 $vs_Identificatie = $resultarray['preferred_label'][0];
-                $log->logWarn("WARNING: preferred_label => meerdere aanwezig, nemen de eerste");
+                $this->log->logWarn("WARNING: preferred_label => meerdere aanwezig, nemen de eerste");
             }else{
                 $vs_Identificatie = $resultarray['preferred_label'];
             }
         }else{
             //aangepast omwille van ST-TRUIDEN - slechts éénmaal preferred label aanwezig
-            $log->logWarn("WARNING: preferred_label => niet aanwezig - nemen objectNaam");
+            $this->log->logWarn("WARNING: preferred_label => niet aanwezig - nemen objectNaam");
 
             if ( (isset($resultarray['objectNaam'])) && (!empty($resultarray['objectNaam'])) ) {
                 if (!is_array($resultarray['objectNaam'])) {
@@ -71,7 +71,7 @@ class Objects {
                 }
             }
         }
-        $log->logInfo("Identificatie => {$vs_Identificatie}");
+        $this->log->logInfo("Identificatie => {$vs_Identificatie}");
         return $vs_Identificatie;
     }
     # --------------------------------------------------------------------------------
@@ -113,22 +113,22 @@ class Objects {
         $t_object->insert();
     //----------
         if ($t_object->numErrors()) {
-            $log->logError("ERROR INSERTING OBJECT: ", $vs_Identificatie);
-            $log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
+            $this->log->logError("ERROR INSERTING OBJECT: ", $vs_Identificatie);
+            $this->log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
             //continue;
         }else{
-            $log->logInfo("INSERT OBJECT gelukt: ", $vs_Identificatie);
+            $this->log->logInfo("INSERT OBJECT gelukt: ", $vs_Identificatie);
             //----------
             $t_object->addLabel(array(
                     'name'      => $vs_Identificatie
             ),$pn_locale_id, null, true );
 
             if ($t_object->numErrors()) {
-                $log->logError("ERROR ADDING PREFERRED LABEL TO OBJECT: ", $vs_Identificatie);
-                $log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
+                $this->log->logError("ERROR ADDING PREFERRED LABEL TO OBJECT: ", $vs_Identificatie);
+                $this->log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
                 //continue;
             }else{
-                $log->logInfo("ADDLABEL OBJECT gelukt voor: ", $vs_Identificatie);
+                $this->log->logInfo("ADDLABEL OBJECT gelukt voor: ", $vs_Identificatie);
             }
         }
         $object_id = $t_object->getPrimaryKey();
@@ -152,13 +152,13 @@ class Objects {
         $t_object->update();
 
         if ($t_object->numErrors()) {
-            $log->logError("ERROR ADDING ATTRIBUTE-CONTAINER: ", $container);
-            $log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
-            $log->logError("ERROR de data: ", $data);
+            $this->log->logError("ERROR ADDING ATTRIBUTE-CONTAINER: ", $container);
+            $this->log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
+            $this->log->logError("ERROR de data: ", $data);
             //continue;
         }else{
-            $log->logInfo("ADDATTRIBUTE ENTITY gelukt voor: ", $container);
-            $log->logInfo("ADDATTRIBUTE ENTITY gelukt voor: ", $data);
+            $this->log->logInfo("ADDATTRIBUTE ENTITY gelukt voor: ", $container);
+            $this->log->logInfo("ADDATTRIBUTE ENTITY gelukt voor: ", $data);
         }
         unset($t_object);
     }
@@ -205,16 +205,16 @@ class Objects {
 
         if ( (sizeof($va_right_keys)) === 0 ) {
 
-            $log->logError("ERROR: problems with right-entity", $vs_right_string);
-            $log->logError('GEEN kandidaten gevonden', $va_right_keys);
+            $this->log->logError("ERROR: problems with right-entity", $vs_right_string);
+            $this->log->logError('GEEN kandidaten gevonden', $va_right_keys);
             $verder = array(0, 0);
             #object aanmaken ?
         } elseif ((sizeof($va_right_keys)) >= 1 ){
 
             if ((sizeof($va_right_keys)) > 1 ) {
-                $log->logWarn("WARNING: problems with right-entity", $vs_right_string);
-                $log->logWarn('Meerdere kandidaten gevonden', $va_right_keys);
-                $log->logWarn('We nemen de eerste entity_id', $va_right_keys[0]);
+                $this->log->logWarn("WARNING: problems with right-entity", $vs_right_string);
+                $this->log->logWarn('Meerdere kandidaten gevonden', $va_right_keys);
+                $this->log->logWarn('We nemen de eerste entity_id', $va_right_keys[0]);
             }
 
             if ($right == "ca_list_items") {
@@ -231,12 +231,12 @@ class Objects {
             $t_object->addRelationship($right, $vn_right_id, $relationship);
 
             if ($t_object->numErrors()) {
-                $log->logError("ERROR LINKING entities: ");
-                $log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
+                $this->log->logError("ERROR LINKING entities: ");
+                $this->log->logError("ERROR message(s) ", join('; ', $t_object->getErrors()) );
                 $verder = array(0, 0);
 
             }else{
-                $log->logInfo("SUCCESS: relation with {$right}/{$vn_right_id} succesfull");
+                $this->log->logInfo("SUCCESS: relation with {$right}/{$vn_right_id} succesfull");
                 $verder = array(1, $vn_right_id);
             }
 
@@ -274,11 +274,11 @@ class Objects {
                 $search_string = trim($vs_right_string);
             }
 
-            $log->logInfo("relatie leggen tussen " . $vn_left_id . "  en   " . $vs_right_string);
+            $this->log->logInfo("relatie leggen tussen " . $vn_left_id . "  en   " . $vs_right_string);
 
             $succes = $this->createRelationship($vn_left_id, $right, $search_string, $relationship);
 
-            $log->logInfo('succes', $succes);
+            $this->log->logInfo('succes', $succes);
 
             unset($vs_right_string);
             unset($search_string);

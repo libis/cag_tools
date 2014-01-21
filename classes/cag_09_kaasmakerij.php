@@ -16,7 +16,7 @@ $log = $t_func->setLogging();
 
 $t_list = new ca_lists();
 
-$my_objects = new Objects();
+$my_objects = new Objects($log);
 
 $pn_object_type_id = $t_list->getItemIDFromList('object_types', 'cagObject_type');
 //de workflow_status -> cfr. Sam: allen op Klaar en publiceren
@@ -150,7 +150,7 @@ while ($reader->name === 'record' ) {
     if ( (isset($resultarray[$bewaar])) && (!empty($resultarray[$bewaar])) ) {
 
         $relationship = $t_relatie->getRelationshipTypeID('ca_objects_x_entities', 'eigenaarRelatie');
-        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$bewaar], $relationship);
+        $my_objects->processVariable($vn_left_id, 'ca_entities', $resultarray[$bewaar], $relationship, $pn_locale_id);
         unset($relationship);
     }
 

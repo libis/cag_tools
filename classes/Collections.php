@@ -4,22 +4,29 @@
  *
  * @author AnitaR
  */
-class Collections {
+class Collections
+{
 
-    public function createCollectionArray($value, &$collectie, $locale) {
+    public function createCollectionArray($value, $velden, &$collectie, $locale) {
 
         global $t_func;
-        global $log;
 
-        $sleutel = "";
-        if (!is_array($value)) {
-            if ( (isset($value)) && (!empty($value)) ) {
-                //$sleutel = $t_func->cleanUp($value);
-                $sleutel = $t_func->generateSortValue($value, $locale);
-                $collectie[$sleutel] =  $value;
+        $aantal = $t_func->Herhalen($value, $velden);
+
+        if ($aantal > 0) {
+            //we vormen alle elementen om tot een array van dezelfde vorm
+            $array = $t_func->makeArray2($value, $aantal, $velden);
+            $n_aantal = $aantal - 1;
+            $i = 0;
+            for ($i=0; $i <= ($n_aantal); $i++) {
+
+                $sleutel = "";
+                if ( (isset($array[$velden[0]][$i])) && (!empty($array[$velden[0]][$i])) ) {
+                    //$sleutel = $t_func->cleanUp($value);
+                    $sleutel = $t_func->generateSortValue($array[$velden[0]][$i], $locale);
+                    $collectie[$sleutel] =  $array[$velden[0]][$i];
+                }
             }
-        } else {
-            $log->logError("ERROR: het datatype (array) kan niet verwerkt worden", $value);
         }
     }
 

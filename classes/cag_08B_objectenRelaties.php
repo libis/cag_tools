@@ -15,4 +15,4 @@ define("__PART__", "ST");
 
 include("My_CAG.php");
 
-include("cag_xx_objecten.php");
+include("cag_xx_objectenRelaties.php");

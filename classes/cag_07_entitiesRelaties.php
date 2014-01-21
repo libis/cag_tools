@@ -108,16 +108,21 @@ while ($reader->name === 'record' ) {
 
                     //functiegegevens
                     if ( (isset($contacts['persoonFunctie'][$i])) && (!empty($contacts['persoonFunctie'][$i])) ) {
-                        //check if persoonFunctie exists in list persoonFunctie_lijst -> aanmaken
+ #78                       //CHECK-I: check if persoonFunctie exists in list persoonFunctie_lijst -> aanmaken
                         $t_item = $my_list->createListItem('persoonFunctie_lijst', trim($contacts['persoonFunctie'][$i]), $pn_locale_id);
 
                         if ($t_item) {
-                            $container = 'persoonFunctie';
-                            $functie = $t_list->getItemIDFromList('persoonFunctie_lijst', trim($contacts['persoonFunctie'][$i]));
-                            $data = array('persoonFunctie'  => $functie,
-                                        'locale_id'         => $pn_locale_id);
-                            $my_entity->addSomeEntityAttribute($entity_id, $container, $data);
-                            $log->logInfo('persoonFunctie', $data);
+                            //CHECK-II: check if persoonFunctie niet reeds bestaat voor deze entity
+                            if (in_array(trim($contacts['persoonFunctie'][$i]), $t_entity_left->getAttributeDisplayValues('persoonFunctie', $entity_id))) {
+                                $log->logInfo('Deze persoonFunctie bestaat reeds voor entiteit', $entity_id);
+                            } else {
+                                $container = 'persoonFunctie';
+                                $functie = $t_list->getItemIDFromList('persoonFunctie_lijst', trim($contacts['persoonFunctie'][$i]));
+                                $data = array('persoonFunctie'  => $functie,
+                                            'locale_id'         => $pn_locale_id);
+                                $my_entity->addSomeEntityAttribute($entity_id, $container, $data);
+                                $log->logInfo('persoonFunctie', $data);
+                            }
                         }
                         unset($container);
                         unset($data);

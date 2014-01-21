@@ -71,7 +71,7 @@ class MyFunctions_new
                 if (is_array($va_articles)) {
                         foreach($va_articles as $vs_article) {
                                 if (preg_match('!^('.$vs_article.')[ ]+!i', $vs_display_value, $matches)) {
-                                        $vs_display_value = trim(str_replace($matches[1], '', $vs_display_value).', '.$matches[1]);
+                                        $vs_display_value = ucfirst(trim(str_replace($matches[1], '', $vs_display_value).', '.$matches[1]));
                                         break(2);
                                 }
                         }
@@ -533,5 +533,82 @@ class MyFunctions_new
             }
         }
         return false;
+    }
+
+    # --------------------------------------------------------------------------------
+    /**
+     * Verwerken plaatsgegevens bij vervaardigingInfo
+     *
+     * @param obj   $t_place  ca_places object
+     * @param obj   $t_list  ca_lists object
+     * @param obj   $log Klogger-object
+     * @param string    $data de te verwerken plaatsnaam
+     * @param int   $locale taalcode
+     * @return int
+     */
+
+    public function processPlace($id, $t_place, $t_list, $log, $data, $locale) {
+
+        $meerdere = array('Amsterdam', 'Frankrijk', 'Haspengouw', 'Kallo', 'Lage Landen', 'Limburg', 'Rotterdam', 'Stockholm');
+
+        if (isset($data) && (!empty($data))) {
+            $vs_gemeente = $data;
+            //$vs_right_string =  '%'.$vs_gemeente.'%';
+            if ($vs_gemeente === 'Brussel') {
+                $vs_right_string = 'Bruxelles - 1000';
+            } else {
+                $vs_right_string =  $vs_gemeente.' - %';
+            }
+            $va_right_keys = $t_place->getPlaceIDsByNamePart($vs_right_string);
+
+            if (empty($va_right_keys)) {
+                $vs_right_string2 = $vs_gemeente.'%';
+                $va_right_keys2 = $t_place->getPlaceIDsByNamePart($vs_right_string2);
+
+                if (empty($va_right_keys2)) {
+
+                    $log->logInfo("creating term ".$vs_gemeente." and adding labels for term");
+
+                    $va_root = $t_place->getPlaceIDsByName('DIVERSEN');
+                    $vn_root = $va_root[0];
+                    $vn_place_id = $t_list->getItemIDFromList('place_types', 'city');
+                    $vn_hierarchy_id = $t_list->getItemIDFromList('place_hierarchies', 'i1');
+                    $vervaardigingPlace = $this->createPlace($vs_gemeente, $vn_root, $vn_place_id, $vn_hierarchy_id, $locale, $log);
+                    $log->logInfo($vervaardigingPlace." aangemaakt");
+
+                } elseif ((sizeof($va_right_keys2)) > 1 ) {
+                    $log->logWarn("WARNING: problems with place", $vs_right_string2);
+                    $log->logWarn('Meerdere kandidaten gevonden', $va_right_keys2);
+
+                    if (in_array($vs_gemeente, $meerdere)) {
+                        $log->logWarn('We nemen de eerste place_id', $va_right_keys2[0]);
+                        $vervaardigingPlace = $va_right_keys2[0];
+                    } else {
+                        $log->logError('ERROR: gelieve de link manueel in te vullen voor '. $id .' en '. $vs_gemeente );
+                        $vervaardigingPlace = null;
+                    }
+
+                }
+
+            } elseif ((sizeof($va_right_keys)) > 1 ) {
+                    $log->logWarn("WARNING: problems with place", $vs_right_string);
+                    $log->logWarn('Meerdere kandidaten gevonden', $va_right_keys);
+
+                    if (in_array($vs_gemeente, $meerdere)) {
+                        $log->logWarn('We nemen de eerste place_id', $va_right_keys[0]);
+                        $vervaardigingPlace = $va_right_keys[0];
+                    } else {
+                        $log->logError('ERROR: gelieve de link manueel in te vullen voor '. $id .' en '. $vs_gemeente );
+                        $vervaardigingPlace = null;
+                    }
+
+            } else {
+                $vervaardigingPlace = $va_right_keys[0];
+            }
+        } else {
+            $vervaardigingPlace = null;
+        }
+
+        return $vervaardigingPlace;
     }
 }

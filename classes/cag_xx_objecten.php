@@ -71,7 +71,7 @@ while ($reader->name === 'record') {
     }
     $log->logInfo('idno ',($idno));
 
-    $vn_left_id = $my_objects ->actionToTake($idno);
+    $vn_left_id = $my_objects->actionToTake($idno);
 
     # aanmaken nieuwe objecten
     if ($vn_left_id === NULL){
@@ -983,13 +983,30 @@ while ($reader->name === 'record') {
 
                 $acquisition = array();
                 //if (!$t_func->is_valid_date($acquisitionDate)) { $acquisitionDate = ""; }
+                /*
                 if ( ($acquisitionDate !== '') || (!($t_texp->parse($acquisitionDate))) ) {
                     $log->logWarn('WARNING: '.$idno.' '.$resultarray[$adlib].' problemen met datum - naar Note-veld:', $t_texp->getParseErrorMessage());
                     $acquisition[] = "Acquisitiondatum: ".$acquisitionDate;
                     $acquisitionDate = null;
                 }
+                 *
+                 */
+                if ((!empty($acquisitionDate)) && ($t_texp->parse($acquisitionDate))) {
+                } elseif (empty($acquisitionDate)) {
+                    $acquisitionDate = null;
+                } else {
+                    $log->logWarn('WARNING: '.$idno.' '.$resultarray[$adlibnr].' problemen met datum - naar Note-veld:', $t_texp->getParseErrorMessage());
+#80
+                    $acquisition[] = "Verwervingsdatum: ".$acquisitionDate;
+                    $acquisitionDate = null;
+                }
 
-                //Methode
+#81 en #82      //Methode
+                if ((isset($res_verwerving[$acq_meth_2][$i])) && (!empty($res_verwerving[$acq_meth_2][$i]))) {
+                    $acquisitionMethode = $t_list->getItemIDFromListByLabel('acquisitionMethode_lijst', $res_verwerving[$acq_meth_2][$i]);
+                } else {
+                    $acquisitionMethode = $t_list->getItemIDFromListByLabel('acquisitionMethode_lijst', '-');
+                }
 
                 $acquisitionNote = '';
                 $acq_array = array($acq_note_1 => 'Opm.1: ', $acq_note_4 => 'Door: ', $acq_note_5 => 'Van: ',
@@ -1021,13 +1038,14 @@ while ($reader->name === 'record') {
                 $data = array(  'locale_id'                 =>	$pn_locale_id,
                                 'acquisitionSource'         =>  $res_verwerving[$acq_source][$i],
                                 'acquisitionDate'           =>	$acquisitionDate,
-                                'acquisitionMethode'        =>	$res_verwerving[$acq_meth_2][$i],
+                                'acquisitionMethode'        =>	$acquisitionMethode,
                                 'acquisitionNote'           =>	$acquisitionNote);
                 $my_objects->addSomeObjectAttribute($vn_left_id, $container, $data);
 
                 unset($acquisition);
                 unset($acquisitionNote);
                 unset($acquisitionDate);
+                unset($acquisitionMethode);
                 unset($acq_array);
                 unset($container);
                 unset($data);
