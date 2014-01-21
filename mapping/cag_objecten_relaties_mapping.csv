@@ -34,3 +34,4 @@ association.period.date.end;objectVervaardigingNote_a4;fysieke;vervaardiging;
 association.period.date.start;objectVervaardigingNote_a3;fysieke;vervaardiging;
 association.period.note;objectVervaardigingNote_a1;fysieke;vervaardiging;
 object_name.authority;objectnaamOpmerkingen_3;identificatie;objectnaam_bijkomende_info;
+content.person.name;afgebeeld;relaties;gerelateerde_entiteiten;ca_objects_x_entities;all
