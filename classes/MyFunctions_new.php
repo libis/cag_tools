@@ -20,7 +20,7 @@ class MyFunctions_new
     function setLogging() {
 //***
         $logDir = __MY_DIR__."/cag_tools-staging/shared/log/";
-        $log = new KLogger($logDir, KLogger::DEBUG);
+        $log = new ALogger($logDir, ALogger::DEBUG);
 
         return $log;
     }
@@ -558,6 +558,78 @@ class MyFunctions_new
                 $vs_right_string = 'Bruxelles - 1000';
             } else {
                 $vs_right_string =  $vs_gemeente.' - %';
+            }
+            # zie mail Sam 21/01/2014
+            switch ($vs_gemeente) {
+                case 'Brussel':
+                    $vs_right_string = 'Bruxelles - 1000';
+                    break;
+                case 'Berchem':
+                    $vs_right_string = 'Berchem - 2600';
+                    break;
+                case 'Tongerlo':
+                    $vs_right_string = 'Tongerlo - 2260';
+                    break;
+                case 'Deurne':
+                    $vs_right_string = 'Deurne - 2100';
+                    break;
+                case 'Clermont':
+                    $vs_right_string = 'Clermont - 4890';
+                    break;
+                case 'Beveren':
+                    $vs_right_string = 'Beveren - 9120';
+                    break;
+                case 'Brabant':
+                    $vs_right_string = 'Vlaams Brabant (provincie)';
+                    break;
+                case 'Tielt':
+                    if ($id === '00010393' || $id === '00010402') {
+                        $vs_right_string = 'Tielt - 3390';
+                    } elseif ($id === '00006891' || $id === '00009079') {
+                        $vs_right_string = 'Tielt - 3390';
+                    } else {
+                        $vs_right_string =  $vs_gemeente.' - %';
+                    }
+                    break;
+                case 'Péronnes':
+                    $vs_right_string = 'Péronnes-lez-Antoing - 7640';
+                    break;
+                case 'Bern':
+                    $vs_right_string = 'Bern, Zwitserland - 3000-3050';
+                    break;
+                case 'Halle':
+                    $vs_right_string = 'Halle - 1500';
+                    break;
+                case 'Sint-Pieters-Kapelle':
+                    $vs_right_string = 'Sint-Pieters-Kapelle - 1541';
+                    break;
+                case 'Aalst':
+                    $vs_right_string = 'Aalst - 9300';
+                    break;
+                case 'Meix':
+                    $vs_right_string = '###';
+                    break;
+                case 'Aube':
+                    if ($id === '00000842' || $id === '00003105' || $id === '00010423') {
+                        $vs_right_string = 'Aubel - 4880';
+                    } elseif ($id === '00008532') {
+                        $vs_right_string = 'Aube, Frankrijk (departement)';
+                    } else {
+                        $vs_right_string =  $vs_gemeente.' - %';
+                    }
+                    break;
+                case 'Barvaux':
+                    $vs_right_string = 'Barvaux-Condroz - 5370';
+                    break;
+                case 'Ruisbroek':
+                    $vs_right_string = 'Ruisbroek - 1601';
+                    break;
+                case 'Remicourt':
+                    $vs_right_string = 'Remicourt - 4350';
+                    break;
+                default:
+                    $vs_right_string =  $vs_gemeente.' - %';
+                    break;
             }
             $va_right_keys = $t_place->getPlaceIDsByNamePart($vs_right_string);
 

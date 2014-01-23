@@ -20,7 +20,7 @@
 /**
  * Class documentation
  */
-class KLogger
+class ALogger
 {
     /**
      * Error severity, from low to high. From BSD syslog RFC, secion 4.1.1
@@ -58,7 +58,7 @@ class KLogger
      * print out objects etc. But we can't use NULL, 0, FALSE, etc, because those
      * are often the values the developers will test for. So we'll make one up.
      */
-    const NO_ARGUMENTS = 'KLogger::NO_ARGUMENTS';
+    const NO_ARGUMENTS = 'ALogger::NO_ARGUMENTS';
 
     /**
      * Current status of the log file

@@ -10,7 +10,7 @@ require_once(__MY_DIR__."/cag_tools/classes/Objects.php");
 
 $t_func = new MyFunctions_new();
 $pn_locale_id = $t_func->idLocale("nl_NL");
-$log = new KLogger(__LOG_DIR__, KLogger::DEBUG);
+$log = $t_func->setLogging();
 
 $t_list = new ca_lists();
 
