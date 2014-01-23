@@ -1,2 +1,2 @@
 #!/bin/bash
-nohup php import_am_move.php > /www/libis/web/lias_html/cag_tools-staging/shared/log/am_move.log 2> /www/libis/web/lias_html/cag_tools-staging/shared/log/am_move_error.txt < /dev/null &
+nohup php import_am_move.php > ../log/am_move.log 2> ../log/am_move_error.txt < /dev/null &
