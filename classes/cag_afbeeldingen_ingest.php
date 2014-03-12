@@ -9,6 +9,7 @@ set_time_limit(36000);
 include('header.php');
 
 require_once(__CA_MODELS_DIR__.'/ca_objects.php');
+require_once('ca_objects_bis.php');
 
 require_once(__CA_LIB_DIR__.'/core/Parsers/DelimitedDataParser.php');
 
@@ -58,11 +59,11 @@ print "\n Creating afbeelding voor ".$label." \n";
 	// label en idno moeten nog gematcht worden
 	// kunstvoorwerp_idno loop vervangen door opzoeken van label
 
-$t_object = new ca_objects();
+$t_object = new ca_objects_bis();
 
 foreach($afbeeldingen as $label_key => $pid_value)
 {
-	$object_ids = $t_object->getObjectIDsByidnoPart($label_key);
+	$object_ids = $t_object->getObjectIDsByIdno($label_key);
 
 	if(!empty($object_ids) && !empty($pid_value))
 	{
