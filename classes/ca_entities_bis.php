@@ -33,10 +33,11 @@ class ca_entities_bis extends ca_entities
     public function getEntityIDsByUpperNameSort($ps_surname) {
 
         global $log;
-
-        //sort_name is niet beperkt tot 100 karakters
-        //$ps_surname = trim(substr(strtoupper($ps_surname), 0, 99));
-        $ps_surname = trim(strtoupper($ps_surname));
+        $caLocale = new ca_locales();
+        $func = new MyFunctions_new();
+	
+        $ps_surname = $func->limitEntityName(trim(strtoupper($ps_surname)));
+		
         $log->logInfo('aangepaste zoekterm', $ps_surname);
 
         $o_db = $this->getDb();
@@ -46,7 +47,7 @@ class ca_entities_bis extends ca_entities
                 INNER JOIN ca_entity_labels AS cael ON cael.entity_id = cae.entity_id
                 WHERE
                         UPPER(cael.name_sort) = ?
-        ", (string)$ps_surname);
+        ", $func->generateSortValue((string)$ps_surname,$caLocale->getDefaultCataloguingLocaleID()));
 
         $va_entity_ids = array();
         while($qr_res->nextRow()) {
