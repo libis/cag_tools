@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 require_once(__CA_MODELS_DIR__.'/ca_entities.php');
+require_once("MyFunctions_new.php");
 /**
  * Description of ca_entities_bis
  *
