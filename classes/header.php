@@ -9,6 +9,7 @@ define("__MY_DIR__", $_SERVER['DOCUMENT_ROOT']);
 //putenv("COLLECTIVEACCESS_HOME=/www/libis/web/lias_html/ca_cag");
 $_SERVER['SCRIPT_FILENAME'] =  "/www/libis/web/lias_html/ca_cag/index.php";
 define("__MY_DATA__", "/cag_tools/data/");
+define("__LOG_DIR__", __MY_DIR__. "/cag_tools-staging/shared/log");
 //$_SERVER['HTTP_HOST'] = "import";
 
 require_once(__MY_DIR__."/ca_cag/setup.php");
