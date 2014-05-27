@@ -4,6 +4,8 @@
  * functies
  * =============================================================================
  */
+ // TODO needs to be changed. This is set here, because we need __LOG_DIR__, but the setLogging needs to accept an argument $logDir
+include('header.php');
 class MyFunctions_new
 {
     function idLocale($taal) {
@@ -19,7 +21,7 @@ class MyFunctions_new
 
     function setLogging() {
 //***
-        $logDir = __MY_DIR__."/cag_tools-staging/shared/log/";
+        $logDir = __LOG_DIR__;
         $log = new ALogger($logDir, ALogger::DEBUG);
 
         return $log;
@@ -80,6 +82,14 @@ class MyFunctions_new
 
         return $vs_display_value;
     }
+    
+    function limitEntityName($preflabel) {
+		if(strlen($preflabel)>= 512 ){
+	       	$preflabel = trim(substr(strtoupper($preflabel), 0, 511));
+			print "ERROR: Entity name to long: " + $preflabel;
+		}
+		return $preflabel;
+	}
     //inlezen configuratiebestand naar array
     function ReadMappingcsv($bestand) {
 //***

@@ -15,7 +15,6 @@ local.properties
 .classpath
 .settings/
 .loadpath
-installationProfile/login.xml
 *~
 
 # External tool builders
@@ -170,3 +169,4 @@ log/
 divers/
 nbproject/
 My_Info.txt
+.idea/
