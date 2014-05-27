@@ -3,7 +3,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-require_once __MY_DIR__.'/cag_tools/classes/UserErrors.php';
+require_once 'UserErrors.php';
 //require_once __MY_DIR__.'/cag_tools/classes/Logger.php';
 /**
  * Description of UserException
