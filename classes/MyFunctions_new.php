@@ -5,7 +5,7 @@
  * =============================================================================
  */
  // TODO needs to be changed. This is set here, because we need __LOG_DIR__, but the setLogging needs to accept an argument $logDir
-include('header.php');
+//include('header.php');
 class MyFunctions_new
 {
     function idLocale($taal) {
