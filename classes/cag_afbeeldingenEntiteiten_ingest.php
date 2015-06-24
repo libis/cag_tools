@@ -8,8 +8,7 @@ define('__CA_DONT_DO_SEARCH_INDEXING__',true);
 set_time_limit(36000);
 include('header.php');
 
-require_once(__CA_MODELS_DIR__.'/ca_objects.php');
-require_once('ca_objects_bis.php');
+require_once(__CA_MODELS_DIR__.'/ca_entities.php');
 
 require_once(__CA_LIB_DIR__.'/core/Parsers/DelimitedDataParser.php');
 
@@ -47,8 +46,8 @@ while($o_tab_parserAfbeeldingen->nextRow()) {
 	$pid			=	$o_tab_parserAfbeeldingen->getRowValue(2);
 
 	if(!empty($pid) && !empty($label)) {
-		$pid_url = $pid. "_,_http://resolver.lias.be/get_pid?stream&usagetype=THUMBNAIL&pid=" . $pid . "_,_http://resolver.lias.be/get_pid?view&usagetype=VIEW_MAIN,VIEW&pid=". $pid;
-		$afbeeldingen[$label] = $pid_url;
+	$pid_url = $pid. "_,_http://resolver.lias.be/get_pid?stream&usagetype=THUMBNAIL&pid=" . $pid . "_,_http://resolver.lias.be/get_pid?view&usagetype=VIEW_MAIN,VIEW&pid=". $pid;
+	$afbeeldingen[$label] = $pid_url;
 	} else {
 	  echo "Problem adding " .$label . " and Pid: " . $pid;
 	}
@@ -59,45 +58,38 @@ print "\n Creating afbeelding voor ".$label." \n";
 	// label en idno moeten nog gematcht worden
 	// kunstvoorwerp_idno loop vervangen door opzoeken van label
 
-$t_object = new ca_objects_bis();
+$t_entity = new ca_entities();
 
 foreach($afbeeldingen as $label_key => $pid_value)
 {
-	if(strpos($label_key,'_') !== false){
-		$temp =  explode("_", $label_key);
-		
-		if(count($temp) > 2 || count($temp) < 1 ) {
-			print "Meer dan/Minder dan 1 underscore gevonden: " . $label_key;
-			print "\n lookup wordt toch uitgevoerd";
-		} 
-		$object_ids = $t_object->getObjectIDsByIdno($temp[0]);
-	} else {
-		$object_ids = $t_object->getObjectIDsByIdno($label_key);
-	}
-	if(!empty($object_ids) && !empty($pid_value))
+	$pattern = '/([0-9]+)(_)?(.*)/';
+	preg_match($pattern, $label_key, $matches);
+	$lookup = $matches[1];
+	$entity_ids = $t_entity->load($lookup);
+
+	if(!empty($entity_ids) && !empty($pid_value))
 	{
 		$AUTH_CURRENT_USER_ID = 'administrator';
-		$t_object->setMode(ACCESS_WRITE);
+		$t_entity->setMode(ACCESS_WRITE);
 
-		$t_object->load($object_ids[0]);
 		if (trim($pid_value)) {
-				$t_object->addAttribute(array(
+				$t_entity->addAttribute(array(
 					'locale_id'	=>	$pn_locale_id,
 				        'digitoolUrl'	=>	trim($pid_value)
 			                 ), 'digitoolUrl');
 		}
 
-		$t_object->update();
-		
-		if ($t_object->numErrors()) {
-			print "\tERROR UPDATING {$object_ids[0]}/{$pid_value}: ".join('; ', $t_user->getErrors())."\n";
+		$t_entity->update();
+
+		if ($t_entity->numErrors()) {
+			print "\tERROR UPDATING {$entity_ids[0]}/{$pid_value}: ".join('; ', $t_user->getErrors())."\n";
 			continue;
 		} else {
 			print "\n toevoegen van afbeelding aan object : " . $label_key ." / ". $lookup. " gelukt";
 		}
 
 	} else {
-		print "\nGeen object gevonden voor koppelen " . $lookup;
+		print "\nGeen entity gevonden voor koppelen " . $label_key ." / " . $lookup;
 	}
 }
 print "END IMPORTING afbeeldingen.csv\n";
