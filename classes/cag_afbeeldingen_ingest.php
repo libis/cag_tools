@@ -1,7 +1,6 @@
 <?php
 /* Dit script wordt gebruikt om afbeeldingen van Digitool in te laden in CA na ingest. de Url wordt samengesteld in dit script
 */
-define('__CA_DONT_DO_SEARCH_INDEXING__',true);
 /*
  * Step 1: Initialisation
  */
@@ -47,8 +46,7 @@ while($o_tab_parserAfbeeldingen->nextRow()) {
 	$pid			=	$o_tab_parserAfbeeldingen->getRowValue(2);
 
 	if(!empty($pid) && !empty($label)) {
-		$pid_url = $pid. "_,_http://resolver.lias.be/get_pid?stream&usagetype=THUMBNAIL&pid=" . $pid . "_,_http://resolver.lias.be/get_pid?view&usagetype=VIEW_MAIN,VIEW&pid=". $pid;
-		$afbeeldingen[$label] = $pid_url;
+		$afbeeldingen[$label] = $pid;
 	} else {
 	  echo "Problem adding " .$label . " and Pid: " . $pid;
 	}
